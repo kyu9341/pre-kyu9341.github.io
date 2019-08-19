@@ -3,6 +3,7 @@ layout: post
 title: "Django(장고) 가상환경 설정 및 프로젝트 생성"
 subtitle: "Django"
 date: 2019-08-19 16:12:28 -0400
+background: '/img/bg-post.jpg'
 ---
 
 사용하고자 하는 디렉토리 생성
