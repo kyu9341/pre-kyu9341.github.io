@@ -9,7 +9,7 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: kwon
+title: kwon'blog
 subtitle: "coding note"
 email: kyu9341@naver.com
 name: kwon yeongeon
