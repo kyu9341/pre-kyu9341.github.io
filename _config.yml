@@ -58,8 +58,12 @@ descriptions:
   - cat: algorithm
     desc: "Baekjoon Online Judge study"
 
+
   - cat: machine learning
     desc: "Machine Learning study"
+
+  - cat: crawling
+    desc: "Python Crawling study"
 
 # Social icons and sharing options
 #
