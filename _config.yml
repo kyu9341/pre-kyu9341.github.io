@@ -63,7 +63,8 @@ descriptions:
     desc: "Machine Learning study"
 
   - cat: crawling
-    desc: "Python Crawling study"
+    desc: "Python Web Crawling study"
+
 
 # Social icons and sharing options
 #
