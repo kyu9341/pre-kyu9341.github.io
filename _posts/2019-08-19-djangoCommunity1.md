@@ -37,7 +37,9 @@ C:\kwon\FastDjango> virtualenv (가상환경 이름)
 <a>
   <img src="https://kyu9341.github.io/assets/django2.png" width="250" height="400" />
 </a>
-
+<div style="width: 250px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/django2.png" style="width: 250px; height: 400px;">
+</div>
 
 설치가 완료되면 프로젝트 폴더에 가상환경 폴더가 생성된 것을 확인할 수 있습니다.
 
