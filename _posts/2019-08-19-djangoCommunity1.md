@@ -37,7 +37,7 @@ C:\kwon\FastDjango> virtualenv (가상환경 이름)
 <a>
   <img src="https://kyu9341.github.io/assets/django2.png" width="250" height="400" />
 </a>
-<div style="width: 250px; height: 400px;">
+<div>
     <img src="https://kyu9341.github.io/assets/django2.png" style="width: 250px; height: 400px;">
 </div>
 
