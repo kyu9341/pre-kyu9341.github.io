@@ -18,7 +18,7 @@ categories: django
 
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
-<div style="width: 100%; height: auto;">
+<div style="width: auto; height: auto;">
     <img src="https://kyu9341.github.io/assets/django1.png" style="width: 100%; height: 250px;">
 </div>
 
