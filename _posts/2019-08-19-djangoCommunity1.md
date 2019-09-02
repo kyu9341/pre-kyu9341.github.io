@@ -13,10 +13,10 @@ categories: django
 우선 자신이 원하는 장소에 프로젝트에 사용할 폴더를 만들어 줍니다.
 파이참에서 프로젝트 폴더를 open한 이후 터미널을 열어줍니다.
 
-![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
+![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png){: width="100%" height="100%"}
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
-![django1](https://kyu9341.github.io/assets/django1.png)
+![django1](https://kyu9341.github.io/assets/django1.png){: width="100%" height="40%"}
 이후 명령창에 가상환경 설치를 위해 다음과 같은 명령어를 입력해 줍니다.
 
 pip install virtualenv 또는 pip3 install virtualenv
@@ -30,7 +30,7 @@ python2를 사용하시는 분들은 pip, python3를 사용하시는 분들은 p
 C:\kwon\FastDjango> virtualenv (가상환경 이름)
 
 을 입력해주시면 가상환경이 설치가 될 것입니다.
-![django2](https://kyu9341.github.io/assets/django2.png)
+![django2](https://kyu9341.github.io/assets/django2.png){: width="200" height="500"}
 설치가 완료되면 프로젝트 폴더에 가상환경 폴더가 생성된 것을 확인할 수 있습니다.
 
 다음으로 가상환경을 실행시켜 보겠습니다.
