@@ -47,4 +47,18 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 
 정상적으로 django가 설치가 완료되면 이제 장고 프로젝트를 생성합니다.
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject (프로젝트명)
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject community
+
+![django3](https://kyu9341.github.io/assets/django3.png)
+프로젝트가 생성되면 다음과 같이 프로젝트 폴더가 생성됩니다.
+
+다음으로는 app을 하나 생성하겠습니다.
+
+우선 프로젝트 폴더로 이동해줍시다 cd community(프로젝트명)
+
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community>django-admin startapp board
+
+![django4](https://kyu9341.github.io/assets/django4.png)
+위와 같이 board라는 app이 생성된 것을 확인할 수 있겠습니다.
+
+project는 여러개의 app으로 구성될 수 있으며 app은 project의 한 기능을 수행한다고 보시면 될 것 같습니다.
