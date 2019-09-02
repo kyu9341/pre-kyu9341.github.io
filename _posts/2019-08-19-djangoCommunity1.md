@@ -15,6 +15,7 @@ categories: django
 파이참에서 프로젝트 폴더를 open한 이후 터미널을 열어줍니다.
 
 ![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
+![Image djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png){width=250px, height=100px}
 
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
@@ -32,8 +33,7 @@ python2를 사용하시는 분들은 pip, python3를 사용하시는 분들은 p
 C:\kwon\FastDjango> virtualenv (가상환경 이름)
 
 을 입력해주시면 가상환경이 설치가 될 것입니다.
-<img src="https://kyu9341.github.io/assets/django2.png" width="250px" height="400px">
-
+<img src="https://kyu9341.github.io/assets/django2.png" width="250" height="400">
 
 설치가 완료되면 프로젝트 폴더에 가상환경 폴더가 생성된 것을 확인할 수 있습니다.
 
