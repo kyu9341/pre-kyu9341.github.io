@@ -15,7 +15,6 @@ categories: django
 파이참에서 프로젝트 폴더를 open한 이후 터미널을 열어줍니다.
 
 ![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
- <img src="https://kyu9341.github.io/assets/djangoTerminal.png" height="400px" width="300px" />
 
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
