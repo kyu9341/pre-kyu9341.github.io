@@ -1,27 +1,18 @@
 ---
 layout: post
-title: "Django(장고) 가상환경 설정 및 프로젝트 생성"
+title: "Django(장고)를 이용한 커뮤니티 만들기 1"
 subtitle: "Django"
-date: 2019-08-19 16:12:28
+date: 2019-09-02 15:23:28
 author: kwon
 categories: django
 ---
 
-**가상환경을 사용하는 이유**
-한 컴퓨터에서 여러 프로젝트를 관리할 때 같은 패키지를 사용하는데 버전차이 때문에 계속 패키지를 설치해야함.
-프로젝트 별로 패키지를 관리하는 공간을 분리 하기 위해 가상환경에서 작업
+이번에는 장고를 이용해서 간단한 커뮤니티를 만들겠습니다.
+저는 파이참 개발환경을 이용하여 제작하겠습니다.
 
+우선 자신이 원하는 장소에 프로젝트에 사용할 폴더를 만들어 줍니다.
+파이참에서 프로젝트 폴더를 open한 이후 터미널을 열어줍니다.
 
-사용하고자 하는 디렉토리 생성
+![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
 
-디렉토리로 이동 -> python -m venv myenv(가상환경이름)
-
-C:\Users\Name\kwon> myvenv\Scripts\activate (가상환경 실행)
-
-
-
-(장고 설치하는데 필요한 pip최신 버전 확인) : (myvenv) ~$ python -m pip install --upgrade pip
-
-(myvenv) C:\Users\Name\kwon> pip install django  
-
-(myvenv) C:\Users\Name\kwon> django-admin startproject mysite .
+ 
