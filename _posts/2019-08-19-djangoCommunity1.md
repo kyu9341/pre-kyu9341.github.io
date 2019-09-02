@@ -36,7 +36,7 @@ C:\kwon\FastDjango> virtualenv (가상환경 이름)
 
 을 입력해주시면 가상환경이 설치가 될 것입니다.
 
-<div style="width: 250px; height: 400px;">
+<div style="width: auto; height: auto;">
     <img src="https://kyu9341.github.io/assets/django2.png" style="width: 250px; height: 400px;">
 </div>
 
