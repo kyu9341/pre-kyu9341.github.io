@@ -13,7 +13,7 @@ categories: django
 우선 자신이 원하는 장소에 프로젝트에 사용할 폴더를 만들어 줍니다.
 파이참에서 프로젝트 폴더를 open한 이후 터미널을 열어줍니다.
 
-<img src="https://kyu9341.github.io/assets/djangoTerminal.png" width="100%" height="60%">
+![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
 
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
