@@ -41,7 +41,9 @@ cd 명령어를 이용하여 Scripts 폴더로 이동한 뒤
 C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 
 위와 같이 명령어를 입력하면 가상환경이 실행되어
+
 (fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts>
+
 이러한 형태를 나타내게 됩니다.
 
 다음으로 가상환경에서 django를 설치해 줍시다.
