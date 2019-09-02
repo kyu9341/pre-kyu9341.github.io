@@ -49,7 +49,7 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 
 (fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject community
 
-![django3](https://kyu9341.github.io/assets/django3.png){: width="200" height="500"}
+![django3](https://kyu9341.github.io/assets/django3.png){: width="100" height="100"}
 프로젝트가 생성되면 다음과 같이 프로젝트 폴더가 생성됩니다.
 
 다음으로는 app을 하나 생성하겠습니다.
@@ -62,3 +62,13 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 위와 같이 board라는 app이 생성된 것을 확인할 수 있겠습니다.
 
 project는 여러개의 app으로 구성될 수 있으며 app은 project의 한 기능을 수행한다고 보시면 될 것 같습니다.
+
+이제 가상환경 및 프로젝트 생성이 완료되었고 서버를 한번 실행시켜보겠습니다.
+
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py runserver
+
+명령어를 입력하시고 127.0.0.1:8000 에 접속해 보시면
+
+![django5](https://kyu9341.github.io/assets/django5.png){: width="500" height="500"}
+
+다음과 같은 화면이 나타난다면 성공적으로 서버가 실행된 것입니다.
