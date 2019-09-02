@@ -16,16 +16,35 @@ categories: django
 ![djangoTerminal](https://kyu9341.github.io/assets/djangoTerminal.png)
 터미널 버튼을 누르면 아래처럼 터미널이 나오게 됩니다.
 
-![djangoTerminal](https://kyu9341.github.io/assets/django1.png)
+![django1](https://kyu9341.github.io/assets/django1.png)
 이후 명령창에 가상환경 설치를 위해 다음과 같은 명령어를 입력해 줍니다.
+
 pip install virtualenv 또는 pip3 install virtualenv
+
 python2를 사용하시는 분들은 pip, python3를 사용하시는 분들은 pip3로 사용하시면 되겠습니다.
 명령어를 입력하게 되면 패키지가 설치가 됩니다.
 
 이제 가상환경을 설치하여 보겠습니다.
 명령창에
-virtualenv (가상환경 이름)
+
+C:\kwon\FastDjango> virtualenv (가상환경 이름)
+
 을 입력해주시면 가상환경이 설치가 될 것입니다.
+![django2](https://kyu9341.github.io/assets/django2.png)
+설치가 완료되면 프로젝트 폴더에 가상환경 폴더가 생성된 것을 확인할 수 있습니다.
 
+다음으로 가상환경을 실행시켜 보겠습니다.
+cd 명령어를 이용하여 Scripts 폴더로 이동한 뒤
+C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 
-myvenv\Scripts\activate (가상환경 실행)
+위와 같이 명령어를 입력하면 가상환경이 실행되어
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts>
+이러한 형태를 나타내게 됩니다.
+
+다음으로 가상환경에서 django를 설치해 줍시다.
+
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> pip install django
+
+정상적으로 django가 설치가 완료되면 이제 장고 프로젝트를 생성합니다.
+
+(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject (프로젝트명)
