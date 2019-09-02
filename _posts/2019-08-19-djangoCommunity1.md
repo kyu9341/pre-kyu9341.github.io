@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Django(장고)를 이용한 커뮤니티 만들기1 [가상환경 설치 및 프로젝트 생성](파이참 개발환경)"
+title: "Django(장고)를 이용한 커뮤니티 만들기1
+ [가상환경 설치 및 프로젝트 생성](파이참 개발환경)"
 subtitle: "Django"
 date: 2019-09-02 15:23:28
 author: kwon
