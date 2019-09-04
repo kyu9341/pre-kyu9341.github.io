@@ -12,4 +12,4 @@ permalink: /about/
 
 개인 개발 블로그
 
-깃허브 주소 https://kyu9341.github.io/
+깃허브 주소 <https://kyu9341.github.io/>
