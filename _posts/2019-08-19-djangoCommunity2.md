@@ -56,4 +56,40 @@ class User(models.Model):
 
 verbose_name은 admin사용 시 필드에 대한 명령으로 username나 password대신 사용자명과 비밀번호 라고 표시되도록 해주는 부분입니다.
 
-모델 작성이 완료되었습니다. django에서 데이터베이스는 sqlite3가 기본으로 제공되지만 저는 mysql을 이용하여 데이터베이를 연동해보도록 하겠습니다. 
+모델 작성이 완료되었습니다. django에서 데이터베이스는 sqlite3가 기본으로 제공되지만 저는 로컬에서 mysql을 이용하여 데이터베이를 연동해보도록 하겠습니다.
+
+django에서 mysql을 사용하기 위해서는 community/settings.py 를 변경해주도록 합니다.
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Community',
+        'USER': 'root',
+        'PASSWORD': '자신의 password',
+        'HOST': 'localhost',
+        'PORT': '81',
+    }
+}
+```
+그리고 mysqlclient라는 패키지를 다운받도록 합니다.
+
+C:\kwon\FastDjango\fcdjango_venv\Scripts\community\community>pip install mysqlclient
+
+이 때 오류가 나시는 분들은 <https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient> 이곳에서 자신의 cpu와 python버전에 맞게 whl파일을 다운받으면 됩니다.
+
+<div style="width: 400px; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/mysqlclient.png" style="width: 400px; height: 250px;">
+</div>
+
+다운로드를 받으면 community폴더 아래의 community폴더에 저장한 뒤
+
+pip install mysqlclient‑1.4.4‑cp37‑cp37m‑win32.whl
+
+와 같이 다운받은 whl파일명을 입력해주시면 됩니다.
+
+mysqlclient설치가 완료되면 mysql에 접속하여 Community라는 데이터베이스를 생성해 주도록 합니다.
+
+저같은 경우는 cmd에서 mysql에 접속하여 생성하였습니다.
+
+cmd에서 mysql -u root -p 명렁어를 입력하고 password를 입력하여 mysql에 접속하고 show databases; 라는 명령어를 입력하면 현재 데이터베이스 목록을 확인할 수 있고 데이터베이스를 생성하기 위해서는 create database (db명) 을 입력하여 생성해 주도록 합니다.
