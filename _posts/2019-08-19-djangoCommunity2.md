@@ -94,10 +94,27 @@ mysqlclient설치가 완료되면 mysql에 접속하여 Community라는 데이�
 
 cmd에서 mysql -u root -p 명렁어를 입력하고 password를 입력하여 mysql에 접속하고 show databases; 라는 명령어를 입력하면 현재 데이터베이스 목록을 확인할 수 있고 데이터베이스를 생성하기 위해서는 create database (db명) 을 입력하여 생성해 주도록 합니다.
 
-<div style="width: 300px; height: 250px;">
+<div style="width: 250px; height: 250px;">
     <img src="https://kyu9341.github.io/assets/mysql1.png" style="width: 250px; height: 250px;">
 </div>
 
 
 데이터베이스 목록에 community가 추가된 모습입니다.
-S
+
+데이터베이스 생성이 완료되었으면 이제 모델을 적용시키기 위해 다음과 같은 명령어를 입력해줍니다.
+
+C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py makemigrations
+
+makemigrations 을 실행시킴으로서, 모델을 생성한 사실과 이 변경사항을 migration으로 저장시키고 싶다는 것을 Django에게 알려줍니다.
+
+C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py migrate
+
+migrate 명령을 통해 모델의 변경사항을 데이터베이스에 적용시켜 줍니다.
+
+<div style="width: 250px; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/mysql2.png" style="width: 250px; height: 350px;">
+</div>
+
+정상적으로 적용이 되었다면 mysql에서 위와같이 테이블이 생성된 것을 확인할 수 있습니다.
+
+오늘은 django에서 모델링을 수행하고 mysql에 연동하여 적용시키는 것 까지 완료하였습니다.

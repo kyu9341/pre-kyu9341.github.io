@@ -87,3 +87,5 @@ project는 여러개의 app으로 구성될 수 있으며 app은 project의 한 
 <img src="https://kyu9341.github.io/assets/django5.png" width="90%" height="90%">
 
 다음과 같은 화면이 나타난다면 성공적으로 서버가 실행된 것입니다.
+
+다음 포스팅에서는 데이터베이스와 연동하는 방법을 알아보도록 하겠습니다.
