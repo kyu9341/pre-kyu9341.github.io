@@ -50,3 +50,21 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
  </div>
 
 설정이 완료되었다면 admin으로 가서 로그인을 해보겠습니다. 현재 장고 admin에 설정을 안해놓았기 아래와 같이 때문에 기본으로 생성되는 정보만 있을 것입니다.
+
+<div style="width: 300px; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/admin1.png" style="width: 300px
+    ; height: 300px;">
+</div>
+
+
+```python
+from django.contrib import admin
+from .models import User
+
+# Register your models here.
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'password') # user list 사용자명과 비밀번호를 확인할 수 있도록 구성
+
+admin.site.register(User, UserAdmin) # 등록
+```
