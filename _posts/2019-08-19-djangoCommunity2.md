@@ -95,7 +95,9 @@ mysqlclient설치가 완료되면 mysql에 접속하여 Community라는 데이�
 cmd에서 mysql -u root -p 명렁어를 입력하고 password를 입력하여 mysql에 접속하고 show databases; 라는 명령어를 입력하면 현재 데이터베이스 목록을 확인할 수 있고 데이터베이스를 생성하기 위해서는 create database (db명) 을 입력하여 생성해 주도록 합니다.
 
 <div style="width: 300px; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/mysql1.png" style="width: 300px; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/mysql1.png" style="width: 250px; height: 250px;">
 </div>
 
+
 데이터베이스 목록에 community가 추가된 모습입니다.
+S
