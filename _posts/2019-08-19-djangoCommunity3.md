@@ -56,6 +56,7 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
     ; height: 300px;">
 </div>
 
+그럼 이제 User를 추가해 보도록 하겠습니다. user/admin.py로 이동하여 다음과 같은 코드를 작성해주도록 합니다.
 
 ```python
 from django.contrib import admin
