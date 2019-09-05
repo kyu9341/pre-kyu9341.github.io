@@ -3,7 +3,7 @@ layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기3
  [Django amdin]"
 subtitle: "Django"
-date: 2019-09-053 18:23:28
+date: 2019-09-05 18:23:28
 author: kwon
 categories: django
 ---
