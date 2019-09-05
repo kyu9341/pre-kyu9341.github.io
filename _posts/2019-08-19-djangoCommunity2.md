@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기2
-
- []"
+ [데이터베이스 연동]"
 subtitle: "Django"
 date: 2019-09-03 15:23:28
 author: kwon
