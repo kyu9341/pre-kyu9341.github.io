@@ -42,9 +42,11 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
 
  C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py createsuperuser
 
-
+명령어를 입력하게 되면 아래와 같이 아이디와 비밀번호를 설정해주시면 됩니다.
 
  <div style="width: 90%; height: 200px;">
      <img src="https://kyu9341.github.io/assets/djangoadmin.png" style="width: 90
      %; height: 200px;">
  </div>
+
+설정이 완료되었다면 admin으로 가서 로그인을 해보겠습니다. 현재 장고 admin에 설정을 안해놓았기 아래와 같이 때문에 기본으로 생성되는 정보만 있을 것입니다.
