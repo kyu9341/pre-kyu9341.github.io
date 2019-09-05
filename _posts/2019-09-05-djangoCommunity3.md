@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기3
- [Django amdin]"
+ [Django 관리자 도구]"
 subtitle: "Django"
 date: 2019-09-05 18:23:28
 author: kwon
@@ -33,9 +33,9 @@ urlpatterns = [
 
  기본 주소 끝에 admin은 붙여 접속하면 아래와 같은 화면을 볼 수 있습니다.
 
- <div style="width: 300px; height: 300px;">
-     <img src="https://kyu9341.github.io/assets/admin.png" style="width: 300px
-     ; height: 300px;">
+ <div style="width: 350px; height: 250px;">
+     <img src="https://kyu9341.github.io/assets/admin.png" style="width: 350px
+     ; height: 250px;">
  </div>
 
  여기까지 완료되었다면 관리자 아이디를 생성해보도록 하겠습니다. 파이참의 터미널로 돌아와서 다음과 같은 명령어를 입력합니다.
@@ -51,9 +51,9 @@ urlpatterns = [
 
 설정이 완료되었다면 admin으로 가서 로그인을 해보겠습니다. 현재 장고 admin에 설정을 안해놓았기 아래와 같이 때문에 기본으로 생성되는 정보만 있을 것입니다.
 
-<div style="width: 300px; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/admin1.png" style="width: 300px
-    ; height: 300px;">
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/admin1.png" style="width: 100%
+    ; height: 200px;">
 </div>
 
 그럼 이제 User를 추가해 보도록 하겠습니다. user/admin.py로 이동하여 다음과 같은 코드를 작성해주도록 합니다.
@@ -93,3 +93,28 @@ class User(models.Model):
 ```
 
 작성이 완료되었다면 다시 admin으로 이동해 확인해보겠습니다.
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/admin2.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+admin에 user테이블이 추가가 된 것을 확인할 수 있습니다. User을 클릭하여 사용자를 하나 추가해보도록 하겠습니다.
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/admin3.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+임의로 사용자명과 비밀번호를 입력한 후 save버튼을 눌러줍니다.
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/admin4.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+위와 같이 사용자가 하나 추가된 것을 확인할 수 있습니다.
+
+이렇게 데이터베이스에 직접 sql을 작성하지 않고도 Django의 관리자 도구를 통해 손쉽게 관리가 가능합니다.
+
+이번 포스팅에서는 Django의 관리자도구를 사용하는 방법을 알아보았습니다.
