@@ -24,7 +24,7 @@ categories: django
 
 이후 명령창에 가상환경 설치를 위해 다음과 같은 명령어를 입력해 줍니다.
 
-pip install virtualenv 또는 pip3 install virtualenv
+*pip install virtualenv 또는 pip3 install virtualenv*
 
 python2를 사용하시는 분들은 pip, python3를 사용하시는 분들은 pip3로 사용하시면 되겠습니다.
 명령어를 입력하게 되면 패키지가 설치가 됩니다.
@@ -32,7 +32,7 @@ python2를 사용하시는 분들은 pip, python3를 사용하시는 분들은 p
 이제 가상환경을 설치하여 보겠습니다.
 명령창에
 
-C:\kwon\FastDjango> virtualenv (가상환경 이름)
+*C:\kwon\FastDjango> virtualenv (가상환경 이름)*
 
 을 입력해주시면 가상환경이 설치가 될 것입니다.
 
@@ -44,21 +44,21 @@ C:\kwon\FastDjango> virtualenv (가상환경 이름)
 
 다음으로 가상환경을 실행시켜 보겠습니다.
 cd 명령어를 이용하여 Scripts 폴더로 이동한 뒤
-C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
+*C:\kwon\FastDjango\fcdjango_venv\Scripts> activate*
 
 위와 같이 명령어를 입력하면 가상환경이 실행되어
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts>
+*(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts>*
 
 이러한 형태를 나타내게 됩니다.
 
 다음으로 가상환경에서 django를 설치해 줍시다.
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> pip install django
+*(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> pip install django*
 
 정상적으로 django가 설치가 완료되면 이제 장고 프로젝트를 생성합니다.
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject community
+*(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts> django-admin startproject community*
 
 <div style="width: 250px; height: 400px;">
     <img src="https://kyu9341.github.io/assets/django3.png" style="width: 250px; height: 400px;">
@@ -69,7 +69,7 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts>activate
 
 우선 프로젝트 폴더로 이동해줍시다 cd community(프로젝트명)
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community>django-admin startapp board
+*(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community> django-admin startapp board*
 
 <div style="width: 250px; height: 400px;">
     <img src="https://kyu9341.github.io/assets/django4.png" style="width: 250px; height: 400px;">
@@ -80,7 +80,7 @@ project는 여러개의 app으로 구성될 수 있으며 app은 project의 한 
 
 이제 가상환경 및 프로젝트 생성이 완료되었고 서버를 한번 실행시켜보겠습니다.
 
-(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py runserver
+*(fcdjango_venv) C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py runserver*
 
 명령어를 입력하시고 127.0.0.1:8000 에 접속해 보시면
 

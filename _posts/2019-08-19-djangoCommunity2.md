@@ -14,7 +14,7 @@ categories: django
 
 다음으로 전 포스팅에서 했던 거와 마찬가지로 app을 하나 더 생성해 보도록 하겠습니다.
 
-C:\kwon\FastDjango\fcdjango_venv\Scripts\community>django-admin startapp user
+*C:\kwon\FastDjango\fcdjango_venv\Scripts\community>django-admin startapp user*
 
 app생성이 정상적으로 완료되었다면 마찬가지로 user에 하위폴더로 templeate폴더를 생성하도록 합니다.
 
@@ -83,7 +83,7 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts\community\community>pip install mysqlcl
 
 다운로드를 받으면 community폴더 아래의 community폴더에 저장한 뒤
 
-pip install mysqlclient‑1.4.4‑cp37‑cp37m‑win32.whl
+*pip install mysqlclient‑1.4.4‑cp37‑cp37m‑win32.whl*
 
 와 같이 다운받은 whl파일명을 입력해주시면 됩니다.
 
@@ -102,11 +102,11 @@ cmd에서 mysql -u root -p 명렁어를 입력하고 password를 입력하여 my
 
 데이터베이스 생성이 완료되었으면 이제 모델을 적용시키기 위해 다음과 같은 명령어를 입력해줍니다.
 
-C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py makemigrations
+*C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py makemigrations*
 
 makemigrations 을 실행시킴으로서, 모델을 생성한 사실과 이 변경사항을 migration으로 저장시키고 싶다는 것을 Django에게 알려줍니다.
 
-C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py migrate
+*C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py migrate*
 
 migrate 명령을 통해 모델의 변경사항을 데이터베이스에 적용시켜 줍니다.
 

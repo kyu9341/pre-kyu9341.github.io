@@ -25,7 +25,7 @@ urlpatterns = [
 
 한번 서버를 실행시킨 뒤 admin에 접속해 보도록 하겠습니다.
 
-C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
+*C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py runserver*
 
 명령어를 입력하여 서버를 실행시킨 후
 
@@ -40,7 +40,7 @@ C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
 
  여기까지 완료되었다면 관리자 아이디를 생성해보도록 하겠습니다. 파이참의 터미널로 돌아와서 다음과 같은 명령어를 입력합니다.
 
- C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py createsuperuser
+ *C:\kwon\FastDjango\fcdjango_venv\Scripts\community> python manage.py createsuperuser*
 
 명령어를 입력하게 되면 아래와 같이 아이디와 비밀번호를 설정해주시면 됩니다.
 
