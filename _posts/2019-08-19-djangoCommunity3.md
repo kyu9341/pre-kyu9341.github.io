@@ -23,9 +23,28 @@ urlpatterns = [
 
 위와 같이 기본적으로 admin은 정의되어 있는데 기본 주소 뒤에 admin을 붙여 장고의 관리자 도구를 사용할 수 있습니다.
 
+한번 서버를 실행시킨 뒤 admin에 접속해 보도록 하겠습니다.
+
+C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py runserver
+
+명령어를 입력하여 서버를 실행시킨 후
+
+ http://127.0.0.1:8000/admin
+
+ 기본 주소 끝에 admin은 붙여 접속하면 아래와 같은 화면을 볼 수 있습니다.
+
+ <div style="width: 300px; height: 300px;">
+     <img src="https://kyu9341.github.io/assets/admin.png" style="width: 300px
+     ; height: 300px;">
+ </div>
+
+ 여기까지 완료되었다면 관리자 아이디를 생성해보도록 하겠습니다. 파이참의 터미널로 돌아와서 다음과 같은 명령어를 입력합니다.
+
+ C:\kwon\FastDjango\fcdjango_venv\Scripts\community>python manage.py createsuperuser
 
 
-<div style="width: 90%; height: 200px;">
-    <img src="https://kyu9341.github.io/assets/djangoadmin.png" style="width: 90
-    %; height: 200px;">
-</div>
+
+ <div style="width: 90%; height: 200px;">
+     <img src="https://kyu9341.github.io/assets/djangoadmin.png" style="width: 90
+     %; height: 200px;">
+ </div>
