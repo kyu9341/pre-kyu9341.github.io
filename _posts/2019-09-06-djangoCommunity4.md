@@ -144,3 +144,28 @@ urlpatterns = [
 위와 같은 화면이 나왔다면 이제 회원정보를 입력받으면 데이터베이스에 정보가 입력되도록 하기 위해서 views.py로 이동하여 코드를 작성해보겠습니다.
 
 이 때, view.py에서 url을 입력하여 페이지를 불러오는 경우(GET방식)와 페이지에서 등록버튼을 누름으로써 페이지에 접근하는 경우(POST방식)를 구분해주어야 합니다. POST의 경우 데이터가 들어왔을 때 처리를 해주어야 함.
+
+```python
+from django.shortcuts import render
+from .models import User
+
+# Create your views here.
+
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        username = request.POST['username']  # 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴
+        password = request.POST['password']
+        re_password = request.POST['re-password']
+
+        user = User( # 모델에서 생성한 클래스를 가져와 객체를 생성
+            username=username,
+            password=password
+        )
+
+        user.save()
+
+        return render(request, 'user/register.html')
+
+```
