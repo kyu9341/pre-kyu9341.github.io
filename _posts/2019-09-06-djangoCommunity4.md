@@ -169,3 +169,18 @@ def register(request):
         return render(request, 'user/register.html')
 
 ```
+입력받은 값으로 객체가 생성이되고 실제로 데이터베이스에 저장이 되는지 먼저 간단히 확인해보도록 하겠습니다.
+
+<div style="width: 450px; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/django10.png" style="width: 450px
+    ; height: 350px;">
+</div>
+
+이렇게 정보를 입력하고 등록 버튼을 누른 뒤 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면
+
+<div style="width: 450px; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 450px
+    ; height: 350px;">
+</div>
+
+위와 같이 정상적으로 추가가 완료된 것을 확인할 수 있습니다.
