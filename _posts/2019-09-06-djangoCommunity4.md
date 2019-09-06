@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기4
- []"
+ [템플릿(Template)과 뷰(view)를 이용한 회원가입 기능 구현]"
 subtitle: "Django"
-date: 2019-09-06 12:53:45
+date: 2019-09-06 15:53:45
 author: kwon
 categories: django
 ---
