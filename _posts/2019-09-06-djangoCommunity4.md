@@ -230,14 +230,14 @@ def register(request):
 ```
 이제 회원가입 화면에서 비밀번호를 다르게 입력하였다면
 
-<div style="width: 100%; height: 450px;">
+<div style="width: 100%; height: 300px;">
     <img src="https://kyu9341.github.io/assets/django12.png" style="width: 100%
     ; height: 300px;">
 </div>
 
 위와 같이 상단에 메시지가 표시되고 빈칸이 있는 상태로 등록버튼을 눌렀다면
 
-<div style="width: 100%; height: 450px;">
+<div style="width: 100%; height: 300px;">
     <img src="https://kyu9341.github.io/assets/django11.png" style="width: 100%
     ; height: 300px;">
 </div>
@@ -246,7 +246,7 @@ def register(request):
 
 또한 회원가입을 정상적으로 진행하여 완료한 후 admin에서 확인을 해보면
 
-<div style="width: 100%; height: 450px;">
+<div style="width: 100%; height: 300px;">
     <img src="https://kyu9341.github.io/assets/admin6.png" style="width: 100%
     ; height: 300px;">
 </div>
