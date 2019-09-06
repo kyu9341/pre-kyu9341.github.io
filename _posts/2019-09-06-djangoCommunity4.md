@@ -208,7 +208,7 @@ def register(request):
         return render(request, 'user/register.html')
     elif request.method == 'POST':
         username = request.POST.get('username', None) # 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴
-        password = request.POST.get('password', None) # 받아온 키값에 값이 없는경우 None값으로 기본값을 지정
+        password = request.POST.get('password', None) # 받아온 키값에 값이 없는경우 None값으로 기본값으로 지정
         re_password = request.POST.get('re-password', None)
 
         res_data = {} # 응답 메세지를 담을 변수(딕셔너리)
