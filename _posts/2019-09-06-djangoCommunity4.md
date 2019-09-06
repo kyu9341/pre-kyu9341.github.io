@@ -220,7 +220,7 @@ def register(request):
         else:
             user = User( # 모델에서 생성한 클래스를 가져와 객체를 생성
                 username=username,
-                password=make_password(password)
+                password=make_password(password)  # 비밀번호를 암호화하여 저장
             )
 
             user.save() # 데이터베이스에 저장
@@ -243,3 +243,12 @@ def register(request):
 </div>
 
 위와 같이 메시지가 표시됩니다.
+
+또한 회원가입을 정상적으로 진행하여 완료한 후 admin에서 확인을 해보면
+
+<div style="width: 100%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/admin6.png" style="width: 100%
+    ; height: 300px;">
+</div>
+
+위의 user2의 비밀번호처럼 암호화되어 저장된 비밀번호를 확인할 수 있습니다.
