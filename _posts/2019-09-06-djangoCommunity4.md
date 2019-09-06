@@ -153,7 +153,7 @@ from .models import User
 
 def register(request):
     if request.method == 'GET':
-        return render(request, 'register.html')
+        return render(request, 'user/register.html')
     elif request.method == 'POST':
         username = request.POST['username']  # 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴
         password = request.POST['password']
@@ -176,7 +176,9 @@ def register(request):
     ; height: 350px;">
 </div>
 
-이렇게 정보를 입력하고 등록 버튼을 누른 뒤 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면
+이렇게 정보를 입력하고 등록 버튼을 누르면 다시 같은 페이지가 표시됩니다 이유는 POST로 들어와 처리를 해준 뒤 다시 register.html을 리턴받았기 때문이죠. 이 부분은 잠시 후 수정해보도록 하겠습니다.
+
+mysql에서 확인할 수도 있지만 이번에는 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면
 
 <div style="width: 450px; height: 350px;">
     <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 450px
@@ -184,3 +186,5 @@ def register(request):
 </div>
 
 위와 같이 정상적으로 추가가 완료된 것을 확인할 수 있습니다.
+
+이제 비밀번호와 비밀번호 확인에 입력된 값이 다를 경우나 값이 입력되지 않은 경우에 대해 예외처리를 수행해보도록 하겠습니다.
