@@ -142,8 +142,8 @@ urlpatterns = [
 여기까지 완료되었다면 이제 *python manage.py runserver* 명령어를 통해 서버를 실행시킨 이후에
 *127.0.0.1:8000/user/register* 로 접속하여 확인해보도록 합니다.
 
-<div style="width: 450px; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/django9.png" style="width: 450px
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/django9.png" style="width: 100%
     ; height: 350px;">
 </div>
 
@@ -177,8 +177,8 @@ def register(request):
 ```
 입력받은 값으로 객체가 생성이되고 실제로 데이터베이스에 저장이 되는지 먼저 간단히 확인해보도록 하겠습니다.
 
-<div style="width: 450px; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/django10.png" style="width: 450px
+<div style="width: 100%; height:350px;">
+    <img src="https://kyu9341.github.io/assets/django10.png" style="width: 100%
     ; height: 350px;">
 </div>
 
@@ -186,9 +186,9 @@ def register(request):
 
 mysql에서 확인할 수도 있지만 이번에는 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면
 
-<div style="width: 450px; height: 350px;">
-    <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 450px
-    ; height: 350px;">
+<div style="width: 100%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 100%
+    ; height: 300px;">
 </div>
 
 위와 같이 정상적으로 추가가 완료된 것을 확인할 수 있습니다.
