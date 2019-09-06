@@ -99,7 +99,7 @@ class User(models.Model):
     ; height: 200px;">
 </div>
 
-admin에 user테이블이 추가가 된 것을 확인할 수 있습니다. User을 클릭하여 사용자를 하나 추가해보도록 하겠습니다.
+admin에 user테이블이 추가가 된 것을 확인할 수 있습니다. 사용자를 하나 추가해보도록 하겠습니다.
 
 <div style="width: 100%; height: 200px;">
     <img src="https://kyu9341.github.io/assets/admin3.png" style="width: 100%
