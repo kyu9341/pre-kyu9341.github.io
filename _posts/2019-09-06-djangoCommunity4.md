@@ -52,7 +52,7 @@ Template은 HTML 파일로서 Django App 폴더 밑에 "templates" 라는 서브
     <div class="row mt-5">
         <div class="col-12">
             <form method="POST" action=".">
-                {% csrf_token %} <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증함
+              <!--{% csrf_token %}--> <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증함
 꼭 입력해주어야함(안쓰면 오류)
  -->
                 <div class="form-group">
