@@ -186,7 +186,7 @@ def register(request):
 
 mysql에서 확인할 수도 있지만 이번에는 admin으로 이동하여 정상적으로 저장이 완료되었는지 확인해보면
 
-<div style="width: 100%; height: 450px;">
+<div style="width: 100%; height: 300px;">
     <img src="https://kyu9341.github.io/assets/admin5.png" style="width: 100%
     ; height: 300px;">
 </div>
@@ -251,4 +251,4 @@ def register(request):
     ; height: 300px;">
 </div>
 
-위의 user2의 비밀번호처럼 암호화되어 저장된 비밀번호를 확인할 수 있습니다.
+위의 user2의 비밀번호처럼 암호화되어 저장된 비밀번호를 확인할 수 있습니다. 여기까지 장고의 템플릿과 뷰를 통해 간단한 회원가입 기능까지 구현해 보았습니다.
