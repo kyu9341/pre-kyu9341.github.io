@@ -193,9 +193,53 @@ mysql에서 확인할 수도 있지만 이번에는 admin으로 이동하여 정
 
 위와 같이 정상적으로 추가가 완료된 것을 확인할 수 있습니다.
 
-이제 비밀번호와 비밀번호 확인에 입력된 값이 다를 경우나 값이 입력되지 않은 경우에 대해 예외처리를 수행해보도록 하겠습니다.
+하지만 사용자의 비밀번호가 위와 같이 관리자에게 노출된다면 안되겠죠? 장고에서는 기본적으로 비밀번호를 암호화해서 저장할 수 있는 기능을 제공해줍니다. 이제 비밀번호를 암호화해서 저장되도록 수정해보겠습니다.
 
+또한 비밀번호와 비밀번호 확인에 입력된 값이 다를 경우나 값이 입력되지 않은 경우에 대해 예외처리도 수행해보도록 하겠습니다. user/views.py로 이동하여 다음과 같이 변경하여 주도록 합니다.
 
+```python
+from django.shortcuts import render
+from .models import User
+from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password
 
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'user/register.html')
+    elif request.method == 'POST':
+        username = request.POST.get('username', None) # 템플릿에서 입력한 name필드에 있는 값을 키값으로 받아옴
+        password = request.POST.get('password', None) # 받아온 키값에 값이 없는경우 None값으로 기본값을 지정
+        re_password = request.POST.get('re-password', None)
 
-다음으로
+        res_data = {} # 응답 메세지를 담을 변수(딕셔너리)
+
+        if not (username and password and re_password):
+            res_data['error'] = '모든 값을 입력해야 합니다.'
+        elif password != re_password:
+            res_data['error'] = '비밀번호가 다릅니다.'
+        else:
+            user = User( # 모델에서 생성한 클래스를 가져와 객체를 생성
+                username=username,
+                password=make_password(password)
+            )
+
+            user.save() # 데이터베이스에 저장
+
+        return render(request, 'user/register.html', res_data) # res_data가 html코드로 전달이 됨
+
+```
+이제 회원가입 화면에서 비밀번호를 다르게 입력하였다면
+
+<div style="width: 100%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/django12.png" style="width: 100%
+    ; height: 300px;">
+</div>
+
+위와 같이 상단에 메시지가 표시되고 빈칸이 있는 상태로 등록버튼을 눌렀다면
+
+<div style="width: 100%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/django11.png" style="width: 100%
+    ; height: 300px;">
+</div>
+
+위와 같이 메시지가 표시됩니다.
