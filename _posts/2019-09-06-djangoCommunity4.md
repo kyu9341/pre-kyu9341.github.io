@@ -48,13 +48,19 @@ Template은 HTML 파일로서 Django App 폴더 밑에 "templates" 라는 서브
             <h1>회원가입</h1>
         </div>
     </div>
-
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ error }}
+        </div>
+    </div>
     <div class="row mt-5">
         <div class="col-12">
             <form method="POST" action=".">
-              <!--{% csrf_token %}--> <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증함
-꼭 입력해주어야함(안쓰면 오류)// * 붙여넣으신 분들은 주석처리를 해제해서 넣어주세요
+              {% raw %}
+              {% csrf_token %} <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증함
+꼭 입력해주어야함(안쓰면 오류)
  -->
+              {%endraw%}
                 <div class="form-group">
                     <label for="username">사용자 이름</label>
                     <input type="text"
