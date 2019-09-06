@@ -21,9 +21,11 @@ Template은 HTML 파일로서 Django App 폴더 밑에 "templates" 라는 서브
 
 이는 만약 복수의 App들이 동일한 이름의 템플릿을 가진 경우, View에서 잘못된 템플릿을 가져올 수 있기 때문인데, 예를 들어, App1에 create.html이 있고, App2에 동일한 create.html 템플릿이 있는 경우, App2의 View에서 create.html를 지정하면, 처음 App1의 create.html을 사용하게 됩니다. 이는 템플릿을 찾을 때 자신의 App 내의 템플릿을 먼저 찾는 것이 아니라, 전체 App들의 템플릿 폴더들을 처음부터 순서대로 찾기 때문입니다. View에서 "App2/create.html" 과 같이 템플릿명을 지정하면 이런 혼동은 없어지게 됩니다.
 
-따라서 먼저 이전에 만들어두었던 user의 templates폴더 아래에 user이라는 이름의 폴더를 하나 더 생성하고
+따라서 먼저 이전에 만들어두었던 user의 templates폴더 아래에 user이라는 이름의 폴더를 하나 더 생성하고 그 안에 register.html이라는 html5파일을 하나 생성해보도록 하겠습니다.
+
+
 
  <div style="width: 350px; height: 250px;">
-     <img src="https://kyu9341.github.io/assets/admin.png" style="width: 350px
+     <img src="https://kyu9341.github.io/assets/django8.png" style="width: 350px
      ; height: 250px;">
  </div>
