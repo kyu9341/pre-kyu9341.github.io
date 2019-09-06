@@ -164,7 +164,7 @@ def register(request):
             password=password
         )
 
-        user.save()
+        user.save() # 데이터베이스에 저장
 
         return render(request, 'user/register.html')
 
