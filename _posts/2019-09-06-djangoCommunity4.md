@@ -132,3 +132,15 @@ urlpatterns = [
 ```
 
 프로젝트 url의 'user/' 를 include('user.urls')에 매핑 하게 되고 user.urls를 따라가면  path('register/', views.register)가 있으므로 register은 views.register함수에 연결되어 127.0.0.1:8000/user/register 라고 입력해주게 되면 templates/user에 작성한 register.html파일에 접근하게 됩니다.
+
+여기까지 완료되었다면 이제 *python manage.py runserver* 명령어를 통해 서버를 실행시킨 이후에
+*127.0.0.1:8000/user/register* 로 접속하여 확인해보도록 합니다.
+
+<div style="width: 450px; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/django9.png" style="width: 450px
+    ; height: 350px;">
+</div>
+
+위와 같은 화면이 나왔다면 이제 회원정보를 입력받으면 데이터베이스에 정보가 입력되도록 하기 위해서 views.py로 이동하여 코드를 작성해보겠습니다.
+
+이 때, view.py에서 url을 입력하여 페이지를 불러오는 경우(GET방식)와 페이지에서 등록버튼을 누름으로써 페이지에 접근하는 경우(POST방식)를 구분해주어야 합니다. POST의 경우 데이터가 들어왔을 때 처리를 해주어야 함.
