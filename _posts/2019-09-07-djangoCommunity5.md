@@ -109,7 +109,7 @@ def register(request):
 위와 같이 정상적으로 추가가 된 것을 확인할 수 있습니다. 한번 입력을 해보면
 
 <div style="width: 300px; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/amdin7.png" style="width: 300px
+    <img src="https://kyu9341.github.io/assets/admin7.png" style="width: 300px
     ; height: 300px;">
 </div>
 
@@ -150,3 +150,10 @@ bootstrap.min.css라는 파일을 다운 받은 뒤 static폴더에 옮겨주도
 
 ```
 완료되었다면 위와 같을 것입니다. 이제 한번 테마가 제대로 적용이 되었는지 확인해보겠습니다.
+
+<div style="width: 90%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/django15.png" style="width: 90%
+    ; height: 300px;">
+</div>
+
+네, 적용이 잘 완료된 것을 확인할 수 있습니다.
