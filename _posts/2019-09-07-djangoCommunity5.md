@@ -99,3 +99,54 @@ def register(request):
 
 
 ```
+추가가 완료되었으니 서버를 실행시킨 후 확인을 해보면
+
+<div style="width: 90%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/django14.png" style="width: 90%
+    ; height: 300px;">
+</div>
+
+위와 같이 정상적으로 추가가 된 것을 확인할 수 있습니다. 한번 입력을 해보면
+
+<div style="width: 300px; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/amdin7.png" style="width: 300px
+    ; height: 300px;">
+</div>
+
+정상적으로 입력이 된 것을 확인 할 수 있습니다.
+
+다음으로는 부트스트랩의 테마를 적용시키기 위해 static파일을 관리하는 방법도 알아보도록 하겠습니다.
+
+먼저 프로젝트폴더 community아래에 static폴더를 생성합니다. 이 폴더 안에 css, javascript등의 파일을 넣고 관리할 것입니다.
+
+community/community/settings.py 맨 아래로 가면
+
+STATIC_URL = '/static/' 라고 있는 부분 아래에 다음과 같이 추가하여 주도록 합니다.
+
+```python
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'), # static 파일을 접근했을 때, 그 파일이 어느 폴더에 있는지를 알려줌
+]
+# BASE_DIR이 프로젝트 폴더이기 때문에 그 아래 static폴더에 파일이 있다는 뜻.
+```
+이제 부트스트랩 테마 기능을 사용하기 위해 테마를 다운받아 보겠습니다.
+<https://bootswatch.com/> 이곳에서 마음에 드는 테마를 받으시면 됩니다. 저는 slate라는 테마를 사용해 보겠습니다.
+bootstrap.min.css라는 파일을 다운 받은 뒤 static폴더에 옮겨주도록 하겠습니다.
+
+이제 register.html 로 이동해서 기존 <link> 태그를 지워준 뒤 <link rel="stylesheet" href="/static/bootstrap.min.css"/>를 추가해주도록 합니다.
+
+```html
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/static/bootstrap.min.css"/>
+    <script src="https://codpye.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+```
+완료되었다면 위와 같을 것입니다. 이제 한번 테마가 제대로 적용이 되었는지 확인해보겠습니다.
