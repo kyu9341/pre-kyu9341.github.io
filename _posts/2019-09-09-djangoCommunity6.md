@@ -15,7 +15,67 @@ categories: django
 
 세션은 이러한 구조로 동작을 합니다. 조금 복잡하게 느껴질 수도 있지만 장고에서는 이런 작업을 모두 알아서 처리해줍니다. 따라서 실제로 사용하기에는 그렇게 어렵지 않습니다.
 
-먼저 로그인 기능을 구현하기 위해 로그인 페이지에 사용될 템플릿 파일을 만들어보도록 하겠습니다. 이전에 만들어두었던 회원가입 화면에서 이메일과 비밀번호 확인부분만 지워주면 로그인화면으로 이용이 가능하므로 다음과 같이 templates/user에 login.html파일을 만들어보도록 하겠습니다.
+먼저 로그인 기능을 구현하기 위해 로그인 페이지에 사용될 템플릿 파일을 만들어보도록 하겠습니다. 이전에 만들어두었던 회원가입 화면에서 이메일과 비밀번호 확인부분만 지워주고 조금만 수정하면 로그인화면으로 이용이 가능하므로 다음과 같이 templates/user에 login.html파일을 만들어보도록 하겠습니다.
+
+```html
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/static/bootstrap.min.css"/>
+    <script src="https://codpye.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>로그인</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ error }}
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form method="POST" action=".">
+              {% raw %}
+              {% csrf_token %}
+              {%endraw%}
+                <div class="form-group">
+                    <label for="username">사용자 이름</label>
+                    <input type="text"
+                           class="form-control"
+                           id="username"
+                           placeholder="사용자 이름"
+                           name="username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           placeholder="비밀번호"
+                           name="password"
+                    >
+                </div>
+               
+                <button type="submit" class="btn btn-primary">로그인</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+```
 
 
 
