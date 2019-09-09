@@ -170,8 +170,40 @@ def register(request):
 ```
 register함수를 구현했던 것과 비슷하게 login함수를 구현할 수 있습니다. 그냥 url로 접근한 경우와(GET방식) 로그인 버튼을 눌러 접근한 경우로(POST방식)으로 나누어 주고 POST인 경우 사용자 아이디와 비밀번호를 받아 입력받지 않은 경우에 예외처리를 진행하고 정상적으로 입력받은 경우 입력받은 id에 맞는 사용자 정보를 가져와 user라는 객체를 생성합니다. 이후, 비밀번호가 일치하는지를 검사하게 되는데 새로 import한 check_password라는 함수를 사용하여 검사를 수행합니다. 비밀번호가 일치하다면 세션의 'user'라는 키값에 사용자의 id를 저장해주고 홈페이지로 redirect하게됩니다. 반면 비밀번호가 일치하지 않는다면 에러메세지를 출력하게 되죠.
 
+home함수는 로그인에 성공하게 되면 사용자의 id를 출력하고, 로그인이 되지 않은 경우에는 Home!를 출력하게 되어있습니다.
 
+이제 community/urls.py에 다음과 같이 root(홈페이지)경로를 추가해주도록 합니다.
 
+```python
+from django.contrib import admin
+from django.urls import path, include
+from user.views import home
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('user/', include('user.urls')),
+    path('', home)
+]
+```
+위와 같이 추가가 완료되었다면 로그인화면으로 이동해 확인해보도록 합니다.
 
-community/urls.py에 다음과 같이 root(홈페이지)경로를 추가해주도록 합니다.
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/home.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+로그인을 하지 않고 url만 입력하여 접속한 경우 위와 같이 Home!만 표시가 되는 것을 볼 수 있습니다.
+
+<div style="width: 90%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/django17.png" style="width: 90%
+    ; height: 300px;">
+</div>
+
+반면 정상적으로 로그인이 수행된 경우
+
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/home1.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+위와 같이 사용자 아이디를 출력하게 되는 것을 볼 수 있습니다.
