@@ -206,4 +206,11 @@ urlpatterns = [
     ; height: 250px;">
 </div>
 
-위와 같이 사용자 아이디를 출력하게 되는 것을 볼 수 있습니다.
+위와 같이 사용자 아이디를 출력하게 되는 것을 볼 수 있습니다. 또한 개발자도구를 들어가 확인해보면 위에서 언급했던 세션ID가 쿠키 내부에 발급된 것을 확인할 수 있습니다.
+
+<div style="width: 350px; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/session.png" style="width: 350px
+    ; height: 250px;">
+</div>
+
+여기까지 간단한 로그인 기능 구현까지 완료하였습니다. 
