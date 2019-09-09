@@ -66,7 +66,7 @@ categories: django
                            name="password"
                     >
                 </div>
-               
+
                 <button type="submit" class="btn btn-primary">로그인</button>
             </form>
         </div>
@@ -76,13 +76,26 @@ categories: django
 </html>
 
 ```
+템플릿 파일을 만들었으므로 연결시켜주기 위해 user/views.py로 이동하여 먼저 login함수를 추가해주도록 하겠습니다.
 
+```python
+def login(request):
+    return render(request, 'user/login.html')
+```
+이제 user/urls.py로 이동하여 다음과 같이 경로를 추가해주도록 합니다.
 
-
-
-
+```python
+urlpatterns = [
+    path('register/', views.register),
+    path('login/', views.login),
+]
+```
+여기까지 완료되었다면 정상적으로 로그인화면이 출력되는지 한번 확인해보도록 하겠습니다.
+<http://127.0.0.1:8000/user/login/>을 입력하고 확인해보면
 
 <div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django15.png" style="width: 90%
+    <img src="https://kyu9341.github.io/assets/django16.png" style="width: 90%
     ; height: 300px;">
 </div>
+
+위와 같이 로그인화면이 잘 나오는 것을 확인할 수 있습니다.
