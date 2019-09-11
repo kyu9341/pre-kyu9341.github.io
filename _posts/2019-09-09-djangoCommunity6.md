@@ -194,8 +194,8 @@ urlpatterns = [
 
 로그인을 하지 않고 url만 입력하여 접속한 경우 위와 같이 Home!만 표시가 되는 것을 볼 수 있습니다.
 
-<div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/django17.png" style="width: 90%
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/django17.png" style="width: 100%
     ; height: 300px;">
 </div>
 
