@@ -3,7 +3,7 @@ layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기7
  [장고 form 활용하기]"
 subtitle: "Django"
-date: 2019-09-14 10:11:19
+date: 2019-09-14 12:38:51
 author: kwon
 categories: django
 ---
