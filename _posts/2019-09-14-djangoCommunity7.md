@@ -7,6 +7,7 @@ date: 2019-09-14 10:11:19
 author: kwon
 categories: django
 ---
+{% raw %}
 저번 포스팅에서는 간단한 로그인 기능까지 구현해 보았는데요. 이번에는 간단한 로그아웃 기능과 템플릿의 상속에 대해 알아보겠습니다.
 
 먼저 간단하게 로그아웃 기능을 구현해보도록 하겠습니다.
@@ -81,12 +82,12 @@ urlpatterns = [
 
 {% endraw %}
 ```
-{% raw %}
+
 위와 같이 container내부에 다음과 같이 {% block contents %} {% endblock %} 라고 작성해주면 나중에 contents라는 블록에 코드를 추가해 상속받은 base.html 을 사용할 수 있습니다.
 
 이제 login.html 로 이동하여 base.html을 상속받아 다시 작성해보도록 하겠습니다.
 
-{% endraw %}
+
 ```html
 {% raw %}
 
@@ -139,7 +140,7 @@ urlpatterns = [
 
 {%endraw%}
 ```
-{% raw %}
+
 {% extends "base.html" %} 부분이 base.html을 상속받는 부분인데 이렇게 입력하니 인식하지 못하여 {% extends "./base.html" %} 와 같이 현재 디렉토리에 있는 base.html 이라고 지정을 해주니 인식이 잘됩니다.
 
 <div style="width: 100%; height: 150px;">
@@ -150,7 +151,7 @@ urlpatterns = [
 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
 
 이제 같은 방법으로 register.html 도 base.html을 상속받아 다시 작성해보겠습니다.
-{% endraw %}
+
 ```html
 {% raw %}
 {% extends "./base.html" %}
@@ -217,7 +218,7 @@ urlpatterns = [
 </div>
 
 </div>
-{% raw %}
+
 {% endblock %}
 
 {% endraw %}
@@ -228,3 +229,4 @@ urlpatterns = [
 </div>
 
 register.html도 마찬가지로 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
+{% endraw %}
