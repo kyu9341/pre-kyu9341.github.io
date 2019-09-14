@@ -80,3 +80,54 @@ urlpatterns = [
 ```
 
 위와 같이 container내부에 다음과 같이 {% block contents %} {% endblock %} 라고 작성해주면 나중에 contents라는 블록에 코드를 추가해 상속받은 base.html 을 사용할 수 있습니다.
+
+이제 login.html 로 이동하여 base.html을 상속받아 다시 작성해보도록 하겠습니다.
+
+```html
+{% extends "./base.html" %}
+<!--현재 디렉토리에 있는 base.html 파일을 상속받음 -->
+{% block contents %}
+<div class="container">
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <h1>로그인</h1>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        {{ error }}
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        <form method="POST" action=".">
+            {% csrf_token %} <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증 -->
+            <div class="form-group">
+                <label for="username">사용자 이름</label>
+                <input type="text"
+                       class="form-control"
+                       id="username"
+                       placeholder="사용자 이름"
+                       name="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       placeholder="비밀번호"
+                       name="password"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+```
+
+{% extends "base.html" %} 부분이 base.html을 상속받는 부분인데 이렇게 입력하니 인식하지 못하여 {% extends "./base.html" %} 와 같이 현재 디렉토리에 있는 base.html 이라고 지정을 해주니 인식이 잘됩니다.
