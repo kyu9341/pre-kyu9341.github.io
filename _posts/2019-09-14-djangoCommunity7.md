@@ -53,3 +53,30 @@ urlpatterns = [
 </div>
 
 입력을 하고 이동해주면 다음과 같이 홈 화면으로 이동이 된 후 세션id가 삭제된 것을 확인할 수 있습니다. 이렇게 간단하게 로그아웃 기능을 구현해보았고 이제 템플릿의 상속에대해 알아보겠습니다.
+
+현재까지 작성된 템플릿 파일인 login.html과 register.html을 보면 거의 유사한 형태로 작성되어 있는 것을 확인할 수 있습니다. 이제 이러한 부분을 조금 더 편리하게 작성하기 위하여 하나의 기준이 되는 템플릿 파일을 작성한 뒤 그 파일을 상속받아 필요한 부분만 추가로 작성할 수 있도록 구현보겠습니다.
+
+우선 templates/user/에 base.html이라는 파일을 하나 생성해줍니다. 이 후 login.html파일의 코드를 복사하여 붙여준 뒤 container내부의 내용만 지워주고 다음과 같이 작성해줍니다.
+
+```html
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/static/bootstrap.min.css"/>
+    <script src="https://codpye.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    {% block contents %}
+    {% endblock %}
+</div>
+</body>
+</html>
+```
+
+위와 같이 container내부에 다음과 같이 {% block contents %} {% endblock %} 라고 작성해주면 나중에 contents라는 블록에 코드를 추가해 상속받은 base.html 을 사용할 수 있습니다.
