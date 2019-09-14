@@ -71,3 +71,64 @@ def login(request):
 
 로그인 화면으로 이동하여 확인해 보면 장고가 자동으로 생성해준 태그들이 출력되는 것을 볼 수 있습니다.
 이제 이것을 우리에게 필요한 대로 커스터마이징을 해보도록 하겠습니다.
+
+login.html로 돌아와서 다음과 같이 작성해주도록 합니다.
+
+```html
+{% raw %}
+{% extends "./base.html" %}
+<!--현재 디렉토리에 있는 base.html 파일을 상속받음 -->
+{% block contents %}
+<div class="container">
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <h1>로그인</h1>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        {{ error }}
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+                       placeholder="{{ field.label }}" name="{{ field.name }}" />
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% endraw %}
+```
+위와 같이 작성한 뒤 로그인화면을 확인해보면
+
+<div style="width: 90%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/django24.png" style="width: 90%
+    ; height: 250px;">
+</div>
+
+다음과 같이 적용이 된 것을 확인할 수 있습니다. 하지만 아직 원하는 텍스트가 나오지 않고 비밀번호 또한 일반 텍스트처럼 나오기 때문에 이것을 수정하여 보도록 하겠습니다.
+
+다시 forms.py로 이동하여 다음과 같이 수정해주도록 하겠습니다.
+
+```python
+from django import forms
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100, label="사용자 이름")
+    password = forms.CharField(widget=forms.PasswordInput, label="비밀번호") # 비밀번호를 표시할 위젯을 지정
+```
+
+<div style="width: 90%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/django24.png" style="width: 90%
+    ; height: 250px;">
+</div>
