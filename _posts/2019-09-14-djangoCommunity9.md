@@ -81,6 +81,8 @@ def board_list(request):
 ```
 간단하게 연결만 시킨 뒤 한번 확인해보도록 하겠습니다.
 
+http://127.0.0.1:8000/board/list/ 로이동하여 확인해보면
+
 <div style="width: 100%; height: 200px;">
     <img src="https://kyu9341.github.io/assets/django30.png" style="width: 100%
     ; height: 200px;">
@@ -111,4 +113,30 @@ class Board(models.Model):
 모델을 작성하였으니 이제 데이터베이스에 적용시키기 위해 makemigrations과 migrate를 해주도록 하겠습니다.
 
 
-이제 views.py로 이동하여 데이터베이스에 있는
+
+이제 views.py로 이동하여 데이터베이스에 있는 게시글들을 모두 불러오도록 다음과 같이 작성해줍니다.
+
+```python
+from django.shortcuts import render
+from .models import Board
+# Create your views here.
+
+def board_list(request):
+    boards = Board.objects.all().order_by('-id') # Board모델의 모든 필드를 가져와 id의 역순으로 가져옴(최신글을 맨위로 올림)
+
+    return render(request, 'board/board_list.html', {'boards' : boards})
+```
+이제 다시 실
+
+
+또한 board/admin.py로 이동하여 다음과 같이 작성해줍니다.
+```python
+from django.contrib import admin
+from .models import Board
+
+# Register your models here.
+
+class BoardAdmin(admin.ModelAdmin):
+    list_display = ('title', )
+admin.site.register(Board, BoardAdmin) # 등록
+```
