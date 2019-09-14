@@ -220,6 +220,8 @@ class LoginForm(forms.Form):
             user = User.objects.get(username=username)
             if not check_password(password, user.password): # 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교
                 self.add_error('password', '비밀번호를 틀렸습니다.') # 특정 필드에 에러를 넣는 함수
+            else: # 비밀번호가 일치하는 경우
+                self.user_id = user.id # self를 통해 클래스 변수 안에 저장되므로 밖에서 접근가능
 
 ```
 
@@ -254,10 +256,10 @@ class LoginForm(forms.Form):
         username = cleaned_data.get('username') # 값이 존재한다면 값들을 가져옴
         password = cleaned_data.get('password')
 
-        if username and password: # 각 값이 들어있는 경우
-            user = User.objects.get(username=username)
-            if not check_password(password, user.password): # 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교
-                self.add_error('password', '비밀번호를 틀렸습니다.') # 특정 필드에 에러를 넣는 함수
+        if not check_password(password, user.password): # 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교
+            self.add_error('password', '비밀번호를 틀렸습니다.') # 특정 필드에 에러를 넣는 함수
+        else: # 비밀번호가 일치하는 경우
+            self.user_id = user.id # self를 통해 클래스 변수 안에 저장되므로 밖에서 접근가능
 
 ```
 
@@ -265,3 +267,21 @@ class LoginForm(forms.Form):
     <img src="https://kyu9341.github.io/assets/django28.png" style="width: 90%
     ; height: 250px;">
 </div>
+
+이제 확인을 해보면 위와 같이 메시지가 정상적으로 출력되는 것을 확인할 수 있습니다.
+
+마지막으로 이제 세션부분을 작성해보도록 하겠습니다. views.py로 이동하여 login함수 부분을 수정하도록 하겠습니다.
+
+```python
+def login(request):
+    if request.method == 'POST': # 메소드가 POST인 경우
+        form = LoginForm(request.POST) # 폼 클래스 변수 생성시 POST데이터를 저장
+        if form.is_valid(): # form에 기본적으로 있는 is_valid()함수로 데이터가 정상적인지 검증
+            request.session['user'] = form.user_id
+            return redirect('/')
+
+    else:
+        form = LoginForm() # 빈 클래스 변수 생성
+    return render(request, 'user/login.html', {'form': form})  # 생성한 클래스 변수를 템플릿에 전달
+
+```
