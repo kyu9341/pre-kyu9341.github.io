@@ -65,7 +65,7 @@ def login(request):
 ```
 
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/django22.png" style="width: 100%
+    <img src="https://kyu9341.github.io/assets/django23.png" style="width: 100%
     ; height: 250px;">
 </div>
 
