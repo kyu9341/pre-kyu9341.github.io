@@ -34,8 +34,8 @@ urlpatterns = [
 ```
 위와 같이 /user/logout 와 같은 경로로 접속시 logout함수를 호출할 수 있도록 작성해 줍니다. 이제 간단하게 확인을 해보도록 하겠습니다. 먼저 user2아이디로 로그인을 수행해보겠습니다.
 
-<div style="width: 100%; height: 150px;">
-    <img src="https://kyu9341.github.io/assets/django18.png" style="width: 100%
+<div style="width: 130%; height: 150px;">
+    <img src="https://kyu9341.github.io/assets/django18.png" style="width: 130%
     ; height: 150px;">
 </div>
 
@@ -47,8 +47,8 @@ urlpatterns = [
 </div>
 
 
-<div style="width: 100%; height: 150px;">
-    <img src="https://kyu9341.github.io/assets/django19.png" style="width: 100%
+<div style="width: 130%; height: 150px;">
+    <img src="https://kyu9341.github.io/assets/django19.png" style="width: 130%
     ; height: 150px;">
 </div>
 
@@ -142,9 +142,9 @@ urlpatterns = [
 {% raw %}
 {% extends "base.html" %} 부분이 base.html을 상속받는 부분인데 이렇게 입력하니 인식하지 못하여 {% extends "./base.html" %} 와 같이 현재 디렉토리에 있는 base.html 이라고 지정을 해주니 인식이 잘됩니다.
 
-<div style="width: 100%; height: 150px;">
+<div style="width: 100%; height: 250px;">
     <img src="https://kyu9341.github.io/assets/django21.png" style="width: 100%
-    ; height: 150px;">
+    ; height: 250px;">
 </div>
 
 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
@@ -221,9 +221,9 @@ urlpatterns = [
 
 {% endraw %}
 ```
-<div style="width: 100%; height: 150px;">
+<div style="width: 100%; height: 250px;">
     <img src="https://kyu9341.github.io/assets/django22.png" style="width: 100%
-    ; height: 150px;">
+    ; height: 250px;">
 </div>
 
 register.html도 마찬가지로 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
