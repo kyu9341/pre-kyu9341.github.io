@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Django(장고)를 이용한 커뮤니티 만들기7
+title: "Django(장고)를 이용한 커뮤니티 만들기8
  [장고 form 활용하기]"
 subtitle: "Django"
 date: 2019-09-14 12:38:51
