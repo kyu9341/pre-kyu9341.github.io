@@ -219,7 +219,7 @@ urlpatterns = [
 </div>
 {% endblock %}
 
-{%endraw%}
+{% endraw %}
 ```
 <div style="width: 100%; height: 150px;">
     <img src="https://kyu9341.github.io/assets/django22.png" style="width: 100%
