@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기7
- [로그아웃 기능 및 ]"
+ [로그아웃 기능 및 템플릿 상속받기]"
 subtitle: "Django"
 date: 2019-09-14 10:11:19
 author: kwon
