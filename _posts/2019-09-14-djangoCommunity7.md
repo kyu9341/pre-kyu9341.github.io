@@ -72,12 +72,7 @@ urlpatterns = [
 </head>
 <body>
 <div class="container">
-  {% raw %}
-  {% block contents %}
-  {% endraw %}
-  {% raw %}
-  {% endblock %}
-  {% endraw %}
+
 </div>
 </body>
 </html>
