@@ -171,9 +171,9 @@ urlpatterns = [
 <div class="row mt-5">
 <div class="col-12">
     <form method="POST" action=".">
-      {% raw %}
+
       {% csrf_token %}  <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증-->
-      {%endraw%}
+
         <div class="form-group">
             <label for="username">사용자 이름</label>
             <input type="text"
