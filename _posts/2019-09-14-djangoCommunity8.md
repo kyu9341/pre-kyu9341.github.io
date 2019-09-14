@@ -200,10 +200,68 @@ form.is_valid()함수에는 비정상적인 로그인인 경우 자동으로 상
 
 위와 같이 빨간색의 글씨로 상황에 맞는 에러메시지가 자동으로 출력되는 것을 볼 수 있습니다.
 
-현재는 입력에 대한 오류 메시지만 출력이 가능하므로 다음과 같이
+현재는 입력에 대한 오류 메시지만 출력이 가능하므로 비밀번호가 틀린 경우의 오류도 표시하기 위해 forms.py로 이동하여 다음과 같이 작성해주도록 합니다.
 
+```python
+from django import forms
+from .models import User
+from django.contrib.auth.hashers import check_password
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100, label="사용자 이름")
+    password = forms.CharField(widget=forms.PasswordInput, label="비밀번호") # 비밀번호를 표시할 위젯을 지정
+
+    def clean(self):
+        cleaned_data = super().clean() # super을 통해 기존의 form안에 들어있는 clean함수를 호출 값이 들어있지 않다면 이부분에서 실패처리되어 나가짐
+        username = cleaned_data.get('username') # 값이 존재한다면 값들을 가져옴
+        password = cleaned_data.get('password')
+
+        if username and password: # 각 값이 들어있는 경우
+            user = User.objects.get(username=username)
+            if not check_password(password, user.password): # 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교
+                self.add_error('password', '비밀번호를 틀렸습니다.') # 특정 필드에 에러를 넣는 함수
+
+```
+
+위와 같이 코드를 추가한 후 로그인 화면에서 비밀번호를 다르게 입력해보겠습니다.
 
 <div style="width: 90%; height: 250px;">
     <img src="https://kyu9341.github.io/assets/django27.png" style="width: 90%
+    ; height: 250px;">
+</div>
+
+위와 같이 입력해둔 메시지가 출력되는 것을 확인할 수 있습니다. 이제 입력에 대한 오류메시지도 우리가 원하는 메시지를 출력할 수 있도록 변경해보도록 하겠습니다. 다시 forms.py로 이동하여 다음과 같이 추가해주도록 합니다.
+
+```python
+from django import forms
+from .models import User
+from django.contrib.auth.hashers import check_password
+
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        error_messages={
+            'required' : '아이디를 입력해주세요.' # 입력하지 않은 경우('required'키에 저장) 에러메시지 지정
+        },
+        max_length=100, label="사용자 이름")
+    password = forms.CharField(
+        error_messages={
+            'required' : '비밀번호를 입력해주세요' # 입력하지 않은 경우('required'키에 저장) 에러메시지 지정
+        },
+        widget=forms.PasswordInput, label="비밀번호") # 비밀번호를 표시할 위젯을 지정
+
+    def clean(self):
+        cleaned_data = super().clean() # super을 통해 기존의 form안에 들어있는 clean함수를 호출 값이 들어있지 않다면 이부분에서 실패처리되어 나가짐
+        username = cleaned_data.get('username') # 값이 존재한다면 값들을 가져옴
+        password = cleaned_data.get('password')
+
+        if username and password: # 각 값이 들어있는 경우
+            user = User.objects.get(username=username)
+            if not check_password(password, user.password): # 입력된 비밀번호와 데이터베이스에서 가져온 비밀번호 비교
+                self.add_error('password', '비밀번호를 틀렸습니다.') # 특정 필드에 에러를 넣는 함수
+
+```
+
+<div style="width: 90%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/django28.png" style="width: 90%
     ; height: 250px;">
 </div>
