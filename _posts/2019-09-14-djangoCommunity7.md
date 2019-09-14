@@ -73,8 +73,6 @@ urlpatterns = [
 </head>
 <body>
 <div class="container">
-
-
     {% block contents %}
     {% endblock %}
 </div>
