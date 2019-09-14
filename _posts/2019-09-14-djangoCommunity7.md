@@ -139,7 +139,7 @@ urlpatterns = [
 
 {%endraw%}
 ```
-
+{% raw %}
 {% extends "base.html" %} 부분이 base.html을 상속받는 부분인데 이렇게 입력하니 인식하지 못하여 {% extends "./base.html" %} 와 같이 현재 디렉토리에 있는 base.html 이라고 지정을 해주니 인식이 잘됩니다.
 
 <div style="width: 100%; height: 150px;">
@@ -150,7 +150,7 @@ urlpatterns = [
 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
 
 이제 같은 방법으로 register.html 도 base.html을 상속받아 다시 작성해보겠습니다.
-
+{% endraw %}
 ```html
 {% raw %}
 {% extends "./base.html" %}
