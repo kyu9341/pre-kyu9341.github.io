@@ -126,10 +126,16 @@ def board_list(request):
 
     return render(request, 'board/board_list.html', {'boards' : boards})
 ```
-이제 다시 실
+이제 다시 확인해 보면
 
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django31.png" style="width: 100%
+    ; height: 200px;">
+</div>
 
-또한 board/admin.py로 이동하여 다음과 같이 작성해줍니다.
+위와 같이 아직 데이터베이스에 글이 없기 때문에 QuerySet[] 라고 출력되게 됩니다. 그럼 데이터베이스에서 글을 하나 작성해보도록 하겠습니다.
+
+우선 board/admin.py로 이동하여 다음과 같이 작성해줍니다.
 ```python
 from django.contrib import admin
 from .models import Board
