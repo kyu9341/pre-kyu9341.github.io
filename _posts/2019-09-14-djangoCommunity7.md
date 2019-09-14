@@ -209,5 +209,10 @@ urlpatterns = [
 
 </div>
 {% endblock %}
-
 ```
+<div style="width: 100%; height: 150px;">
+    <img src="https://kyu9341.github.io/assets/django22.png" style="width: 100%
+    ; height: 150px;">
+</div>
+
+register.html도 마찬가지로 위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
