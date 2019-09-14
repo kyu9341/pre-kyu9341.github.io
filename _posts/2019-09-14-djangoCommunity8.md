@@ -197,3 +197,13 @@ form.is_valid()함수에는 비정상적인 로그인인 경우 자동으로 상
     <img src="https://kyu9341.github.io/assets/django26.png" style="width: 90%
     ; height: 250px;">
 </div>
+
+위와 같이 빨간색의 글씨로 상황에 맞는 에러메시지가 자동으로 출력되는 것을 볼 수 있습니다.
+
+현재는 입력에 대한 오류 메시지만 출력이 가능하므로 다음과 같이
+
+
+<div style="width: 90%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/django27.png" style="width: 90%
+    ; height: 250px;">
+</div>
