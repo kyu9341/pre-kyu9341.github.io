@@ -217,6 +217,7 @@ urlpatterns = [
 </div>
 
 </div>
+{% raw %}
 {% endblock %}
 
 {% endraw %}
