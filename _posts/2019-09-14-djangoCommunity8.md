@@ -277,11 +277,19 @@ def login(request):
     if request.method == 'POST': # 메소드가 POST인 경우
         form = LoginForm(request.POST) # 폼 클래스 변수 생성시 POST데이터를 저장
         if form.is_valid(): # form에 기본적으로 있는 is_valid()함수로 데이터가 정상적인지 검증
-            request.session['user'] = form.user_id
+            request.session['user'] = form.user_id # 세션에 user의 세션id를 저장
             return redirect('/')
 
     else:
         form = LoginForm() # 빈 클래스 변수 생성
     return render(request, 'user/login.html', {'form': form})  # 생성한 클래스 변수를 템플릿에 전달
-
 ```
+
+이렇게 세션까지 form을 이용하여 작성을 완료하였습니다. 이제 로그인을 수행하게 되면
+
+<div style="width: 130%; height: 100px;">
+    <img src="https://kyu9341.github.io/assets/django18.png" style="width: 130%
+    ; height: 100px;">
+</div>
+
+위와 같이 정상적으로 로그인이 되어 세션id값이 발급된 것을 확인할 수 있습니다. 여기까지 django의 form을 활용하여 로그인 기능을 재구현해보았습니다.
