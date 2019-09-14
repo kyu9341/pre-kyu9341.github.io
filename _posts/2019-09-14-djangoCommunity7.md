@@ -59,6 +59,7 @@ urlpatterns = [
 우선 templates/user/에 base.html이라는 파일을 하나 생성해줍니다. 이 후 login.html파일의 코드를 복사하여 붙여준 뒤 container내부의 내용만 지워주고 다음과 같이 작성해줍니다.
 
 ```html
+{% raw %}
 <html>
 <head>
     <!-- Required meta tags -->
@@ -77,6 +78,7 @@ urlpatterns = [
 </div>
 </body>
 </html>
+{% endraw %}
 ```
 
 위와 같이 container내부에 다음과 같이 {% block contents %} {% endblock %} 라고 작성해주면 나중에 contents라는 블록에 코드를 추가해 상속받은 base.html 을 사용할 수 있습니다.
