@@ -101,7 +101,9 @@ urlpatterns = [
 <div class="row mt-5">
     <div class="col-12">
         <form method="POST" action=".">
-            {% csrf_token %} <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증 -->
+          {% raw %}
+          {% csrf_token %}  <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증-->
+          {%endraw%}
             <div class="form-group">
                 <label for="username">사용자 이름</label>
                 <input type="text"
@@ -131,3 +133,81 @@ urlpatterns = [
 ```
 
 {% extends "base.html" %} 부분이 base.html을 상속받는 부분인데 이렇게 입력하니 인식하지 못하여 {% extends "./base.html" %} 와 같이 현재 디렉토리에 있는 base.html 이라고 지정을 해주니 인식이 잘됩니다.
+
+<div style="width: 100%; height: 150px;">
+    <img src="https://kyu9341.github.io/assets/django21.png" style="width: 100%
+    ; height: 150px;">
+</div>
+
+위와 같이 정상적으로 적용이 된 것을 확인할 수 있습니다.
+
+이제 같은 방법으로 register.html 도 base.html을 상속받아 다시 작성해보겠습니다.
+
+```html
+{% extends "./base.html" %}
+<!--현재 디렉토리에 있는 base.html 파일을 상속받음 -->
+{% block contents %}
+<div class="container">
+
+<div class="row mt-5">
+<div class="col-12 text-center">
+    <h1>회원가입</h1>
+</div>
+</div>
+<div class="row mt-5">
+<div class="col-12">
+    {{ error }}
+</div>
+</div>
+<div class="row mt-5">
+<div class="col-12">
+    <form method="POST" action=".">
+      {% raw %}
+      {% csrf_token %}  <!-- 장고에서 크로스 도메인을 막기 위해 암호화된 키를 검증-->
+      {%endraw%}
+        <div class="form-group">
+            <label for="username">사용자 이름</label>
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="사용자 이름"
+                   name="username"
+            >
+        </div>
+        <div class="form-group">
+            <label for="username">사용자 이메일</label>
+            <input type="text"
+                   class="form-control"
+                   id="useremail"
+                   placeholder="사용자 이메일"
+                   name="useremail"
+            >
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="비밀번호"
+                   name="password"
+            >
+        </div>
+        <div class="form-group">
+            <label for="re-password">비밀번호 확인</label>
+            <input type="password"
+                   class="form-control"
+                   id="re-password"
+                   placeholder="비밀번호 확인"
+                   name="re-password"
+            >
+        </div>
+        <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}
+
+```
