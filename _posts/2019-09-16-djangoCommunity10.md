@@ -96,3 +96,5 @@ urlpatterns = [
     <img src="https://kyu9341.github.io/assets/django34.png" style="width: 100%
     ; height: 200px;">
 </div>
+
+위와 같이 
