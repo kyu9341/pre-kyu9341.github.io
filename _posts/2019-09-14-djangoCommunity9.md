@@ -146,3 +146,62 @@ class BoardAdmin(admin.ModelAdmin):
     list_display = ('title', )
 admin.site.register(Board, BoardAdmin) # 등록
 ```
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/admin8.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+이제 장고admin으로 이동하여 테스트 글을 하나 작성해보도록 하겠습니다. 위와 같이 작성을 하고 다시한변 리스트를 확인해보면
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django32.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+위에 데이터가 추가된 것을 확인할 수 있습니다. 이제 이 데이터를 표에 집어넣기 위해 board_list.html 로 이동하여 다음과 같이 수정해주도록 하겠습니다.
+
+```html
+{% raw %}
+{% extends "./base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>제목</th>
+                    <th>아이디</th>
+                    <th>일시</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+            {% for board in boards %}
+            <tr>
+                <th>{{ board.id }}</th>
+                <th>{{ board.title }}</th>
+                <th>{{ board.writer }}</th>
+                <th>{{ board.registered_dttm }}</th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary">글쓰기</button>
+    </div>
+</div>
+{% endblock %}
+{% endraw %}
+```
+
+위와 같이 수정해준뒤 다시 확인해보도록 하면
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django33.png" style="width: 100%
+    ; height: 200px;">
+</div>
