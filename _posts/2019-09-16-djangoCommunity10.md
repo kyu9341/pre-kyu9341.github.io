@@ -1,0 +1,98 @@
+---
+layout: post
+title: "Django(장고)를 이용한 커뮤니티 만들기10
+ [게시판 만들기2]"
+subtitle: "Django"
+date: 2019-09-16 16:51:14
+author: kwon
+categories: django
+---
+이번 포스팅에서는 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
+
+먼저 templates/board/board_write.html 파일을 생성한 뒤 다음과 같이 작성해주도록 합니다.
+
+```html
+{% raw %}
+{% extends "./base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+                       placeholder="{{ field.label }}" name="{{ field.name }}" />
+            </div>
+            {% if field.errors %}
+            <span style="color : red">{{ field.errors }}</span>
+            {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">글쓰기</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+{% endraw %}
+```
+
+이후 board/form.py 파일을 생성한 뒤 다음과 같이 작성합니다.
+
+```python
+from django import forms
+
+class BoardForm(forms.Form):
+    title = forms.CharField(
+        error_messages={
+            'required' : '제목을 입력해주세요.' # 입력하지 않은 경우('required'키에 저장) 에러메시지 지정
+        },
+        max_length=100, label="제목")
+    contents = forms.CharField(
+        error_messages={
+            'required' : '내용을 입력해주세요' # 입력하지 않은 경우('required'키에 저장) 에러메시지 지정
+        },
+        widget=forms.Textarea, label="내용") # 내용를 입력할 위젯을 지정
+
+```
+
+이제 views.py로 이동하여 함수를 추가하도록 합니다.
+
+```python
+from django.shortcuts import render
+from .models import Board
+from .forms import BoardForm
+# Create your views here.
+
+def board_write(request):
+    form = BoardForm()
+    return render(request, 'board/board_write.html', {'form' : form})
+
+def board_list(request):
+    boards = Board.objects.all().order_by('-id') # Board모델의 모든 필드를 가져와 id의 역순으로 가져옴(최신글을 맨위로 올림)
+
+    return render(request, 'board/board_list.html', {'boards' : boards})
+```
+
+이 후 url을 연결해주기 위해 board/urls.py 로 이동하여 다음과 같이 path를 추가합니다.
+
+```python
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('list/', views.board_list),
+    path('write/', views.board_write),
+]
+```
+
+이제 http://127.0.0.1:8000/board/write/ 로 이동하여 확인해보면
+
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django34.png" style="width: 100%
+    ; height: 200px;">
+</div>
