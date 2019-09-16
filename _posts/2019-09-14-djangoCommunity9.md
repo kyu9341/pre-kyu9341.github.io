@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Django(장고)를 이용한 커뮤니티 만들기9
- [게시판 만들기]"
+ [게시판 만들기1]"
 subtitle: "Django"
 date: 2019-09-14 17:52:40
 author: kwon
@@ -205,3 +205,5 @@ admin.site.register(Board, BoardAdmin) # 등록
     <img src="https://kyu9341.github.io/assets/django33.png" style="width: 100%
     ; height: 200px;">
 </div>
+
+이렇게 정상적으로 출력이 되는 것을 확인할 수 있습니다. 이번 포스팅에서는 여기까지 게시판의 글 목록을 출력하는 것 까지 완료하였고 다음 포스팅에서 글쓰기 기능과 글 상세보기 기능을 추가해보도록 하겠습니다.
