@@ -36,7 +36,7 @@ app 등록이 완료되었으니 데이터베이스와 연동에 대해 알아�
 
 django에서는 따로 데이터베이스에 접속해 테이블을 생성하고 컬럼을 만들지 않더라도 django내에서 모델링을 통해 생성을 할 수 있습니다.
 
-사용자명과 비밀번호를 저장할 테이블을 생성하기 위해서 user 앱을 모델링 해볻록 하겠습니다. user/models.py 파일로 이동하여 다음과 같은 코드를 작성하겠습니다.
+사용자명과 비밀번호를 저장할 테이블을 생성하기 위해서 user 앱을 모델링 해보도록 하겠습니다. user/models.py 파일로 이동하여 다음과 같은 코드를 작성하겠습니다.
 
 ```python
 from django.db import models
@@ -55,7 +55,7 @@ class User(models.Model):
 
 verbose_name은 admin사용 시 필드에 대한 명령으로 username나 password대신 사용자명과 비밀번호 라고 표시되도록 해주는 부분입니다.
 
-모델 작성이 완료되었습니다. django에서 데이터베이스는 sqlite3가 기본으로 제공되지만 저는 로컬에서 mysql을 이용하여 데이터베이를 연동해보도록 하겠습니다.
+모델 작성이 완료되었습니다. django에서 데이터베이스는 sqlite3가 기본으로 제공되지만 저는 로컬에서 mysql을 이용하여 데이터베이스를 연동해보도록 하겠습니다.
 
 django에서 mysql을 사용하기 위해서는 community/settings.py 를 변경해주도록 합니다.
 
