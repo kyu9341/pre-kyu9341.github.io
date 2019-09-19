@@ -174,3 +174,19 @@ def board_list(request):
 
     return render(request, 'board/board_list.html', {'boards' : boards})
 ```
+
+이제 로그인화면으로 이동해 로그인을 한 뒤 사용자이름이 홈 화면에 출력되는 것을 확인하고 http://127.0.0.1:8000/board/write/ 로 이동하여
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django36.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+위와 같이 작성하고 글쓰기 버튼을 누르면
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django37.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+글 목록으로 이동하고 작성된 글이 정상적으로 출력되는 것을 확인할 수 있습니다. 
