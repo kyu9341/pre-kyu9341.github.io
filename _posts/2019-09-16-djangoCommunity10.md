@@ -97,4 +97,80 @@ urlpatterns = [
     ; height: 200px;">
 </div>
 
-위와 같이 
+위와 같이 틀을 잡아주고 다시 board_write.html 로 이동하여 다음과 같이 form을 적용하여 수정해주도록 하겠습니다.
+
+```html
+{% raw %}
+{% extends "./base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field.field.widget.name }}
+                {% ifequal field.name 'contents' %}
+                <textarea class="form-control" name = "{{ field.name }}" placeholder="{{ field.label }}"></textarea>
+                {% else %}
+                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+                placeholder="{{ field.label }}" name="{{ field.name }}" />
+                {% endifequal %}
+            </div>
+            {% if field.errors %}
+            <span style="color : red">{{ field.errors }}</span>
+            {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">글쓰기</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+{% endraw %}
+
+```
+이제 다시 확인해보면
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django35.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+위와 같이 글쓰기 기능을 위한 템플릿이 완성되었습니다.
+
+이제 현재 로그인한 사용자를 작성자로 하여 글쓰기 기능을 구현하기 위해 board/views.py로 이동하여 다음과 같이 코드를 추가해보도록 하겠습니다.
+
+```python
+from django.shortcuts import render, redirect
+from .models import Board
+from user.models import User
+from .forms import BoardForm
+# Create your views here.
+
+def board_write(request):
+    if request.method == 'POST':
+        form = BoardForm(request.POST)
+        if form.is_valid():
+            user_id = request.session.get('user') # user_id를 가져옴
+            user = User.objects.get(pk=user_id) # 현재 로그인한 사용자 id를 user에 저장
+
+            board = Board() # 모델 클래스 변수 생성
+            board.title = form.cleaned_data['title'] # form의 제목을 가져옴
+            board.contents = form.cleaned_data['contents']
+            board.writer = user # 현재 로그인한 사용자의 id
+            board.save()
+
+            return redirect('/board/list/') # 작성 후 글목록으로 이동
+    else:
+        form = BoardForm()
+    return render(request, 'board/board_write.html', {'form' : form})
+
+def board_list(request):
+    boards = Board.objects.all().order_by('-id') # Board모델의 모든 필드를 가져와 id의 역순으로 가져옴(최신글을 맨위로 올림)
+
+    return render(request, 'board/board_list.html', {'boards' : boards})
+```
