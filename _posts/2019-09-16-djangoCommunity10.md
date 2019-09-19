@@ -189,4 +189,56 @@ def board_list(request):
     ; height: 200px;">
 </div>
 
-글 목록으로 이동하고 작성된 글이 정상적으로 출력되는 것을 확인할 수 있습니다. 
+글 목록으로 이동하고 작성된 글이 정상적으로 출력되는 것을 확인할 수 있습니다.
+
+이어서 글 상세보기 기능을 추가하기 위해 board/views.py로 이동하여 board_detail함수를 추가해줍니다.
+
+```python
+def board_detail(request, pk): # 몇번째 글인지 확인하기 위해 주소로부터 pk를 받음
+    board = Board.objects.get(pk=pk) # pk에 해당하는 글을 가져옴(입력받은 id값에(몇번째글인지) 맞는 글을 가져옴)
+    return render(request, 'board/board_detail.html', {'board' : board}) #템플릿에 전달
+
+```
+다음으로 board/urls.py로 이동하여 path를 추가하겠습니다.
+```python
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('detail/<int:pk>', views.board_detail), # int형 pk라는 변수명으로 받음 ex detail/1 (= 첫번째 글)
+    path('list/', views.board_list),
+    path('write/', views.board_write),
+]
+```
+
+이 후 템플릿에 board_detail.html 파일을 생성해준 뒤 다음과 같이 작성합니다.
+
+```html
+{% raw %}
+{% extends "./base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type='text' class="form-control" id="title" value="{{ board.title }}" readonly/>
+                <label for="contents">내용</label>
+                <textarea class="form-control" readonly>{{ board.contents }}</textarea>
+
+            </div>
+            <button type="submit" class="btn btn-primary">돌아가기</button>
+    </div>
+</div>
+
+{% endblock %}
+{% endraw %}
+```
+여기까지 작성이 완료되었다면 첫번째 글을 확인해보기 위해 http://127.0.0.1:8000/board/detail/1 로 이동해보면
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/django38.png" style="width: 100%
+    ; height: 200px;">
+</div>
+
+위와 같이 첫번째 글의 상세페이지로 이동이 되는 것을 확인할 수 있습니다. 
