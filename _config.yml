@@ -65,7 +65,8 @@ descriptions:
   - cat: crawling
     desc: "Python Web Crawling study"
 
-
+  - cat: android
+    desc: "Android study"
 # Social icons and sharing options
 #
 # Social settings are used in two places:
