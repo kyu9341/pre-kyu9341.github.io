@@ -67,6 +67,10 @@ descriptions:
 
   - cat: android
     desc: "Android study"
+
+  - cat: 영상처리
+    desc: "영상처리 review"
+
 # Social icons and sharing options
 #
 # Social settings are used in two places:
