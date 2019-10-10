@@ -68,6 +68,9 @@ descriptions:
   - cat: android
     desc: "Android study"
 
+  - cat: C/C++
+    desc: "C/C++ study"
+
   - cat: 영상처리
     desc: "영상처리 review"
 
