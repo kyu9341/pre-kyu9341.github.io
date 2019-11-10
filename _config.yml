@@ -59,7 +59,7 @@ descriptions:
     desc: "Baekjoon Online Judge study"
 
 
-  - cat: machine learning
+  - cat: MachineLearning
     desc: "Machine Learning study"
 
   - cat: crawling
