@@ -4,7 +4,7 @@ title: "디지털 영상처리"
 subtitle: "ImageProcessing"
 date: 2019-11-11 23:09:13
 author: kwon
-categories: ImageProcessing
+categories: 영상처리
 ---
 이번 학기에 배우고 있는 과목인 디지털 영상처리를 리뷰해보겠다. 원래는 영상처리를 블로그에 리뷰할지 말지 고민을 했었는데 점점 재미있고 더 깊이 알아보고 싶어서 앞으로 지금까지 해왔던 과정이나 앞으로 진행하는 과정을 하나씩 리뷰해볼 생각이다.
 
