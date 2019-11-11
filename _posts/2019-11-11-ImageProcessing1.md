@@ -170,3 +170,5 @@ int main(int argc, char* argv[]) {
     <img src="https://kyu9341.github.io/assets/ImageProcessing6.png" style="width: 100%
     ; height: 400px;">
 </div>
+
+위와 같이 레나 영상이 잘 출력이 된 것을 확인할 수 있다.
