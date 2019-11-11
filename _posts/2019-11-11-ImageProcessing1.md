@@ -10,11 +10,23 @@ categories: 영상처리
 
 우선 교수님이 이 수업의 목적은 C 프로그래밍 능력 향상이라 하셨다. 그 목적에 맞게 영상을 보기 위한 프로그램은 OpenCV를 사용하며 그 외의 소스는 순수하게 C언어 코드로만 영상처리를 수행한다.
 
+이번 포스팅에서는 간단히 작업 환경 설정과 영상처리의 대표 이미지인 레나이미지를 띄워보는 것 까지 진행해보겠다.
+
 작업 환경은 윈도우의 비쥬얼 스튜디오에서 진행하며 OpenCV 3.4.1 버전을 사용한다. 다운로드 주소 : <https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.4.1/opencv-3.4.1-vc14_vc15.exe/download>
 
 원하는 경로에 다운로드를 받고 환경변수를 설정해주도록 한다. 경로는 opencv\build\x64\vc15\bin와 같고 앞에 자신이 저장한 폴더의 경로를 추가하면 된다.
 
+다음으로는 프로젝트를 생성하고 프로젝트 이름을 opencv라고 하겠다. 이후 프로젝트를 우클릭하여 속성으로 이동해 다음과 같이 설정을 변경한다.
+
 <div style="width: 100%; height: 400px;">
     <img src="https://kyu9341.github.io/assets/ImageProcessing1.png" style="width: 100%
+    ; height: 400px;">
+</div>
+
+위에 표시된 부분을 확인하고 구성의 Debug와 Release를 각각 선택하여 플랫폼을 x64로 설정한다. 모든 설정은 Debug와 Release모두 설정해주도록 한다.
+
+
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/ImageProcessing2.png" style="width: 100%
     ; height: 400px;">
 </div>
