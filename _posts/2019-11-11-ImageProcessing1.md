@@ -35,7 +35,8 @@ categories: 영상처리
 </div>
 
 이 후 링커의 입력 부분으로 가서 추가 종속성에 오른쪽 끝의 화살표를 누르면 편집(Edit)이 뜨고 편집화면에 Debug인 경우 opencv_world341d.lib를 입력하고 적용을 누르며 Release인 경우 opencv_world341.lib를 입력하고 적용을 해준다.
-00%; height: 400px;">
+
+<div style="width: 100%; height: 500px;">
     <img src="https://kyu9341.github.io/assets/ImageProcessing3.png" style="width: 100%
     ; height: 500px;">
 </div>
