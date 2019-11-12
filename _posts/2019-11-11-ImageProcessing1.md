@@ -29,7 +29,7 @@ categories: 영상처리
 
 다음은 링커의 일반에서 다음과 같이 설정한다.
 
-<div style="width: 100%; height: 400px;">
+<div style="width: 100%; height: 500px;">
     <img src="https://kyu9341.github.io/assets/ImageProcessing2.png" style="width: 100%
     ; height: 500px;">
 </div>
@@ -48,6 +48,7 @@ categories: 영상처리
     <img src="https://kyu9341.github.io/assets/ImageProcessing4.png" style="width: 100%
     ; height: 500px;">
 </div>
+
 
 아래 프로그램은 C언어로 Raw Image를 화면에 띄우는 프로그램이다. OpenCV를 이용하였고 앞으로 이미지를 띄울 때 이 프로그램을 계속해서 사용할 것이다.
 

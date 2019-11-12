@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "디지털 영상처리 - Negative"
+title: "디지털 영상처리 - Negative, Mosaic"
 subtitle: "ImageProcessing"
 date: 2019-11-12 12:07:54
 author: kwon
@@ -91,3 +91,5 @@ void mosaic(uchar** img, uchar** out, int Row, int Col, int Block) // 이미지 
     <img src="https://kyu9341.github.io/assets/mosaic16.png" style="width: 512px
     ; height: 512px;">
 </div>
+
+위와 같이 지정한 블록 크기에 따라 모자이크의 정도가 달라지는 것을 볼 수 있다.
