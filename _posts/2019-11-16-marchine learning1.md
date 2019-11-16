@@ -45,7 +45,7 @@ ex) 사물인식, 감정분석, 필기체 인식, 음성인식 등
   -	사람의 움직임을 따라 움직이는 아바타
 
 
-#### Overfitting(과적합)
+### Overfitting(과적합)
 Overfitting은 학습이 너무 잘 되어서 학습데이터에 대해서는 높은 정확도를 나타내지만 테스트 데이터나 실제 적용시에는 성능이 떨어지는 현상을 말한다.
 <div style="width: 100%; height: 300px;">
     <img src="https://kyu9341.github.io/assets/ai2.png" style="width: 100%
@@ -53,7 +53,7 @@ Overfitting은 학습이 너무 잘 되어서 학습데이터에 대해서는 �
 </div>
 위의 그림처럼 너무 학습 데이터에 대해서만 정확도가 높아 다른 실제 데이터에 대해서는 정확도가 떨어지는 경우가 있는데 학습 데이터가 실제 데이터를 충분히 반영하지 못했을 경우가 그렇다. 이러한 Overfitting을 해결하는 방법으로는 더 많은 학습 데이터를 수집는 것과 Feature의 개수를 줄이는 것, 그리고 정규화를 하는 방법 등이 있다. 정규화는 데이터를 구분하는 선이 구불구불해지지 않게 막아주는 역할을 한다.
 
-#### 머신러닝의 workflow
+### 머신러닝의 workflow
 일반적인 머신러닝의 작업순서는 다음과 같다.
 1. 문제 정의
 2. 데이터 셋 준비(전처리)
@@ -63,7 +63,7 @@ Overfitting은 학습이 너무 잘 되어서 학습데이터에 대해서는 �
 
 먼저 해결해야할 문제를 정의한다. 그리고 그에 필요한 데이터 셋을 수집하고 학습시키기 위해 전처리 과정을 거친다. 이후 적합한 알고리즘을 선택하여 모델을 설정하고 데이터 셋을 학습 데이터와 테스트 데이터로 나누어 훈련을 시키고 테스트를 하여 훈련이 잘 되었다면 모델을 이용하여 필요한 곳에 사용하면 된다.
 
-#### 실습
+### 실습
 첫째 날의 실습 환경은 MS의 클라우드 서비스인 Azure를 사용한 Azure ML Studio를 사용했다.
 
 Azure ML Studio는 코드를 따로 작성하지 않고 머신러닝의 각 과정을 모듈화하고 데이터 시각화 또한 잘 되어있어 처음 머신러닝을 배울 때 쉽게 이해할 수 있다.
@@ -72,7 +72,7 @@ Azure ML Studio는 코드를 따로 작성하지 않고 머신러닝의 각 과�
 
 진행과정은 다음과 같다.
 
-##### Data Processing
+#### Data Processing
 
 Feature Selection – Feature Metadata Edit – Clean Missing data – data split
 <div style="width: 100%; height: 450px;">
@@ -101,7 +101,7 @@ Feature Selection – Feature Metadata Edit – Clean Missing data – data spli
 
 다음 Data Split과정은 데이터 셋을 약 7~80%의 비율은 Training Data Set로 나머지 2~30%는 Test Data Set로 나누어 학습시키게 된다. 이 때, Random Split을 해주어야 하는데 만약 데이터가 정렬되어 있는 경우 아래쪽의 30%를 테스트 데이터로 사용한다면 정확한 결과를 얻기 힘들기 때문에 random seed를 적용하여 랜덤한 테스트 셋을 추출하게 된다. 또한 이 과정에서 Stratified Split도 적용하였는데 Startified Split란 예를 들어 성별에 적용한다면 18명 중 6명을 추출하는 경우 일반적으로는 남여 관계없이 6명을 선택하지만 이 경우 남자 3명 여자 3명을 추출하는 식으로 치우치지 않은 테스트 셋을 추출할 수 있게 된다.
 
-##### Train Model
+#### Train Model
 Initialize - Train Model - Score Model - Evaluate - Deploy
 
 <div style="width: 100%; height: 350px;">
