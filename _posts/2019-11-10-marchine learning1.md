@@ -54,3 +54,27 @@ ex) 사물인식, 감정분석, 필기체 인식, 음성인식 등
 Azure ML Studio는 코드를 따로 작성하지 않고 머신러닝의 각 과정을 모듈화하고 데이터 시각화 또한 잘 되어있어 처음 머신러닝을 배울 때 쉽게 이해할 수 있다.
 
 실습해보았던 문제는 타이타닉 탑승객의 데이터 셋을 이용하여 생존 여부를 예측하는 것이다. 탑승객이 살았거나 죽었거나의 두가지로 나누어지므로 2진 분류 문제이고 Supervised Learning에 Classification에 속한다.
+
+진행과정은 다음과 같다.
+
+###### Data Processing
+
+Feature Selection – Feature Metadata Edit – Clean Missing data – data split
+
+먼저 데이터 셋을 가져오고 각 컬럼을 확인하여 생존 여부와 관계가 없는 데이터는 컬럼에서 제외시켜준다.
+
+<div style="width: 100%; height: 500px;">
+    <img src="https://kyu9341.github.io/assets/machine3.png" style="width: 100%
+    ; height: 500px;">
+</div>
+위와 같이 탑승객의 이름 같은 경우는 생존 여부와 관련이 전혀 없으므로 제외시켜준다. 이때, Unique value가 전체 데이터 수와 근접하고 string형인 경우는 학습에 도움이 되지 않는 경우가 많다.
+
+
+<div style="width: 100%; height: 500px;">
+    <img src="https://kyu9341.github.io/assets/machine2.png" style="width: 100%
+    ; height: 500px;">
+</div>
+
+위와 그림은 관계가 없다고 생각하는 데이터들을 제외하고 남은 데이터들이다.
+
+이후 각 데이터 별로 지정된 값만 입력을 받을 데이터에는 Make Categorical을 적용해주고 생존 여부 같은 경우는 데이터 타입을 boolean타입으로 변경하고 label로 지정을 해준다.
