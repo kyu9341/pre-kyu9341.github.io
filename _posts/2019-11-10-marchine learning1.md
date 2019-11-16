@@ -12,6 +12,11 @@ categories: MachineLearning
 ## 인공지능이란?
 기계를 인간과 비슷하게 동작하게 하는 기술이다. 인간이 사고하는 과정처럼 인식(보고, 듣고) -> 이해(학습, 분석) -> 반응(결과)의 순으로 진행이된다.
 
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/ai1.png" style="width: 100%
+    ; height: 300px;">
+</div>
+
 - 인공지능 : 기계 혹은 컴퓨터가 인간의 지능을 모방해 인간과 비슷하게 동작하도록 만들어진 기술
 
 - 머신러닝 : 인공지능의 한 분야. 컴퓨터가 데이터를 이용해 학습하는 알고리즘 기술(input 과 output을 보고 중간에 어떤 일이 일어나는지 파악하는 것)
@@ -23,7 +28,7 @@ ex) 인공신경망, 결정 트리, 벡터 머신 등
 ex) 사물인식, 감정분석, 필기체 인식, 음성인식 등
 
 ## 머신러닝의 종류
-머신러닝에는 크게 3가지로 분류를 할 수 있다.
+머신러닝은 크게 3가지로 분류를 할 수 있다.
 * Supervised Learning(지도학습, 감독학습)
   - 문제와 함께 정답을 제공(Feature & Label)
   - 예측(Regression), 추정(Forecast), 분류(Classification) 등의 문제 해결 시 주로 사용
@@ -40,7 +45,12 @@ ex) 사물인식, 감정분석, 필기체 인식, 음성인식 등
   -	사람의 움직임을 따라 움직이는 아바타
 
 
-
+#### Overfitting(과적합)
+Overfitting은 학습이 너무 잘 되어서 학습데이터에 대해서는 높은 정확도를 나타내지만 테스트 데이터나 실제 적용시에는 성능이 떨어지는 현상을 말한다.
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/ai2.png" style="width: 100%
+    ; height: 300px;">
+</div>
 
 
 
