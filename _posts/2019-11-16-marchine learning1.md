@@ -108,3 +108,5 @@ Initialize - Train Model - Score Model - Evaluate - Deploy
     <img src="https://kyu9341.github.io/assets/machine5.png" style="width: 80%
     ; height: 350px;">
 </div>
+
+모델을 학습시키는 단계에서는 먼저 어떠한 알고리즘으로 학습을 시킬지 생각해야 한다. 알고리즘의 선택 기준으로는 정확도(Accuracy), 훈련 시간(Train Time), 선형성(Linearity), Parameter, Feature 등이 있다. 여러가지 요소를 잘 고려하여 선택해야 한다. 
