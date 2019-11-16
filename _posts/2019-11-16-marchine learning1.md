@@ -109,4 +109,25 @@ Initialize - Train Model - Score Model - Evaluate - Deploy
     ; height: 350px;">
 </div>
 
-모델을 학습시키는 단계에서는 먼저 어떠한 알고리즘으로 학습을 시킬지 생각해야 한다. 알고리즘의 선택 기준으로는 정확도(Accuracy), 훈련 시간(Train Time), 선형성(Linearity), Parameter, Feature 등이 있다. 여러가지 요소를 잘 고려하여 선택해야 한다. 
+모델을 학습시키는 단계에서는 먼저 어떠한 알고리즘으로 학습을 시킬지 생각해야 한다. 알고리즘의 선택 기준으로는 정확도(Accuracy), 훈련 시간(Train Time), 선형성(Linearity), Parameter, Feature 등이 있다. 여러가지 요소를 잘 고려하여 선택해야 한다.
+
+여기서는 2진 분류 알고리즘 중 하나인 Two-Class Boosted Decision Tree라는 모델을 사용하여 학습을 시켰다. 아래는 Training set을 이용하여 학습을 시키고 Score Model 단계에서 Test set으로 테스트를 한 결과이다.
+
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/machine6.png" style="width: 80%
+    ; height: 350px;">
+</div>
+Scored Labels가 학습된 데이터로 나온 결과이며 좌측의 생존 여부와 비교하여 모델이 정답을 맞추었는지 아닌지 확인해 볼 수 있다. Scored Probabilities 는 정답일 확률이며 0.5가 넘어가면 True 아니면 False로 결과가 나온다.
+
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/machine7.png" style="width: 80%
+    ; height: 350px;">
+</div>
+
+마지막으로 Evaluate Model 단계인데 학습된 모델이 얼마나 정확하게 Test set을 맞추었는지 평가할 수 있다. 보통 Accuracy를 가장 중요하게 보면 되는데 각각의 값들은 아래의 식을 따른다.
+
+Accuracy : TP + TN / TP+ FP +FN + TN
+Precision : TP / TP + FP
+Recall : TP / TP + FN
+
+어느 분야에 활용되느냐에 따라 중요하게 보아야 할 값이 달라지게 된다.
