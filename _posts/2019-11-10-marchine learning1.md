@@ -99,4 +99,4 @@ Feature Selection – Feature Metadata Edit – Clean Missing data – data spli
 
 다음은 Clean Missing data 과정인데 Missing Data를 삭제하거나 다른 데이터로 대체하여 학습을 수행하도록 하는 과정이다. 이 과정에서는 탑승객의 나이같은 경우는 평균값으로 데이터를 채워주고 성별 같은 숫자형이 아닌 데이터들은 가장 많은 빈도를 가지는 데이터로 대체하여 채워주었다.
 
-다음 Data Split과정은 데이터 셋을 약 7~80%의 비율은 Training Data Set로 나머지 2~30%는 Test Data Set로 나누어 학습시키게 된다. 이 때, Random Split을 해주어야 하는데 만약 데이터가 정렬되어 있는 경우 아래쪽의 30%를 테스트 데이터로 사용한다면 정확한 결과를 얻기 힘들기 때문에 random seed를 적용하여 랜덤한 테스트 셋을 추출하게 된다. 
+다음 Data Split과정은 데이터 셋을 약 7~80%의 비율은 Training Data Set로 나머지 2~30%는 Test Data Set로 나누어 학습시키게 된다. 이 때, Random Split을 해주어야 하는데 만약 데이터가 정렬되어 있는 경우 아래쪽의 30%를 테스트 데이터로 사용한다면 정확한 결과를 얻기 힘들기 때문에 random seed를 적용하여 랜덤한 테스트 셋을 추출하게 된다. 또한 이 과정에서 Stratified Split도 적용하였는데 Startified Split란 예를 들어 성별에 적용한다면 18명 중 6명을 추출하는 경우 일반적으로는 남여 관계없이 6명을 선택하지만 이 경우 남자 3명 여자 3명을 추출하는 식으로 치우치지 않은 테스트 셋을 추출할 수 있게 된다.
