@@ -613,7 +613,7 @@ print(mean_squared_error(y_test, y_pred_tree))
     10000.0
     109000000.0
 
-두번째로는
+두번째로는 userID, 성별, 나이, 추정 급여를 feature로 구매 여부를 분류해내는 classification 모델이다. userID는 feature에서 제외시키고 진행한다.
 
 
 ### 2019.11.17. 머신러닝 with python3.6
