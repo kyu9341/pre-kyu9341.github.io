@@ -38,7 +38,7 @@ Linear Regression이라는 알고리즘을 사용하여 학습시켜보았다.
 
 아래 이미지는 Boosted Decision Tree Regression알고리즘을 사용하여 한번 더 예측하고 Linear Regression와 비교해본 것이다. 왼쪽이 Linear Regression이고 오른쪽이 Boosted Decision Tree Regression이다.  
 
-<div style="width: 60%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/regression2.png" style="width: 70%
+<div style="width: 90%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/regression2.png" style="width: 100%
     ; height: 300px;">
 </div>
