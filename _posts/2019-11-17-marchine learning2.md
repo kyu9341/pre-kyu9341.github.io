@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ICT멘토링 머신러닝 교육2"
+title: "ICT멘토링 머신러닝 교육 2일차"
 subtitle: "Machine Learning"
 date: 2019-11-17 21:09:22
 author: kwon
@@ -207,3 +207,5 @@ except urllib.error.HTTPError as error:
 
 
 이렇게 ML Studio에서 머신러닝을 수행하면 그 모델을 api화 하여 쉽게 배포하고 활용할 수 있다는 것이 정말 신기했다.
+
+다음은 파이썬으로 직접 코드를 작성하여 머신러닝을 수행해 보았다.
