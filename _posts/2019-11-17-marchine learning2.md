@@ -147,6 +147,56 @@ except urllib.error.HTTPError as error:
 결과 : b'{"Results":{"output1":[{"Scored Labels":"8219.6923828125"}]}}'
 
 
-위와 같은 코드가 나오게되고 먼저 위에서 표시했던 api key를 apikey="" << 에 넣어주고 원하는 입력 데이터를 입력한 후 실행을 하게 되면 해당되는 데이터의 예측 값이 리턴되어 출력된다.
+위와 같은 코드가 나오게되고 먼저 위에서 표시했던 api key를 apikey="" << 에 넣어주고 원하는 입력 데이터를 입력한 후 실행을 하게 되면 해당되는 데이터의 예측 값이 리턴되어 출력된다. 이러한 마트 매출액 예측을 이용하면 다음날 매출을 예측하고 예측 데이터가 평소 매출보다 높게 나온다면 직원을 더 출근시키고, 예측 데이터가 적게 나온다면 할인 메시지를 고객들에게 보내는 것 등의 작업이 가능하게 된다.
+
+어제 만들었던 타이타닉 생존 예측 데이터 또한 위와 같은 과정으로 배포하여보았고 샘플 코드는 아래와 같다.
+
+```Python
+import urllib.request
+import json
+
+data = {
+        "Inputs": {
+                "input1":
+                [
+                    {
+                            '선실등급': "1",   
+                            '성별': "female",   
+                            '나이': "25",   
+                            '형제배우자수': "2",   
+                            '부모자식수': "3",   
+                            '요금': "77",   
+                            '출항지': "C",   
+                    }
+                ],
+        },
+    "GlobalParameters":  {
+    }
+}
+
+body = str.encode(json.dumps(data))
+
+url = 'https://ussouthcentral.services.azureml.net/workspaces/e991e0f1ce3247499498ad7f96dff3c0/services/89edc6fde21540199e28af74c15a5a6a/execute?api-version=2.0&format=swagger'
+api_key = 'aPRcbktBs1ZePedj32JOzkGN2H9BIVC9NTuOPKokhtHpgMTc22QQHpUha7QPSHkFdB+wnPnxwdSRpKPd2o/nHQ==' # Replace this with the API key for the web service
+headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+req = urllib.request.Request(url, body, headers)
+
+try:
+    response = urllib.request.urlopen(req)
+
+    result = response.read()
+    print(result)
+except urllib.error.HTTPError as error:
+    print("The request failed with status code: " + str(error.code))
+
+    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    print(error.info())
+    print(json.loads(error.read().decode("utf8", 'ignore')))
+
+```
+
+결과 : b'{"Results":{"output1":[{"Scored Labels":"True","Scored Probabilities":"0.827437460422516"}]}}'
+
 
 이렇게 ML Studio에서 머신러닝을 수행하면 그 모델을 api화 하여 쉽게 배포하고 활용할 수 있다는 것이 정말 신기했다.
