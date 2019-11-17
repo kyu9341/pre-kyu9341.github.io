@@ -1063,10 +1063,8 @@ df_cm = pd.DataFrame(cm, index = ['true', 'false'],
 plt.figure(figsize = (10,7))
 sn.heatmap(df_cm, annot=True)
 ```
-
+<div style="width: 70%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/output_15_1.png" style="width: 90%
+    ; height: 450px;">
+</div>
     <matplotlib.axes._subplots.AxesSubplot at 0x207355ea5c8>
-
-
-
-
-![png](output_15_1.png)
