@@ -612,3 +612,461 @@ print(mean_squared_error(y_test, y_pred_tree))
     110173082.98470615
     10000.0
     109000000.0
+
+두번째로는
+
+
+### 2019.11.17. 머신러닝 with python3.6
+
+
+```python
+!pip install --upgrade pandas==0.24.0
+```
+
+    Requirement already up-to-date: pandas==0.24.0 in c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages (0.24.0)
+    Requirement already satisfied, skipping upgrade: pytz>=2011k in c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages (from pandas==0.24.0) (2019.2)
+    Requirement already satisfied, skipping upgrade: numpy>=1.12.0 in c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages (from pandas==0.24.0) (1.17.0)
+    Requirement already satisfied, skipping upgrade: python-dateutil>=2.5.0 in c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages (from pandas==0.24.0) (2.8.0)
+    Requirement already satisfied, skipping upgrade: six>=1.5 in c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages (from python-dateutil>=2.5.0->pandas==0.24.0) (1.12.0)
+
+
+
+```python
+# 0. Package 가져오기
+import numpy as np
+import pandas as pd
+
+print(pd.__version__)
+print(np.__version__)
+```
+
+    0.24.0
+    1.17.0
+
+
+
+```python
+# 1.  CSV 데이터 가져오기
+data = pd.read_csv('Social_Network_Ads.csv')
+data.head(10)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User ID</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>EstimatedSalary</th>
+      <th>Purchased</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15624510</td>
+      <td>Male</td>
+      <td>19.0</td>
+      <td>19000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15810944</td>
+      <td>Male</td>
+      <td>35.0</td>
+      <td>20000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15668575</td>
+      <td>Female</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>15603246</td>
+      <td>Female</td>
+      <td>27.0</td>
+      <td>57000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15804002</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>76000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>15728773</td>
+      <td>Male</td>
+      <td>27.0</td>
+      <td>58000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>15598044</td>
+      <td>NaN</td>
+      <td>27.0</td>
+      <td>84000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>15694829</td>
+      <td>Female</td>
+      <td>32.0</td>
+      <td>150000.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>15600575</td>
+      <td>Male</td>
+      <td>25.0</td>
+      <td>33000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>15727311</td>
+      <td>Female</td>
+      <td>35.0</td>
+      <td>65000.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# 2. feature/label 나누기
+X = data.iloc[:, 1:4].values
+y = data.iloc[:, -1].values
+
+print(X.shape)
+print(y.shape)
+```
+
+    (400, 3)
+    (400,)
+
+
+
+```python
+# 3-1. Clean Missing Data-number
+from sklearn.impute import SimpleImputer
+imputer_number = SimpleImputer(missing_values=np.nan, strategy='mean') # 숫자 데이터부터 평균값으로 대체하여 줌
+X[:, 2:4] = imputer_number.fit_transform(X[:, 2:4])
+
+print(pd.DataFrame(X))
+```
+
+              0    1        2
+    0      Male   19    19000
+    1      Male   35    20000
+    2    Female   26  69628.9
+    3    Female   27    57000
+    4      Male  NaN    76000
+    5      Male   27    58000
+    6       NaN   27    84000
+    7    Female   32   150000
+    8      Male   25    33000
+    9    Female   35    65000
+    10   Female   26    80000
+    11   Female   26    52000
+    12     Male  NaN    86000
+    13     Male   32    18000
+    14     Male   18    82000
+    15     Male   29    80000
+    16     Male   47  69628.9
+    17     Male   45    26000
+    18     Male   46    28000
+    19   Female   48    29000
+    20     Male   45    22000
+    21   Female   47    49000
+    22     Male   48    41000
+    23   Female   45    22000
+    24     Male   46    23000
+    25     Male   47  69628.9
+    26     Male   49    28000
+    27   Female   47    30000
+    28     Male   29    43000
+    29     Male   31    18000
+    ..      ...  ...      ...
+    370  Female   60    46000
+    371    Male   60    83000
+    372  Female   39    73000
+    373    Male   59   130000
+    374  Female   37  69628.9
+    375  Female   46    32000
+    376  Female   46    74000
+    377  Female   42    53000
+    378    Male   41    87000
+    379  Female   58    23000
+    380    Male   42    64000
+    381    Male   48    33000
+    382  Female   44   139000
+    383    Male   49    28000
+    384  Female   57    33000
+    385    Male   56    60000
+    386  Female   49    39000
+    387    Male   39    71000
+    388    Male   47    34000
+    389  Female   48    35000
+    390     NaN   48    33000
+    391    Male   47    23000
+    392  Female   45    45000
+    393    Male   60    42000
+    394  Female   39    59000
+    395  Female   46    41000
+    396    Male   51    23000
+    397  Female   50    20000
+    398    Male   36    33000
+    399  Female   49    36000
+
+    [400 rows x 3 columns]
+
+
+
+```python
+# 3-2. Clean Missing Data-category
+imputer_category = SimpleImputer(missing_values=np.nan, strategy='most_frequent') # 가장 빈도가 높은 데이터로 대체
+X[:, :] = imputer_category.fit_transform(X[:, :])
+
+print(pd.DataFrame(X))
+```
+
+              0   1        2
+    0      Male  19    19000
+    1      Male  35    20000
+    2    Female  26  69628.9
+    3    Female  27    57000
+    4      Male  35    76000
+    5      Male  27    58000
+    6    Female  27    84000
+    7    Female  32   150000
+    8      Male  25    33000
+    9    Female  35    65000
+    10   Female  26    80000
+    11   Female  26    52000
+    12     Male  35    86000
+    13     Male  32    18000
+    14     Male  18    82000
+    15     Male  29    80000
+    16     Male  47  69628.9
+    17     Male  45    26000
+    18     Male  46    28000
+    19   Female  48    29000
+    20     Male  45    22000
+    21   Female  47    49000
+    22     Male  48    41000
+    23   Female  45    22000
+    24     Male  46    23000
+    25     Male  47  69628.9
+    26     Male  49    28000
+    27   Female  47    30000
+    28     Male  29    43000
+    29     Male  31    18000
+    ..      ...  ..      ...
+    370  Female  60    46000
+    371    Male  60    83000
+    372  Female  39    73000
+    373    Male  59   130000
+    374  Female  37  69628.9
+    375  Female  46    32000
+    376  Female  46    74000
+    377  Female  42    53000
+    378    Male  41    87000
+    379  Female  58    23000
+    380    Male  42    64000
+    381    Male  48    33000
+    382  Female  44   139000
+    383    Male  49    28000
+    384  Female  57    33000
+    385    Male  56    60000
+    386  Female  49    39000
+    387    Male  39    71000
+    388    Male  47    34000
+    389  Female  48    35000
+    390  Female  48    33000
+    391    Male  47    23000
+    392  Female  45    45000
+    393    Male  60    42000
+    394  Female  39    59000
+    395  Female  46    41000
+    396    Male  51    23000
+    397  Female  50    20000
+    398    Male  36    33000
+    399  Female  49    36000
+
+    [400 rows x 3 columns]
+
+
+
+```python
+# 4. Make Categorical
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+ct = ColumnTransformer([('one_hot_encoder', OneHotEncoder(),[0])], remainder='passthrough')
+X = ct.fit_transform(X).astype(float)
+
+print(X)
+```
+
+    [[0.0000000e+00 1.0000000e+00 1.9000000e+01 1.9000000e+04]
+     [0.0000000e+00 1.0000000e+00 3.5000000e+01 2.0000000e+04]
+     [1.0000000e+00 0.0000000e+00 2.6000000e+01 6.9628866e+04]
+     ...
+     [1.0000000e+00 0.0000000e+00 5.0000000e+01 2.0000000e+04]
+     [0.0000000e+00 1.0000000e+00 3.6000000e+01 3.3000000e+04]
+     [1.0000000e+00 0.0000000e+00 4.9000000e+01 3.6000000e+04]]
+
+
+
+```python
+# 5. Split Train/Test Set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 9) # random_state : randomseed
+
+print("X_train:", X_train.shape)
+print("y_train:", y_train.shape)
+print("X_test:", X_test.shape)
+print("y_test:", y_test.shape)
+```
+
+    X_train: (320, 4)
+    y_train: (320,)
+    X_test: (80, 4)
+    y_test: (80,)
+
+
+
+```python
+# 6. Standardization
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])
+X_test[:, 3:] = sc.fit_transform(X_test[:, 3:])
+
+print(X_train)
+```
+
+    [[ 1.00000000e+00  0.00000000e+00  2.80000000e+01  4.24335352e-01]
+     [ 0.00000000e+00  1.00000000e+00  2.10000000e+01  6.30659849e-02]
+     [ 1.00000000e+00  0.00000000e+00  3.90000000e+01  3.29602043e-02]
+     ...
+     [ 0.00000000e+00  1.00000000e+00  4.20000000e+01 -1.47674479e-01]
+     [ 0.00000000e+00  1.00000000e+00  3.90000000e+01  2.13594888e-01]
+     [ 1.00000000e+00  0.00000000e+00  4.40000000e+01  2.08015329e+00]]
+
+
+
+```python
+# 7. Train
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
+```
+
+    c:\users\kyu93\appdata\local\programs\python\python37\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
+      FutureWarning)
+
+
+
+
+
+    LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                       intercept_scaling=1, l1_ratio=None, max_iter=100,
+                       multi_class='warn', n_jobs=None, penalty='l2',
+                       random_state=None, solver='warn', tol=0.0001, verbose=0,
+                       warm_start=False)
+
+
+
+
+```python
+# from sklearn import svm
+# classifier_svm = svm.SVC(gamma='scale')
+# classifier_svm.fit(X_train, y_train)
+```
+
+
+```python
+# 8. Predict(Scoring)
+y_pred = classifier.predict(X_test)
+# y_pred2=classifier_svm.predict(X_test)
+```
+
+
+```python
+# 9. Evaluate
+from sklearn.metrics import accuracy_score
+
+print(accuracy_score(y_test, y_pred))
+# print(accuracy_score(y_test, y_pred2))
+```
+
+    0.875
+
+
+
+```python
+# 10. ConfusionMatrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# cm2 = confusion_matrix(y_test, y_pred2)
+
+print(cm)
+# print(cm2)
+```
+
+    [[46  2]
+     [ 8 24]]
+
+```python
+# 11. ConfusionMatrix Visualize
+import matplotlib.pyplot as plt
+import seaborn as sn
+
+df_cm = pd.DataFrame(cm, index = ['true', 'false'],
+                    columns = ['true', 'false'])
+plt.figure(figsize = (10,7))
+sn.heatmap(df_cm, annot=True)
+```
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x207355ea5c8>
+
+
+
+
+![png](output_15_1.png)
