@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ICT멘토링 머신러닝 교육"
+title: "ICT멘토링 머신러닝 교육 1일차"
 subtitle: "Machine Learning"
 date: 2019-11-16 21:09:22
 author: kwon
