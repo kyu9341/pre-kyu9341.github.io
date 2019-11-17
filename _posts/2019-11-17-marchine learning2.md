@@ -49,7 +49,11 @@ Relative Absolute Error는 예측 값과 실제 값의 비율로 같은 단위�
 
 위의 데이터를 비교해보면 오른쪽의 데이터가 훨씬 잘 예측을 한 것을 알 수 있다. 따라서 우측의 알고리즘을 웹 서버로 배포를 해보겠다.
 
-<div style="width: 90%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/deploy.png" style="width: 100%
-    ; height: 300px;">
+이제 Set Up Web Service에서 Update Predictive Experiment를 눌러 아래와 같이 설정해준다.
+
+<div style="width: 70%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/deploy.png" style="width: 90%
+    ; height: 450px;">
 </div>
+
+이후 RUN 이후에 Deploy Web Service 버튼을 눌러준다.
