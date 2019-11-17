@@ -210,6 +210,7 @@ except urllib.error.HTTPError as error:
 
 다음은 파이썬으로 직접 코드를 작성하여 머신러닝을 수행해 보았다.
 
+첫번째는 간단히 10개의 데이터로 연습하였다. 국가와 나이, 경력, 급여의 컬럼을 가진 데이터이고 국가, 나이, 경력을 feature로 하며 급여를 label로 급여를 예측하는 Regression모델이다.
 
 ### 2019.11.17. 머신러닝 Regression with python3.6
 
