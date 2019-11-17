@@ -56,4 +56,12 @@ Relative Absolute Error는 예측 값과 실제 값의 비율로 같은 단위�
     ; height: 450px;">
 </div>
 
+이때 배포 후에 입력을 받을 때에 구하는 결과값인 주간판매량은 입력을 받을 필요가 없고, 리턴받을 때 입력했던 값들은 받지 않아도 되므로  Scored Labels만 선택하여 준다.
+
+<div style="width: 80%; height: 450px;">
+    <img src="https://kyu9341.github.io/assets/deploy2.png" style="width: 90%
+    ; height: 450px;">
+</div>
+
+
 이후 RUN 이후에 Deploy Web Service 버튼을 눌러준다.
