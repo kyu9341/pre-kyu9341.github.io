@@ -42,3 +42,7 @@ Linear Regression이라는 알고리즘을 사용하여 학습시켜보았다.
     <img src="https://kyu9341.github.io/assets/regression2.png" style="width: 100%
     ; height: 300px;">
 </div>
+
+위의 데이터를 보면 여러가지 값들이 있는데 여기서 주요하게 보아야 할 값은 Mean Absolute Error와 Root Mean Squared Error를 보면 된다. 둘다 예측 값과 실측 값의 차이를 나타내는데 Mean Absolute Error는 절대값을 취한 후 평균을 내어주고 Mean Squared Error는 먼저 제곱을 한 값으로 평균을 낸 후에 루트를 씌워준다. 이게 어떤 차이가 있냐면 Mean Squared Error는 잘못 예측하여 크게 차이나는 값들이 있나면 값이 크게 나타난다. 이 말은 Mean Squared Error가 크게 나타난다면 예측 값 중 크게 차이나는 값들이 존재한다는 것이다. 이 두 값이 낮게 나타나야 좋은 모델이라고 할 수 있다.
+
+Relative Absolute Error는 예측 값과 실제 값의 비율로 같은 단위로 나누어 상대적 비교가 가능하다. 이를 통해 다른 모델들 과도 비교가 가능하게 되며 이 값은 0에 가까울 수록 좋다. Coefficient of Determination는 1에 가까울 수록 정확도가 높다고 보면 된다.
