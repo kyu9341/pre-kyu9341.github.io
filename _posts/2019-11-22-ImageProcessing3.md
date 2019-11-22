@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "디지털 영상처리 - Binary Image"
+title: "디지털 영상처리 - Binary Image, Gamma Correction"
 subtitle: "ImageProcessing"
 date: 2019-11-22 21:02:31
 author: kwon
@@ -87,7 +87,7 @@ void AdaptiveBinary0(uchar** img, uchar** out, int Row, int Col)
 	}
 }
 ```
-위의 코드는 다양한 방식의 이진화 영상을 구하는 방법이다. 기준치를 다양하게 주어 각 기준치마다 영상의 값을 지정해줄 수도 있다.
+위의 코드는 다양한 방식의 이진화 영상을 구하는 방법이다. 기준치를 다양하게 주어 각 기준치마다 영상의 값을 지정해줄 수도 있다. 이러한 기법은 특정한 목적을 가지고 영상을 변환하고자 할 때 적용할 수 있는 방법이다.
 
 다음은 위의 jet 영상을 각각 AdaptiveBinary0, 1, 2에 적용시킨 모습이다.
 
@@ -114,3 +114,7 @@ void AdaptiveBinary0(uchar** img, uchar** out, int Row, int Col)
     ; height: 512px;">
 </div>
 **AdaptiveBinary2**
+
+
+
+## Gamma Correction
