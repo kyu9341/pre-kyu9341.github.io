@@ -15,9 +15,25 @@ categories: 영상처리
     ; height: 512px;">
 </div>
 
-
+위의 이미지는 lena 영상을 평균 값을 기준으로 이진화를 시킨 모습이다. 이미지의 평균 값을 구하는 함수와 평균 값을 기준으로 영상을 이진화하는 함수는 다음 코드와 같다.
 
 ```c
+double average(uchar** img, int Row, int Col) // 이미지의 전체 평균값을 구하는 함수
+{
+	double sum = 0, avg;
+	int i, j;
+
+	for (i = 0; i < Row; i++) {
+		for (j = 0; j < Col; j++) {
+			sum += img[i][j];
+		}
+	}
+	avg = sum / ((double)Row * Col);
+	printf("Average of Image %1f \n", avg);
+	return avg;
+
+}
+
 void makeBinary(uchar** img, uchar** out, int Row, int Col, double avg) // 이미지 2진화
 {
 	int i, j;
