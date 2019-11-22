@@ -130,21 +130,76 @@ Gamma Correction은 음극선관을 사용하는 CRT(carhode ray tube) 모니터
     ; height: 200px;">
 </div>
 
-위의 히스토그램과 같이 gamma(r)값이 1보다 작다면 영상이 가지는 어두운 값이 많고 1보다 크다면 영상이 가지는 밝은 값이 많아져 위의 히스토그램과 같은 분포를 가지게 된다.
+위의 히스토그램과 같이 gamma(r)값이 1보다 작다면 영상이 가지는 어두운 값이 많고 1보다 크다면 영상이 가지는 밝은 값이 많아져 위의 히스토그램과 같은 분포를 가지게 된다. gamma값으로 영상의 밝기를 변환해주는 함수는 다음과 같다.
+
+```c
+void PowImg(uchar** img, uchar** Result, int Row, int Col, double gamma) // gamma correction image
+{
+	// 영상의 전체적인 밝기를 조절 (gamma 값에 따라 - gamma가 클수록 밝아짐)
+	int i, j;
+	double tmp;
+
+	for(i=0; i< Row; i++)
+		for (j = 0; j < Col; j++) {
+			tmp = pow(img[i][j] / 255., 1 / gamma); // pow(a, b) -> a^b 반환
+			// 지수법칙 변환 범위 : 0 ~ 1 -> 스케일링 필요 : s = [(r/255)^(1/r)] * 255
+
+			if (tmp * 255 > 255) tmp = 1; //
+			else if (tmp * 255 < 0) tmp = 0;
+
+			Result[i][j] = tmp * 255;
+		}
+}
+```
+
+다음은 각각 r값을 0.5, 3을 주어 밝기를 변환한 영상이다. lena원영상의 픽셀값의 평균은 123.607670이다. 변환된 이미지의 평균값과 비교해보자.
 
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/jet2.png" style="width: 512px
+    <img src="https://kyu9341.github.io/assets/gamma0.5.png" style="width: 512px
     ; height: 512px;">
 </div>
+gamma = 0.5, 평균 = 68.473244
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/gamma3.png" style="width: 512px
+    ; height: 512px;">
+</div>
+gamma = 3, 평균 = 195.887569
+
+gamma값에 따라 확연히 밝기가 달라지고 평균값 또한 밝기에 따라 함께 변화하는 것을 확인할 수 있다. 이러한 기법은 영상을 밝게 혹은 어둡게 해야 더 많은 정보를 획득할 수 있는 경우 중요한 기법으로 사용할 수 있다.
+
+추가적으로 원하는 평균값을 가지는 영상을 구하는 방법을 알아보자. 예를 들어, lena영상으로 원하는 평균값을 가지는 영상으로 변환하고 싶다면 어떻게 해야할까? 다음의 코드롤 보자.
 
 
+```c
+int hopeAvg;
+printf("원하는 평균값 입력 : ");
+scanf_s("%d", &hopeAvg);
+// 원하는 평균값 구하기
+if (msum < hopeAvg) { // 원본 이미지의 평균값이 원하는 평균값 보다 작은 경우
+  for (gamma = 1; gamma < 4; gamma += 0.005) { // 연산량을 줄이기 위해 gamma = 1(원본 이미지) 부터 시작
+    PowImg(img, outimg, Row, Col, gamma);
+    msum = average(outimg, Row, Col);
+    printf("gamma = %f\n", gamma);
 
+    if (msum >= hopeAvg)
+      break;
+  }
+}
+else // 원본 이미지의 평균값이 원하는 평균값 이상인 경우
+{
+  for (gamma = 1; gamma > 0; gamma -= 0.005) { // 연산량을 줄이기 위해 gamma = 1(원본 이미지) 부터 시작
+    PowImg(img, outimg, Row, Col, gamma);
+    msum = average(outimg, Row, Col);
+    printf("gamma = %f\n", gamma);
 
+    if (msum < hopeAvg)
+      break;
 
-
-
-
-
+  }
+}
+```
+원하는 평균값을 입력받아 gamma값을 키우거나, 줄이며 원하는 평균값이 나오면 break로 반복문을 빠져나오면 된다. 이러한 방식으로 부르트 포스 알고리즘을 적용하여 해결할 수 있다. 부르트 포스 알고리즘이란, 모든 경우의 수를 다 해보며 원하는 값을 찾는 것인데 이러한 방식은 시간이 오래걸리므로 조금이라도 연산 시간을 줄이기 위해 gamma값을 1부터 시작하도록 하였다. 원영상의 gamma값은 1을 가지며 원하는 평균이 1보다 작다면 1부터 줄여가고, 1보다 크다면 1부터 키워가는 방식이다.
 
 
 
