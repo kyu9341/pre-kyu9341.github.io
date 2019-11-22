@@ -15,7 +15,7 @@ categories: 영상처리
     ; height: 512px;">
 </div>
 
-위의 이미지는 lena 영상을 평균 값을 기준으로 이진화를 시킨 모습이다. 이미지의 평균 값을 구하는 함수와 평균 값을 기준으로 영상을 이진화하는 함수는 다음 코드와 같다.
+위의 이미지는 lena 영상을 평균 값을 기준으로 이진화를 시킨 모습이다. 이미지의 평균값을 구하는 함수와 평균값을 기준으로 영상을 이진화하는 함수는 다음 코드와 같다.
 
 ```c
 double average(uchar** img, int Row, int Col) // 이미지의 전체 평균값을 구하는 함수
@@ -46,3 +46,71 @@ void makeBinary(uchar** img, uchar** out, int Row, int Col, double avg) // 이�
 	}
 }
 ```
+이진화 영상은 평균값 이외에도 특정한 threshold 값을 지정함으로써 원하는 형태의 이진화 영상을 구할 수 있다. 각각의 영상처리 역할과 분야에 따라 이진화 영상은 다양한 방법으로 사용될 수 있다.
+
+
+```c
+void AdaptiveBinary2(uchar** img, uchar** out, int Row, int Col)
+{
+	int i, j;
+
+	for (i = 0; i < Row; i++) {
+		for (j = 0; j < Col; j++) {
+			if (img[i][j] > 50 && img[i][j] < 120) out[i][j] = img[i][j];
+			else out[i][j] = 0;
+		}
+	}
+}
+
+void AdaptiveBinary1(uchar** img, uchar** out, int Row, int Col)
+{
+	int i, j;
+
+	for (i = 0; i < Row; i++) {
+		for (j = 0; j < Col; j++) {
+			if (img[i][j] > 50 && img[i][j] < 120) out[i][j] = 200;
+			else out[i][j] = img[i][j];
+		}
+	}
+}
+
+
+void AdaptiveBinary0(uchar** img, uchar** out, int Row, int Col)
+{
+	int i, j;
+
+	for (i = 0; i < Row; i++) {
+		for (j = 0; j < Col; j++) {
+			if (img[i][j] > 50 && img[i][j] < 120) out[i][j] = 200;
+			else out[i][j] = 0;
+		}
+	}
+}
+```
+위의 코드는 다양한 방식의 이진화 영상을 구하는 방법이다. 기준치를 다양하게 주어 각 기준치마다 영상의 값을 지정해줄 수도 있다.
+
+다음은 위의 jet 영상을 각각 AdaptiveBinary0, 1, 2에 적용시킨 모습이다.
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/jet.png" style="width: 512px
+    ; height: 512px;">
+</div>
+**jet512.dat 원영상**
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/jet0.png" style="width: 512px
+    ; height: 512px;">
+</div>
+**AdaptiveBinary0**
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/jet1.png" style="width: 512px
+    ; height: 512px;">
+</div>
+**AdaptiveBinary1**
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/jet2.png" style="width: 512px
+    ; height: 512px;">
+</div>
+**AdaptiveBinary2**
