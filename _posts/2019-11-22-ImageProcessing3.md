@@ -115,6 +115,40 @@ void AdaptiveBinary0(uchar** img, uchar** out, int Row, int Col)
 </div>
 **AdaptiveBinary2**
 
-
-
 ## Gamma Correction
+
+Gamma Correction은 음극선관을 사용하는 CRT(carhode ray tube) 모니터나 텔레비전에서 영상을 제대로 보여줄 때 하드웨어적인 문제점을 보완하기 위해 도입된 기법으로 영상의 전체적인 밝기를 조절하는 방법이다.
+
+<div style="width: 30%; height: 100px;">
+    <img src="https://kyu9341.github.io/assets/gammamath.png" style="width:100%
+    ; height: 100px;">
+</div>
+위의 수식에서 r값이 1을 기준으로 작을수록 영상이 어두워지고, 클수록 영상이 밝아지게 된다.
+
+<div style="width: 100%; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/gamma.png" style="width:100%
+    ; height: 200px;">
+</div>
+
+위의 히스토그램과 같이 gamma(r)값이 1보다 작다면 영상이 가지는 어두운 값이 많고 1보다 크다면 영상이 가지는 밝은 값이 많아져 위의 히스토그램과 같은 분포를 가지게 된다.
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/jet2.png" style="width: 512px
+    ; height: 512px;">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+참조 : <http://blog.daum.net/_blog/BlogTypeView.do?blogid=050RH&articleno=12109204&categoryId=44&regdt=20130604182910>
