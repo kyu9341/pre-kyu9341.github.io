@@ -29,7 +29,7 @@ Deep Learning = Deep Neural Network = Artificial Neural Network(ANN) 인공 신�
 과거에는 이 퍼셉트론을 하드웨어를 이용하여 구현했다. 이 방식으로도 AND와 OR 문제를 해결이 가능했다. 그러나 이러한 단층 퍼셉트론으로는 XOR문제를 해결할 수 없었다.
 
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/xor.png" style="width: 90%
+    <img src="https://kyu9341.github.io/assets/xor.png" style="width: 100%
     ; height: 250px;">
 </div>
 
@@ -79,7 +79,7 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 해당 함수의 최소값 위치를 찾기 위해 비용함수(Cost Function)의 기울기가 (-)가 되는 방향으로 이동하여 최소값(=기울기 0)을 찾는 알고리즘이다.
 
 <div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/Descent.png" style="width: 90%
+    <img src="https://kyu9341.github.io/assets/Descent.png" style="width: 100%
     ; height: 250px;">
 </div>
 
@@ -107,17 +107,17 @@ Vanishing Gradient Problem은 activate function을 의존적으로 일어난다.
 
 #### Overfitting
 저번 머신러닝 교육 내용에도 있었지만 역시 딥러닝에도 Overfittin이 존재한다. overfitting은 훈련 데이터에만 정확도가 높아져 새로운 데이터에는 성능이 떨어지는 현상을 말하는데 이를 위한 해결방안으로 다음과 같은 것들이 있다.
-<div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/regularization.png" style="width: 90%
-    ; height: 250px;">
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/regularization.png" style="width: 80%
+    ; height: 350px;">
 </div>
 
 –	L1 Regularization  :  세세한 값들은 무시하고 큰 특징들만 추출
 
 –	L2 Regularization  :  세부적인 값들을 약하게 해줌
-<div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/dropout.png" style="width: 90%
-    ; height: 250px;">
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/dropout.png" style="width: 80%
+    ; height: 350px;">
 </div>
 
 –	Dropout : hidden node 중 몇 개를 끊어 냄 -> 똑같은 것만 학습하는 것을 방지
@@ -127,9 +127,9 @@ Vanishing Gradient Problem은 activate function을 의존적으로 일어난다.
 #### 케라스
 다음은 딥러닝 프레임워크 중 하나인 케라스를 사용해서 jupyter notebook상에서 실습을 진행하였다. 케라스는 파이썬으로 구현된 high-level deep learning API이며 내부적으로는 TensorFlow로 동작한다. 쉬운 사용법과 간단한 문법으로 빠른 설계가 가능하고 입문자들이 사용해보기 좋다.
 
-<div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/mlt.png" style="width: 90%
-    ; height: 250px;">
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/mlt.png" style="width: 80%
+    ; height: 350px;">
 </div>
 
 실습은 딥러닝 방식중 하나인 MLP 를 사용하였고 AND, XOR 기능을 수행하는 모델을 만들었고 마지막으로 당뇨병 예측 모델을 만들어보았다.
