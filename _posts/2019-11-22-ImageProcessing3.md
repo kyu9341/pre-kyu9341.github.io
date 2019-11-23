@@ -119,9 +119,9 @@ void AdaptiveBinary0(uchar** img, uchar** out, int Row, int Col)
 
 Gamma Correction은 음극선관을 사용하는 CRT(carhode ray tube) 모니터나 텔레비전에서 영상을 제대로 보여줄 때 하드웨어적인 문제점을 보완하기 위해 도입된 기법으로 영상의 전체적인 밝기를 조절하는 방법이다.
 
-<div style="width: 30%; height: 100px;">
+<div style="width: 30%; height: 50px;">
     <img src="https://kyu9341.github.io/assets/gammamath.png" style="width:100%
-    ; height: 100px;">
+    ; height: 50px;">
 </div>
 위의 수식에서 r값이 1을 기준으로 작을수록 영상이 어두워지고, 클수록 영상이 밝아지게 된다.
 
@@ -204,7 +204,7 @@ else // 원본 이미지의 평균값이 원하는 평균값 이상인 경우
 이러한 방식으로 평균값 151을 가지는 레나 영상을 구해보았다.
 
 <div style="width: 100%; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/gamma151.png" style="width: 70%
+    <img src="https://kyu9341.github.io/assets/gamma151.png" style="width: 50%
     ; height: 400px;">
 </div>
 위와 같이 지정한 평균값에 도달하면 반복을 멈추고 이미지를 생성한다.
