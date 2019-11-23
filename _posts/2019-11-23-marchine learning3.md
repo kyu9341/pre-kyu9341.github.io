@@ -488,14 +488,14 @@ plt.legend(['train','test'], loc='upper left')
 plt.show()
 ```
 
-<div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/output_11_0.png" style="width: 90%
-    ; height: 250px;">
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/output_11_0.png" style="width: 80%
+    ; height: 350px;">
 </div>
 
-<div style="width: 100%; height: 250px;">
-    <img src="https://kyu9341.github.io/assets/output_11_1.png" style="width: 90%
-    ; height: 250px;">
+<div style="width: 100%; height: 350px;">
+    <img src="https://kyu9341.github.io/assets/output_11_1.png" style="width: 80%
+    ; height: 350px;">
 </div>
 
 
