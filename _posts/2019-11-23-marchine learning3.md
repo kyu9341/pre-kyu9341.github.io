@@ -84,8 +84,15 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 #### Optimizer(최적화기)
 위에서 말한 최소값을 찾기 위한 방법으로 SGD, Momentum, NAG, Adagrad, Adadelta, Rmsprop, Adam 등의 여러가지 방법이 있는데, SGD는 layer가 늦은 경우 빠르게 찾아주고 데이터가 간단한 경우에 주로 사용한다. Adam은 정확도가 가장 높아서 일반적으로 가장 많이 사용한다고 한다.
 
-#### Vanishing Gradient
+**optimizer의 발전과정**
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/optimizer.png" style="width: 90%
+    ; height: 250px;">
+</div>
 
+
+#### Vanishing Gradient
+Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경망을 기울기 값을 베이스로 하 mothod(backpropagation)
 
 
 #### Overfitting
@@ -108,6 +115,8 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 
 
 참조
+<https://ydseo.tistory.com/41>
 <http://research.sualab.com/introduction/2017/10/10/what-is-deep-learning-1.html>
 <https://blog.naver.com/minsu_jj/221607901559>
 <https://hobbang143.blog.me/221469060596>
+<https://gomguard.tistory.com/187>
