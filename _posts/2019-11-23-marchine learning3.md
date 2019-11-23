@@ -497,7 +497,6 @@ plt.show()
     <img src="https://kyu9341.github.io/assets/output_11_1.png" style="width: 90%
     ; height: 250px;">
 </div>
-![png]()
 
 
 ```python
