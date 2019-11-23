@@ -124,14 +124,14 @@ Vanishing Gradient Problem은 activate function을 의존적으로 일어난다.
 : 성능이 좋고 많이 사용 (20~50% 노드를 꺼줌)
 
 #### 신경망 구조
-<div style="width: 100%; height: 360px;">
+<div style="width: 100%; height: 460px;">
     <img src="https://kyu9341.github.io/assets/hidden.png" style="width: 80%
-    ; height: 350px;">
+    ; height: 450px;">
 </div>
 
-<div style="width: 100%; height: 350px;">
+<div style="width: 100%; height: 450px;">
     <img src="https://kyu9341.github.io/assets/output.png" style="width: 80%
-    ; height: 350px;">
+    ; height: 450px;">
 </div>
 #### 케라스
 다음은 딥러닝 프레임워크 중 하나인 케라스를 사용해서 jupyter notebook상에서 실습을 진행하였다. 케라스는 파이썬으로 구현된 high-level deep learning API이며 내부적으로는 TensorFlow로 동작한다. 쉬운 사용법과 간단한 문법으로 빠른 설계가 가능하고 입문자들이 사용해보기 좋다.
