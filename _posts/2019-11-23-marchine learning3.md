@@ -496,13 +496,11 @@ print(predict)
         <img src="https://kyu9341.github.io/assets/output_11_0.png.png" style="width: 512px
         ; height: 512px;">
     </div>
-    ![png](output_11_0.png)
 
     <div style="width: 512px; height: 512px;">
         <img src="https://kyu9341.github.io/assets/output_11_1.png.png" style="width: 512px
         ; height: 512px;">
     </div>
-    ![png](output_11_1.png)
 
 
     ```python
