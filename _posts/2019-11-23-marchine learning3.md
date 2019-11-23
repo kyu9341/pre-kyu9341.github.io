@@ -271,246 +271,242 @@ model.fit(X, y,
 predict = model.predict(np.array([[0,1],])) # ,해주어야 함 2차원 값임을 알려주기 위해
 print(predict)
 ```
-
     [[0.0208632]]
 
+-------------
+### 2019.11.23. 딥-러닝 과정 Mulit Layer Perceptron(MLP)
 
+## 세번째 실습. Keras 모델 생성/학습 - 당뇨병 예측 모델
 
 
-    ### 2019.11.23. 딥-러닝 과정 Mulit Layer Perceptron(MLP)
+```python
+# 1. Pandas 가져오기
+import pandas as pd
 
-    ## 세번째 실습. Keras 모델 생성/학습 - 당뇨병 예측 모델
+print(pd.__version__)
+```
 
+    0.24.0
 
-    ```python
-    # 1. Pandas 가져오기
-    import pandas as pd
 
-    print(pd.__version__)
-    ```
 
-        0.24.0
+```python
+# 2. 데이터 불러오기
+dataset = pd.read_csv('diabetes_data.csv')
+dataset.head(10)
+```
 
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/head.png" style="width: 90%
+    ; height: 250px;">
+</div>
 
 
-    ```python
-    # 2. 데이터 불러오기
-    dataset = pd.read_csv('diabetes_data.csv')
-    dataset.head(10)
-    ```
 
 
-    <div style="width: 512px; height: 512px;">
-        <img src="https://kyu9341.github.io/assets/head.png" style="width: 512px
-        ; height: 512px;">
-    </div>
+```python
+# 3. X/y 나누기
 
+X = dataset.iloc[:, :-1]
+y = dataset.iloc[:, -1]
 
+print(X.shape) # (768, 8) -> 8 : input_dim
+print(y.shape)
+```
 
+    (768, 8)
+    (768,)
 
-    ```python
-    # 3. X/y 나누기
 
-    X = dataset.iloc[:, :-1]
-    y = dataset.iloc[:, -1]
 
-    print(X.shape) # (768, 8) -> 8 : input_dim
-    print(y.shape)
-    ```
+```python
+# 4. Train set, Test set 나누기
 
-        (768, 8)
-        (768,)
+from sklearn.model_selection import train_test_split
 
+X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                    test_size=0.3,
+                                                    random_state=9)
 
+X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
+                                               test_size=0.5,
+                                               random_state=123)
 
-    ```python
-    # 4. Train set, Test set 나누기
+print(X_train.shape)
+print(y_train.shape)
 
-    from sklearn.model_selection import train_test_split
+print(X_val.shape)
+print(y_val.shape)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                        test_size=0.3,
-                                                        random_state=9)
+print(X_test.shape)
+print(y_test.shape)
 
-    X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
-                                                   test_size=0.5,
-                                                   random_state=123)
+```
 
-    print(X_train.shape)
-    print(y_train.shape)
+    (537, 8)
+    (537,)
+    (115, 8)
+    (115,)
+    (116, 8)
+    (116,)
 
-    print(X_val.shape)
-    print(y_val.shape)
 
-    print(X_test.shape)
-    print(y_test.shape)
 
-    ```
+```python
+# 5. Keras 패키지 가져오기
 
-        (537, 8)
-        (537,)
-        (115, 8)
-        (115,)
-        (116, 8)
-        (116,)
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+import keras
 
+print(keras.__version__)
+```
 
+    2.2.4
 
-    ```python
-    # 5. Keras 패키지 가져오기
 
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout
-    import keras
 
-    print(keras.__version__)
-    ```
+```python
+# 6. MLP 모델 생성
 
-        2.2.4
+model = Sequential()
+model.add(Dense(12, input_dim=8,
+                activation='relu'))
+model.add(Dropout(0.3))# Dropout 설정
 
+model.add(Dense(8, activation='relu'))# input_dim은 생략 - (12)로 자동 지정
+model.add(Dropout(0.5))# Dropout 설정
+
+model.add(Dense(1, activation='sigmoid'))
+
+print(model.summary())
+```
 
-
-    ```python
-    # 6. MLP 모델 생성
-
-    model = Sequential()
-    model.add(Dense(12, input_dim=8,
-                    activation='relu'))
-    model.add(Dropout(0.3))# Dropout 설정
-
-    model.add(Dense(8, activation='relu'))# input_dim은 생략 - (12)로 자동 지정
-    model.add(Dropout(0.5))# Dropout 설정
-
-    model.add(Dense(1, activation='sigmoid'))
-
-    print(model.summary())
-    ```
-
-        WARNING:tensorflow:From /anaconda/envs/py35/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py:3445: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
-        Instructions for updating:
-        Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
-        _________________________________________________________________
-        Layer (type)                 Output Shape              Param #   
-        =================================================================
-        dense_7 (Dense)              (None, 12)                108       
-        _________________________________________________________________
-        dropout_1 (Dropout)          (None, 12)                0         
-        _________________________________________________________________
-        dense_8 (Dense)              (None, 8)                 104       
-        _________________________________________________________________
-        dropout_2 (Dropout)          (None, 8)                 0         
-        _________________________________________________________________
-        dense_9 (Dense)              (None, 1)                 9         
-        =================================================================
-        Total params: 221
-        Trainable params: 221
-        Non-trainable params: 0
-        _________________________________________________________________
-        None
-
-
-
-    ```python
-    # 7. Compile - Optimizer, Loss function 설정
-
-    model.compile(loss='binary_crossentropy',
-                 optimizer='adam',
-                 metrics=['accuracy'])
-
-    ```
-
-
-    ```python
-    # 8. 학습시키기
-
-    batch_size = 16
-    epochs = 1000
-    # 한번의 epochs가 끝날 때마다 history에 저장 (데이터 시각화)
-    history = model.fit(X_train, y_train,
-             epochs=epochs,
-             batch_size=batch_size,
-             validation_data=(X_val, y_val), # validation_set 적용 (꼭 같이 해주는게 좋음)
-             verbose=1,
-             shuffle=True)
-    ```
-
-        Train on 537 samples, validate on 115 samples
-        Epoch 1/1000
-        537/537 [==============================] - 1s 970us/step - loss: 4.9289 - acc: 0.5736 - val_loss: 3.2560 - val_acc: 0.6609
-        Epoch 2/1000
-        537/537 [==============================] - 0s 88us/step - loss: 3.4709 - acc: 0.6425 - val_loss: 3.2140 - val_acc: 0.6522
-        Epoch 3/1000
-        537/537 [==============================] - 0s 81us/step - loss: 3.7243 - acc: 0.5940 - val_loss: 3.0675 - val_acc: 0.6696
-        Epoch 4/1000
-
-        .......
-
-        537/537 [==============================] - 0s 91us/step - loss: 0.5624 - acc: 0.7207 - val_loss: 0.5805 - val_acc: 0.7304
-        Epoch 999/1000
-        537/537 [==============================] - 0s 97us/step - loss: 0.5566 - acc: 0.7169 - val_loss: 0.5870 - val_acc: 0.7391
-        Epoch 1000/1000
-        537/537 [==============================] - 0s 91us/step - loss: 0.5356 - acc: 0.7449 - val_loss: 0.5801 - val_acc: 0.7391
-
-
-
-    ```python
-    # 9. 모델 평가하기
-    train_accuracy = model.evaluate(X_train, y_train)
-    test_accuracy = model.evaluate(X_test, y_test)
-
-    print("Train Acc:", train_accuracy)
-    print("Test Acc:", test_accuracy)
-    ```
-
-        537/537 [==============================] - 0s 21us/step
-        116/116 [==============================] - 0s 27us/step
-        Train Acc: [0.5100221896970738, 0.7541899434681045]
-        Test Acc: [0.725729592915239, 0.6724137972141134]
-
-
-
-    ```python
-    # 10. 학습 시각화하기
-
-    import matplotlib.pyplot as plt
-
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
-    plt.title('Accuracy')
-    plt.ylabel('epoch')
-    plt.xlabel('accuracy')
-    plt.legend(['train','test'], loc='upper left')
-    plt.show()
-
-
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
-    plt.title('Loss')
-    plt.ylabel('epoch')
-    plt.xlabel('loss')
-    plt.legend(['train','test'], loc='upper left')
-    plt.show()
-    ```
-
-    <div style="width: 512px; height: 512px;">
-        <img src="https://kyu9341.github.io/assets/output_11_0.png.png" style="width: 512px
-        ; height: 512px;">
-    </div>
-
-    <div style="width: 512px; height: 512px;">
-        <img src="https://kyu9341.github.io/assets/output_11_1.png.png" style="width: 512px
-        ; height: 512px;">
-    </div>
-
-
-    ```python
-    ## 저장하기/불러오기
-    model.save('my_model.h5')
-
-    from keras.models import load_model
-    model = load_model('my_model.h5')
-    ```
-
+    WARNING:tensorflow:From /anaconda/envs/py35/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py:3445: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+    Instructions for updating:
+    Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    dense_7 (Dense)              (None, 12)                108       
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 12)                0         
+    _________________________________________________________________
+    dense_8 (Dense)              (None, 8)                 104       
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 8)                 0         
+    _________________________________________________________________
+    dense_9 (Dense)              (None, 1)                 9         
+    =================================================================
+    Total params: 221
+    Trainable params: 221
+    Non-trainable params: 0
+    _________________________________________________________________
+    None
+
+
+
+```python
+# 7. Compile - Optimizer, Loss function 설정
+
+model.compile(loss='binary_crossentropy',
+             optimizer='adam',
+             metrics=['accuracy'])
+
+```
+
+
+```python
+# 8. 학습시키기
+
+batch_size = 16
+epochs = 1000
+# 한번의 epochs가 끝날 때마다 history에 저장 (데이터 시각화)
+history = model.fit(X_train, y_train,
+         epochs=epochs,
+         batch_size=batch_size,
+         validation_data=(X_val, y_val), # validation_set 적용 (꼭 같이 해주는게 좋음)
+         verbose=1,
+         shuffle=True)
+```
+
+    Train on 537 samples, validate on 115 samples
+    Epoch 1/1000
+    537/537 [==============================] - 1s 970us/step - loss: 4.9289 - acc: 0.5736 - val_loss: 3.2560 - val_acc: 0.6609
+    Epoch 2/1000
+    537/537 [==============================] - 0s 88us/step - loss: 3.4709 - acc: 0.6425 - val_loss: 3.2140 - val_acc: 0.6522
+    Epoch 3/1000
+    537/537 [==============================] - 0s 81us/step - loss: 3.7243 - acc: 0.5940 - val_loss: 3.0675 - val_acc: 0.6696
+    Epoch 4/1000
+
+    .......
+
+    537/537 [==============================] - 0s 91us/step - loss: 0.5624 - acc: 0.7207 - val_loss: 0.5805 - val_acc: 0.7304
+    Epoch 999/1000
+    537/537 [==============================] - 0s 97us/step - loss: 0.5566 - acc: 0.7169 - val_loss: 0.5870 - val_acc: 0.7391
+    Epoch 1000/1000
+    537/537 [==============================] - 0s 91us/step - loss: 0.5356 - acc: 0.7449 - val_loss: 0.5801 - val_acc: 0.7391
+
+
+
+```python
+# 9. 모델 평가하기
+train_accuracy = model.evaluate(X_train, y_train)
+test_accuracy = model.evaluate(X_test, y_test)
+
+print("Train Acc:", train_accuracy)
+print("Test Acc:", test_accuracy)
+```
+
+    537/537 [==============================] - 0s 21us/step
+    116/116 [==============================] - 0s 27us/step
+    Train Acc: [0.5100221896970738, 0.7541899434681045]
+    Test Acc: [0.725729592915239, 0.6724137972141134]
+
+
+
+```python
+# 10. 학습 시각화하기
+
+import matplotlib.pyplot as plt
+
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.title('Accuracy')
+plt.ylabel('epoch')
+plt.xlabel('accuracy')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Loss')
+plt.ylabel('epoch')
+plt.xlabel('loss')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
+```
+
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/output_11_0.png" style="width: 90%
+    ; height: 250px;">
+</div>
+
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/output_11_1.png" style="width: 90%
+    ; height: 250px;">
+</div>
+![png]()
+
+
+```python
+## 저장하기/불러오기
+model.save('my_model.h5')
+
+from keras.models import load_model
+model = load_model('my_model.h5')
+```
 
 
 
