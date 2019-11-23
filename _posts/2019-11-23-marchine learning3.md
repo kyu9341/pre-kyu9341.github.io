@@ -81,6 +81,27 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
     ; height: 250px;">
 </div>
 
+#### Optimizer
+
+
+#### Vanishing Gradient
+
+
+
+#### Overfitting
+
+
+
+
+
+#### 케라스
+
+
+
+
+
+
+
 
 
 
