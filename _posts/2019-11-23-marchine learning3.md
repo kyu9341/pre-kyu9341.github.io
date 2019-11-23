@@ -96,10 +96,29 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 
 #### Vanishing Gradient
 Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경망을 기울기 값을 베이스로 하는  mothod(backpropagation)로 학습시키려고 할 때 발생하는 문제이다.
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/vanishing.png" style="width: 90%
+    ; height: 250px;">
+</div>
 
-이 문제는
+Vanishing Gradient Problem은 activate function을 의존적으로 일어난다. sigmoid함수나 tanh함수를 사용함으로써 발생하는 문제인데 layer가 깊어질수록 전달이 약해진다.
+이 문제를 해결하기 위해서는 sigmoid함수 대신 ReLU 함수나 Leakey ReLU 등의 함수를 사용하면 된다.
+
 
 #### Overfitting
+저번 머신러닝 교육 내용에도 있었지만 역시 딥러닝에도 Overfittin이 존재한다. overfitting은 훈련 데이터에만 정확도가 높아져 새로운 데이터에는 성능이 떨어지는 현상을 말하는데 이를 위한 해결방안으로 다음과 같은 것들이 있다.
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/regularization.png" style="width: 90%
+    ; height: 250px;">
+</div>
+–	L1 Regularization  :  세세한 값들은 무시하고 큰 특징들만 추출
+–	L2 Regularization  :  세부적인 값들을 약하게 해줌
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/dropout.png" style="width: 90%
+    ; height: 250px;">
+</div>
+–	Dropout : hidden node 중 몇 개를 끊어 냄 -> 똑같은 것만 학습하는 것을 방지
+: 성능이 좋고 많이 사용 (20~50% 노드를 꺼줌)
 
 
 
@@ -107,7 +126,10 @@ Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경
 
 #### 케라스
 
-
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/mlt.png" style="width: 90%
+    ; height: 250px;">
+</div>
 
 
 
