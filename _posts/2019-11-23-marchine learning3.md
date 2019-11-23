@@ -129,7 +129,6 @@ Vanishing Gradient Problem은 activate function을 의존적으로 일어난다.
     ; height: 350px;">
 </div>
 
-
 <div style="width: 100%; height: 350px;">
     <img src="https://kyu9341.github.io/assets/output.png" style="width: 80%
     ; height: 350px;">
