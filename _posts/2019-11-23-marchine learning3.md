@@ -73,16 +73,16 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 오차를 구하여 모델의 정확도를 판단하는데 이 값이 작을수록 모델의 성능이 좋다는 것을 뜻한다. 그래프로 본다면 아래와 같은데 이 오차를 줄이는 방법으로 경사하강법이 있다.
 
 #### Gradient Descent(경사하강법)
-
-
+해당 함수의 최소값 위치를 찾기 위해 비용함수(Cost Function)의 기울기가 (-)가 되는 방향으로 이동하여 최소값(=기울기 0)을 찾는 알고리즘이다.
 
 <div style="width: 100%; height: 250px;">
     <img src="https://kyu9341.github.io/assets/Descent.png" style="width: 90%
     ; height: 250px;">
 </div>
 
-#### Optimizer
 
+#### Optimizer(최적화기)
+위에서 말한 최소값을 찾기 위한 방법으로 SGD, Momentum, NAG, Adagrad, Adadelta, Rmsprop, Adam 등의 여러가지 방법이 있는데, SGD는 layer가 늦은 경우 빠르게 찾아주고 데이터가 간단한 경우에 주로 사용한다. Adam은 정확도가 가장 높아서 일반적으로 가장 많이 사용한다고 한다.
 
 #### Vanishing Gradient
 
