@@ -15,6 +15,9 @@ Deep Learning = Deep Neural Network = Artificial Neural Network(ANN) 인공 신�
 인공신경망을 사용하는 머신러닝 모델링 방법 중 하나(Neural Network)이며 다층 인공신경망 구조를 사용하여 빅 데이터 학습한다.
 
 #### perceptron
+인공 신경망의 한 종류.
+
+
 **단층 퍼셉트론** 은 다수의 신호(Input)을 받아서 하나의 신호(Output)를 출력한다. 이 동작은 뉴런과 아주 유사하고 그 과정은 다음과 같다. 다수의 입력을 받았을 때, 퍼셉트론은 각 입력 신호의 세기에 따라 다른 가중치를 부여한다. 그 결과를 고유한 방식으로 처리한 후, 입력 신호의 합이 일정 값을 초과한다면 그 결과를 다른 뉴련으로 전달한다.
 
 
@@ -92,8 +95,9 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 
 
 #### Vanishing Gradient
-Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경망을 기울기 값을 베이스로 하 mothod(backpropagation)
+Vanishing Gradient Problem(기울기 값이 사라지는 문제)는 인공신경망을 기울기 값을 베이스로 하는  mothod(backpropagation)로 학습시키려고 할 때 발생하는 문제이다.
 
+이 문제는
 
 #### Overfitting
 
