@@ -299,6 +299,7 @@ print(predict)
     dataset.head(10)
     ```
 
+
     <div style="width: 512px; height: 512px;">
         <img src="https://kyu9341.github.io/assets/head.png" style="width: 512px
         ; height: 512px;">
@@ -491,9 +492,16 @@ print(predict)
     plt.show()
     ```
 
+    <div style="width: 512px; height: 512px;">
+        <img src="https://kyu9341.github.io/assets/output_11_0.png.png" style="width: 512px
+        ; height: 512px;">
+    </div>
     ![png](output_11_0.png)
 
-
+    <div style="width: 512px; height: 512px;">
+        <img src="https://kyu9341.github.io/assets/output_11_1.png.png" style="width: 512px
+        ; height: 512px;">
+    </div>
     ![png](output_11_1.png)
 
 
