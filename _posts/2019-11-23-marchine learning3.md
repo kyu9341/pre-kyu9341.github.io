@@ -72,9 +72,14 @@ Ex) And gate 	**activation function(활성함수)** : ex) [(0.5 < sum) : 1 / (0.
 
 오차를 구하여 모델의 정확도를 판단하는데 이 값이 작을수록 모델의 성능이 좋다는 것을 뜻한다. 그래프로 본다면 아래와 같은데 이 오차를 줄이는 방법으로 경사하강법이 있다.
 
+#### Gradient Descent(경사하강법)
 
 
 
+<div style="width: 100%; height: 250px;">
+    <img src="https://kyu9341.github.io/assets/Descent.png" style="width: 90%
+    ; height: 250px;">
+</div>
 
 
 
