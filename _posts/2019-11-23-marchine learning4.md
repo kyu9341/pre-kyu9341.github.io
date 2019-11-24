@@ -382,17 +382,20 @@ for index in numpy.random.choice(len(y_test), 3, replace = False):
     plt.show()
 ```
 
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_14_0.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
-![png](output_14_0.png)
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_14_1.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
-
-
-![png](output_14_1.png)
-
-
-
-![png](output_14_2.png)
-
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_14_2.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
 
 ```python
@@ -413,10 +416,14 @@ plt.show()
 
 ```
 
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_15_0.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
-![png](output_15_0.png)
 
 
+## 실습 3
 
 
 
