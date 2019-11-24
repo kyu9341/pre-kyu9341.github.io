@@ -992,8 +992,19 @@ plt.show()
 
 
 ## 실습5
+마지막으로 cifar10 데이터셋에 대한 이미지 분류(Image Classification)를 수행하는 Convolutional Neural Networks(CNNs)을 만드는 예제를 수행하였다..
+
+CIFAR-10은 이미지 인식 분야에서 널리 쓰이는 벤치마크 데이터셋 중 하나이다. CIFAR-10 데이터셋은 아래와 같이 총 10개의 레이블로 이루어져 있다.
+
+airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/cifar.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
 
+각각의 레이블마다 32×32 크기 이미지인 50,000개의 training 데이터셋, 10,000개의 test 데이터셋이 존재하고, 결과적으로 총 60,000개의 32×32 크기의 이미지로 데이터셋이 구성되어 있다.
 #### 2019.11.24. 딥-러닝 과정 CNN
 
 ### 네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN
@@ -1261,3 +1272,4 @@ plt.show()
 <https://umbum.tistory.com/223>
 <https://untitledtblog.tistory.com/150>
 <https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/>
+<http://solarisailab.com/archives/1700>
