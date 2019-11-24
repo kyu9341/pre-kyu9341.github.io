@@ -20,7 +20,9 @@ Convolution은 합성곱이라는 뜻이다.
 
 
 
-## 실습
+## 실습1
+
+첫번째는 간단하게 이미지만 불러와서 확인하는 과정이다.
 
 #### 2019.11.24. 딥-러닝 과정 CNN
 
@@ -130,9 +132,289 @@ plt.imshow(image_array_color)
 </div>
 
 
+## 실습2
+두번째 실습은 CNN모델을 적용하기 전에
 
 
 
+
+#### 2019.11.24. 딥-러닝 과정 CNN
+
+### 첫번째 실습. Keras 모델 생성/학습 - MNIST : MLP
+[Keras Dataset](https://keras.io/ko/datasets/#mnist)
+
+
+```python
+# 1. 데이터 불러오기
+
+from keras.datasets import mnist  # 많이 쓰이는 데이터 케라스에서 제공
+
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+print(X_train.shape)
+print(y_train.shape)
+print(X_test.shape)
+print(y_test.shape)
+```
+
+    (60000, 28, 28)
+    (60000,)
+    (10000, 28, 28)
+    (10000,)
+
+
+
+```python
+# 2. 이미지 데이터 확인하기 🖼
+import matplotlib.pyplot as plt
+
+image = X_train[1]
+
+plt.imshow(image, cmap=plt.cm.gray)
+```
+
+    <matplotlib.image.AxesImage at 0x12a2b101c48>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_3_1.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+```python
+print(X_train.shape) # 28*28 이미지 (2차원) 6만개 -> 1차원 6만개
+```
+
+    (60000, 28, 28)
+
+
+```python
+# 3-1. 이미지 데이터 전처리 : 2차원->1차원 🌟🌟🌟
+
+X_train = X_train.reshape((60000, 28 * 28)) # -> 1차원 6만개로 변환
+X_test = X_test.reshape((10000, 28 * 28))
+
+print(X_train.shape)
+print(X_test.shape)
+
+print(X_train)
+```
+
+    (60000, 784)
+    (10000, 784)
+    [[0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]
+     ...
+     [0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]]
+
+
+```python
+# 3-2. 이미지 데이터 전처리 : Normalzation
+X_train = X_train / 255.0
+X_test = X_test / 255.0
+
+print(X_train[9])
+```
+
+
+
+```python
+# 4. Label 전처리 (one-hot encoding)
+print(y_train[:10]) # 앞에서 10개, label : 숫자가 어떤 숫자인지
+```
+
+    [5 0 4 1 9 2 1 3 1 4]
+
+
+
+```python
+# 4. Label 전처리 (one-hot encoding)
+
+from keras.utils import to_categorical
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+
+print(y_train[:10])
+```
+
+    [[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+     [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+     [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+     [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+     [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]]
+
+
+
+```python
+# 4-1 Validation 셋 나누기
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,
+                                                    test_size=0.2,
+                                                    random_state=9)
+
+print(X_train.shape)
+print(y_train.shape)
+
+print(X_val.shape)
+print(y_val.shape)
+
+
+```
+
+    (48000, 784)
+    (48000, 10)
+    (12000, 784)
+    (12000, 10)
+
+
+
+```python
+# 5. 모델 생성 : MLP
+from keras.models import Sequential
+from keras.layers import Dense
+
+model = Sequential()
+model.add(Dense(512, input_dim=784, activation='relu')) # 다음 노드의 수 : 512(inputdata가 784이므로 적당히 크게)
+model.add(Dense(10, activation='softmax')) # 출력 층 10개중 어떤건지 알기 위해 10으로 지정
+
+print(model.summary())
+```
+
+    Model: "sequential_6"
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    dense_9 (Dense)              (None, 512)               401920    
+    _________________________________________________________________
+    dense_10 (Dense)             (None, 10)                5130      
+    =================================================================
+    Total params: 407,050
+    Trainable params: 407,050
+    Non-trainable params: 0
+    _________________________________________________________________
+    None
+
+
+
+```python
+# 6. Compile - Optimizer, Loss function 설정
+model.compile(loss='categorical_crossentropy',
+              optimizer='sgd',
+              metrics=['accuracy'])
+```
+
+
+```python
+# 7. 모델 학습시키기
+
+batch_size=128
+epochs=10
+
+history = model.fit(X_train, y_train,
+         epochs=epochs,
+         batch_size=batch_size,
+         validation_data=(X_val, y_val), # validation_set 적용 (꼭 같이 해주는게 좋음)
+         verbose=1)
+```
+
+    Train on 48000 samples, validate on 12000 samples
+    Epoch 1/10
+    48000/48000 [==============================] - 2s 37us/step - loss: 1.2137 - accuracy: 0.7386 - val_loss: 0.6995 - val_accuracy: 0.8526
+    Epoch 2/10
+    48000/48000 [==============================] - 2s 34us/step - loss: 0.5725 - accuracy: 0.8683 - val_loss: 0.4960 - val_accuracy: 0.8789
+    Epoch 3/10
+    48000/48000 [==============================] - 2s 42us/step - loss: 0.4501 - accuracy: 0.8855 - val_loss: 0.4243 - val_accuracy: 0.8904
+    Epoch 4/10
+    48000/48000 [==============================] - 2s 40us/step - loss: 0.3967 - accuracy: 0.8948 - val_loss: 0.3847 - val_accuracy: 0.8984
+    Epoch 5/10
+    48000/48000 [==============================] - 2s 40us/step - loss: 0.3648 - accuracy: 0.9019 - val_loss: 0.3599 - val_accuracy: 0.9035
+    Epoch 6/10
+    48000/48000 [==============================] - 2s 40us/step - loss: 0.3425 - accuracy: 0.9064 - val_loss: 0.3419 - val_accuracy: 0.9077
+    Epoch 7/10
+    48000/48000 [==============================] - 2s 38us/step - loss: 0.3257 - accuracy: 0.9103 - val_loss: 0.3276 - val_accuracy: 0.9109
+    Epoch 8/10
+    48000/48000 [==============================] - 2s 40us/step - loss: 0.3121 - accuracy: 0.9145 - val_loss: 0.3155 - val_accuracy: 0.9133
+    Epoch 9/10
+    48000/48000 [==============================] - 2s 41us/step - loss: 0.3006 - accuracy: 0.9174 - val_loss: 0.3064 - val_accuracy: 0.9160
+    Epoch 10/10
+    48000/48000 [==============================] - 2s 40us/step - loss: 0.2906 - accuracy: 0.9201 - val_loss: 0.2977 - val_accuracy: 0.9183
+
+
+
+```python
+# 8. 모델 평가하기
+test_loss, test_acc = model.evaluate(X_test, y_test)
+
+print(test_loss, test_acc)
+```
+
+    10000/10000 [==============================] - 0s 25us/step
+    0.2771936253398657 0.9223999977111816
+
+
+
+```python
+# 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼
+
+import numpy
+for index in numpy.random.choice(len(y_test), 3, replace = False):
+    predicted = model.predict(X_test[index:index + 1])[0]
+    label = y_test[index]
+    result_label = numpy.where(label == numpy.amax(label))
+    result_predicted = numpy.where(predicted == numpy.amax(predicted))
+    title = "Label value = %s  Predicted value = %s " % (result_label[0], result_predicted[0])
+
+    fig = plt.figure(1, figsize = (3,3))
+    ax1 = fig.add_axes((0,0,.8,.8))
+    ax1.set_title(title)
+    images = X_test
+    plt.imshow(images[index].reshape(28, 28), cmap = 'Greys', interpolation = 'nearest')
+    plt.show()
+```
+
+
+![png](output_14_0.png)
+
+
+
+![png](output_14_1.png)
+
+
+
+![png](output_14_2.png)
+
+
+
+```python
+# 10. 학습 시각화하기
+import matplotlib.pyplot as plt
+
+plt.plot(history.history['val_accuracy'])
+plt.plot(history.history['accuracy'])
+plt.title('Accuracy')
+plt.xlabel('epoch')
+plt.ylabel('accuracy')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
+
+
+# plt.plot(history.history['val_accuracy'])
+
+```
+
+
+![png](output_15_0.png)
 
 
 
