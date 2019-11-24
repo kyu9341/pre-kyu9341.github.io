@@ -15,7 +15,9 @@ CNN(합성곱 신경망)은 필터링 기법을 인공신경망에 적용함으�
 Convolution은 합성곱이라는 뜻이다.
 
 
+#### padding
 
+#### Pooling layer
 
 
 
@@ -133,7 +135,9 @@ plt.imshow(image_array_color)
 
 
 ## 실습2
-두번째 실습은 CNN모델을 적용하기 전에
+두번째 실습은 CNN모델을 적용하기 전에 MLT만 사용하여 이미지를 학습시켜보았다. MLT는 1차원 데이터만 input으로 받을 수 있기 때문에 gray scale의 2차원 데이터는 1차원으로 reshape을 해주어야 학습이 가능하다.
+
+
 
 
 
@@ -424,7 +428,7 @@ plt.show()
 
 
 ## 실습3
-
+이번에는 실제로 CNN을 사용하여 딥러닝을 수행했다. MLT를 수행하기 이전에 Convolution Layer 및 Pooling Layer를 거쳐 학습이 진행된다.
 
 #### 2019.11.24. 딥-러닝 과정 CNN
 
@@ -706,6 +710,8 @@ plt.show()
 
 
 ## 실습4
+위에서 학습한 방식을 그대로 사용하여 Fashion MNIST 데이터에 적용하여 딥러닝을 수행해보았다.
+
 #### 2019.11.24. 딥-러닝 과정 CNN
 
 ### 세번째 실습. Keras 모델 생성/학습 - Fashion MNIST : CNN
