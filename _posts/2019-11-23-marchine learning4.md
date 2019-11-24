@@ -1029,9 +1029,10 @@ plt.imshow(image)
 
     <matplotlib.image.AxesImage at 0x2a31e4ed948>
 
-
-![png](output_3_1.png)
-
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_3_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
 
 ```python
