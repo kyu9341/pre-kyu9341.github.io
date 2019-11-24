@@ -11,19 +11,20 @@ categories: MachineLearning
 ### Convolutional Neural Network(CNN)
 CNN(합성곱 신경망)은 필터링 기법을 인공신경망에 적용함으로써 이미지를 더욱 효과적으로 처리하기 위해 고안되었다. 이미지를 Dense(fully connected) Layer로 처리하려 한다면 feature가 너무 많아져 불필요한 weight가 많아지고 효율이 떨어지게 된다. 또한 Dense Layer는 1차원 데이터만 input으로 받을 수 있기 때문에 3차원 데이터를 평탄화하여 입력해야 한다. 여기서 3차원 데이터의 공간적 정보가 소실되는 문제가 발생한다. 반면 Convolutional Layer에서는 형상을 유지한다. 입/출력 모두 3차원 데이터로 처리하기 때문에 공간적 정보를 유지할 수 있다.
 
-<div style="width: 100%; height: 300px;">
-    <img src="https://kyu9341.github.io/assets/cnn.png" style="width: 50%
-    ; height: 300px;">
+<div style="width: 100%; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/cnn.png" style="width: 100%
+    ; height: 400px;">
 </div>
 
 #### Convolutional Layer
 Convolution은 합성곱이라는 뜻이다.
 
+이미지 데이터는 높이X너비X채널의 3차원 텐서 (tensor)로 표현될 수 있다. 만약, 이미지의 색상이 RGB 코드로 표현되었다면, 채널의 크기는 3이 되며 각각의 채널에는 R, G, B 값이 저장된다.
 
 #### padding
 
 #### Pooling layer
-
+풀링은 가로/세로 방향의 공간을 줄이는 연산이다. 풀링의 종류로는 Max Pooling과 Average Pooling이 있는데 이미지 인식 분야에서는 주로 Max Pooling을 사용한다.
 
 
 
