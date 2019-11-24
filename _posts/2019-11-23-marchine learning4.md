@@ -983,6 +983,265 @@ plt.show()
 ## 실습5
 
 
+#### 2019.11.24. 딥-러닝 과정 CNN
+
+### 네번째 실습. Keras 모델 생성/학습 - cifar10 : CNN
+[Keras Dataset](https://keras.io/ko/datasets/#-cifar10)
+
+
+```python
+# 1. 데이터 불러오기
+from keras.datasets import cifar10
+from sklearn.model_selection import train_test_split
+
+(X_train, y_train), (X_test, y_test) = cifar10.load_data()
+
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,
+                                                 test_size=0.2,
+                                                 random_state=9)
+
+print(X_train.shape)
+print(y_train.shape)
+print(X_val.shape)
+print(y_val.shape)
+print(X_test.shape)
+print(y_test.shape)
+
+```
+
+    (40000, 32, 32, 3)
+    (40000, 1)
+    (10000, 32, 32, 3)
+    (10000, 1)
+    (10000, 32, 32, 3)
+    (10000, 1)
+
+
+
+```python
+# 2. 이미지 데이터 확인하기 🖼
+import matplotlib.pyplot as plt
+
+image = X_train[2]
+
+plt.imshow(image)
+```
+
+    <matplotlib.image.AxesImage at 0x2a31e4ed948>
+
+
+![png](output_3_1.png)
+
+
+
+```python
+# 3. 이미지 데이터 전처리
+X_train = X_train / 255.0
+X_val = X_val / 255.0
+X_test = X_test / 255.0
+```
+
+
+```python
+# 4. Label categorical (one-hot encoding)
+# print(y_train[:10])
+from keras.utils import to_categorical
+
+y_train = to_categorical(y_train)
+y_val = to_categorical(y_val)
+y_test = to_categorical(y_test)
+
+print(y_train[:10])
+
+```
+
+    [[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+     [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+     [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+     [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+     [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+     [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]]
+
+
+
+```python
+# 5. 모델 생성 : CNN
+from keras.models import Sequential
+from keras.layers import Dropout, Dense, Conv2D, MaxPooling2D, Flatten
+
+model = Sequential()
+model.add(Conv2D(filters=32,
+                kernel_size=(3,3),
+                padding='same',
+                activation='relu',
+                input_shape=(32, 32, 3)))
+
+model.add(Conv2D(64, (3,3), padding='same', activation='relu'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Flatten())
+
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.3))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(10, activation='softmax'))
+
+print(model.summary())
+
+```
+
+    Model: "sequential_7"
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    conv2d_10 (Conv2D)           (None, 32, 32, 32)        896       
+    _________________________________________________________________
+    conv2d_11 (Conv2D)           (None, 32, 32, 64)        18496     
+    _________________________________________________________________
+    max_pooling2d_7 (MaxPooling2 (None, 16, 16, 64)        0         
+    _________________________________________________________________
+    flatten_7 (Flatten)          (None, 16384)             0         
+    _________________________________________________________________
+    dense_16 (Dense)             (None, 128)               2097280   
+    _________________________________________________________________
+    dropout_11 (Dropout)         (None, 128)               0         
+    _________________________________________________________________
+    dense_17 (Dense)             (None, 64)                8256      
+    _________________________________________________________________
+    dropout_12 (Dropout)         (None, 64)                0         
+    _________________________________________________________________
+    dense_18 (Dense)             (None, 10)                650       
+    =================================================================
+    Total params: 2,125,578
+    Trainable params: 2,125,578
+    Non-trainable params: 0
+    _________________________________________________________________
+    None
+
+
+
+```python
+# 6. Compile - Optimizer, Loss function 설정
+model.compile(loss='categorical_crossentropy',
+             optimizer='adam',
+             metrics=['accuracy'])
+```
+
+
+```python
+# 7. 모델 학습시키기
+batch_size = 128
+epochs = 10
+
+history = model.fit(X_train, y_train,
+                    epochs=epochs,
+                    batch_size=batch_size,
+                    validation_data=(X_val, y_val), # validation_set 적용 (꼭 같이 해주는게 좋음)
+                    verbose=1)
+```
+
+    Train on 40000 samples, validate on 10000 samples
+    Epoch 1/10
+    40000/40000 [==============================] - 67s 2ms/step - loss: 1.7432 - accuracy: 0.3568 - val_loss: 1.3433 - val_accuracy: 0.5201
+    Epoch 2/10
+    40000/40000 [==============================] - 72s 2ms/step - loss: 1.3271 - accuracy: 0.5257 - val_loss: 1.1500 - val_accuracy: 0.5906
+    Epoch 3/10
+    40000/40000 [==============================] - 77s 2ms/step - loss: 1.1586 - accuracy: 0.5886 - val_loss: 1.0559 - val_accuracy: 0.6271
+    Epoch 4/10
+    40000/40000 [==============================] - 79s 2ms/step - loss: 1.0281 - accuracy: 0.6375 - val_loss: 0.9819 - val_accuracy: 0.6544
+    Epoch 5/10
+    40000/40000 [==============================] - 77s 2ms/step - loss: 0.9405 - accuracy: 0.6692 - val_loss: 0.9503 - val_accuracy: 0.6616
+    Epoch 6/10
+    40000/40000 [==============================] - 74s 2ms/step - loss: 0.8635 - accuracy: 0.6951 - val_loss: 0.9583 - val_accuracy: 0.6658
+    Epoch 7/10
+    40000/40000 [==============================] - 80s 2ms/step - loss: 0.7953 - accuracy: 0.7214 - val_loss: 0.9359 - val_accuracy: 0.6790
+    Epoch 8/10
+    40000/40000 [==============================] - 74s 2ms/step - loss: 0.7194 - accuracy: 0.7470 - val_loss: 0.9354 - val_accuracy: 0.6783
+    Epoch 9/10
+    40000/40000 [==============================] - 79s 2ms/step - loss: 0.6575 - accuracy: 0.7661 - val_loss: 0.9470 - val_accuracy: 0.6804
+    Epoch 10/10
+    40000/40000 [==============================] - 76s 2ms/step - loss: 0.6005 - accuracy: 0.7867 - val_loss: 1.0215 - val_accuracy: 0.6707
+
+
+
+```python
+# 8. 모델 평가하기
+test_loss, test_acc = model.evaluate(X_test, y_test)
+```
+
+    10000/10000 [==============================] - 5s 517us/step
+
+
+
+```python
+# 9. 이미지를 랜덤으로 선택해 훈련된 모델로 예측 🖼
+import numpy
+for index in numpy.random.choice(len(y_test), 3, replace = False):
+    predicted = model.predict(X_test[index:index + 1])[0]
+    label = y_test[index]
+    result_label = numpy.where(label == numpy.amax(label))
+    result_predicted = numpy.where(predicted == numpy.amax(predicted))
+    title = "Label value = %s  Predicted value = %s " % (result_label[0], result_predicted[0])
+
+    fig = plt.figure(1, figsize = (3,3))
+    ax1 = fig.add_axes((0,0,.8,.8))
+    ax1.set_title(title)
+    images = X_test
+    plt.imshow(images[index], interpolation = 'nearest')
+    plt.show()
+```
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_10_0c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_10_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_10_2c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+
+```python
+# 10. 학습 시각화하기
+
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Accuracy')
+plt.xlabel('epoch')
+plt.ylabel('accuracy')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Loss')
+plt.xlabel('epoch')
+plt.ylabel('loss')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+```
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_11_0c.png" style="width: 50%
+    ; height: 300px;">
+</div>
+
+
+<div style="width: 100%; height: 300px;">
+    <img src="https://kyu9341.github.io/assets/output_11_1c.png" style="width: 50%
+    ; height: 300px;">
+</div>
 
 
 
