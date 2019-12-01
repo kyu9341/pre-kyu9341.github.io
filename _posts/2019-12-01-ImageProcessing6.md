@@ -97,9 +97,63 @@ void CircleMosaic(uchar** img, uchar** outimg, int Row, int Col, int x, int y, d
 
 }
 ```
-위의 함수는 원하는 좌표와 반지름을 매개변수로 받아 해당하는 위치에 모자이크 처리를 수행하는 함수이다. mosaic함수는[이전 포스팅](https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/12/ImageProcessing2.html)에서 사용했던 함수이고 circle이미지를 제작할 때 사용했던 방식으로 작성하였다. 위의 함수를 이용하면 다음
+위의 함수는 원하는 좌표와 반지름을 매개변수로 받아 해당하는 위치에 모자이크 처리를 수행하는 함수이다. mosaic함수는[이전 포스팅](https://kyu9341.github.io/%EC%98%81%EC%83%81%EC%B2%98%EB%A6%AC/2019/11/12/ImageProcessing2.html)에서 사용했던 함수이고 circle이미지를 제작할 때 사용했던 방식으로 작성하였다. 위의 함수를 이용하면 다음과 같은 이미지도 출력이 가능하다.
 
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/partMosaic.png" style="width: 512px
     ; height: 512px;">
 </div>
+부분 모자이크(300,350) (diameter=100, block=8)
+## 응용
+
+이번엔 원형이 아닌 사각형 이미지를 생성하는 함수와 그 함수를 응용하여 사각형으로 부분 모자이크를 수행하는 함수이다.
+
+```c
+void Square(uchar** Result, int Row, int Col, double diameter) // 사각형 이미지 생성
+{
+	int i, j;
+	double tmp;
+	diameter = diameter / 2; // 사각형의 한변의 길이를 입력받았으므로 1/2 해줌
+
+	for(i = 0; i < Row; i++)
+		for (j = 0; j < Col; j++)
+		{
+			if (i >= (Row / 2) - diameter && i <= (Row / 2) + diameter && j >= (Col / 2) - diameter && j <= (Col / 2) + diameter)
+					Result[i][j] = 255;
+			else Result[i][j] = 0;
+		}
+
+}
+
+void SquareMosaic(uchar** img, uchar** outimg, int Row, int Col, int x, int y, int diameter, int block) // 사각형 부분 모자이크
+{
+	int i, j;
+	diameter = diameter / 2; // 사각형의 한 변의 길이를 입력받았으므로 1/2 해줌
+
+	mosaic(img, outimg, Row, Col, block);
+
+	for(i = 0; i < Row; i++)
+		for (j = 0; j < Col; j++)
+		{
+			if (i >= x - diameter && i <= x + diameter && j >= y - diameter && j <= y + diameter) // 사각형 범위 지정
+				outimg[i][j]; // 사각형 내부는 모자이크 이미지 유지
+			else outimg[i][j] = img[i][j]; // 사각형 외부를 원본 대입
+		}
+
+}
+```
+사각형의 한 변의 길이를 입력받아 사각형 이미지 및 사각형 부분 모자이크를 수행하며 결과는 다음과 같다.
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/square.png" style="width: 512px
+    ; height: 512px;">
+</div>
+Square Image (diameter=200)
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/lenasquare.png" style="width: 512px
+    ; height: 512px;">
+</div>
+사각형 부분 모자이크(300,300) (diameter=150, block=8)
+
+위와 같이 사각형 모양으로도 부분 모자이크를 구현할 수 있다. 영상처리에서 논리 연산은 원하는 영상의 모양을 얻거나 제거하기 위한 기법으로 사용되며 얼굴에서 치아나 눈 등 특별히 보고 싶은 부분이 있다면 특정한 영상을 이용하여 원하는 결과 영상을 얻을 수 있다. 
