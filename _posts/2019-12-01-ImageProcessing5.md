@@ -118,13 +118,16 @@ void RmNoise(uchar** img, int** tempimg, uchar** outimg, int Row, int Col, int c
     <img src="https://kyu9341.github.io/assets/noise5.png" style="width: 512px
     ; height: 512px;">
 </div>
-
+5개를 더한 결과 영상
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/noise20.png" style="width: 512px
     ; height: 512px;">
 </div>
-
+20개를 더한 결과 영상
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/noise50.png" style="width: 512px
     ; height: 512px;">
 </div>
+50개를 더한 결과 영상
+
+위의 영상들과 같이 잡음 영상을 많이 더할수록 잡음을 더 잘 제거하는 모습을 확인할 수 있다. 잡음 영상을 단순한 가산연산으로 처리하는 방식이 좋은 결과를 나타내는 경우가 많이 있는데 그것은 잡음이 원 영상과 상관관계가 없는 경우의 가산 잡음인 경우에 해당된다.
