@@ -37,20 +37,95 @@ void BitSlicing(uchar** img, uchar** Result, int Row, int Col, int position)
 
 위의 코드는 position값에 따라 해당하는 bit palne의 이미지를 생성하는 코드이다.
 
+<div style="width: 700px; height: 800px;">
+    <img src="https://kyu9341.github.io/assets/lenabitplane.png" style="width: 700px
+    ; height: 800px;">
+</div>
+
+위의 이미지는 Bit Plane 8장에 대한 영상결과를 보여준다. 각각의 비트가 1인 경우 255로 표현하여 이진화된 영상을 보여준다.
+
+이진화된 비트 영상은 비트의 정보만으로 영상이 얼마나 많은 정보를 가지고 있는지를 알 수 있다. 이러한 비트 정보를 몇 개를 모아야 사람이 보기에 지장이 없는지 확인해보자.
+
+```c
+void ImageCombine(uchar** img, uchar** tmpimg, uchar** outimg, int Row, int Col, int position, int direction) // 7부터 position까지의 비트이미지를 합성
+{
+	int i, j, k;
+	uchar mask = 0x01;
+
+	if (direction == 1) // 7부터 position까지 합성
+	{
+
+		for (k = 7; k > 7 - position; k--) // 7부터 입력받은 장수까지 반복
+		{
+			mask <<= k;
+			for (i = 0; i < Row; i++) // BitSlicing
+				for (j = 0; j < Col; j++) {
+					if ((mask & img[i][j]) == mask) //pow(2, position) = mask
+					{
+						tmpimg[i][j] = 255;
+					}
+					else
+					{
+						tmpimg[i][j] = 0;
+					}
+
+				}
+			for (i = 0; i < Row; i++)
+				for (j = 0; j < Col; j++) {
+					outimg[i][j] += tmpimg[i][j] & mask;
+				}
+			mask = 0x01;
+		}
+		average(outimg, Row, Col);
+
+	}
+/*	 비트슬라이싱된 이미지에 해당 mask를 and연산 하는 이유
+	 해당 비트값만 255로 변환하고 나머지는 0으로 변환했기 때문에
+	 즉 255 : 0b1111111 & 0b1000000 => 0b1000000
+			    & 0b0100000 => 0b0100000
+						와 같이 변환 후 모두 더해줘야 정상적인 값이 나옴.
+\*/
+	if (direction == 2) // 1부터 position까지 합성
+	{
+
+		for (k = 1; k <= position; k++) // 1부터 입력받은 장수까지 반복
+		{
+			mask <<= k;
+			for (i = 0; i < Row; i++) // BitSlicing
+				for (j = 0; j < Col; j++) {
+					if ((mask & img[i][j]) == mask) //pow(2, position) = mask
+					{
+						tmpimg[i][j] = 255;
+					}
+					else
+					{
+						tmpimg[i][j] = 0;
+					}
+
+				}
+			for (i = 0; i < Row; i++) // BitMasking, MaskAdd
+				for (j = 0; j < Col; j++) {
+					outimg[i][j] += tmpimg[i][j] & mask; // 비트슬라이싱된 tmpimg를 해당 비트의 마스크 값으로 마스킹 후 누적
+				}
+			mask = 0x01; // 초기화
+		}
+		average(outimg, Row, Col);
+
+	}
+
+}
+```
+
+
+
+
+
+
+
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/lenabitplane.png" style="width: 512px
     ; height: 512px;">
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
