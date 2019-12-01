@@ -115,22 +115,27 @@ void ImageCombine(uchar** img, uchar** tmpimg, uchar** outimg, int Row, int Col,
 
 }
 ```
-
-
-
-
-
-
+위의 코드는 입력 받은 direction과 position값에 따라 상위 비트 혹은 하위 비트부터 원하는 장수를 더한 이미지를 생성해주는 함수이다. 아래는 위의 함수를 통해 생성한 이미지를 출력한 결과이다.
 
 <div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/lenabitplane.png" style="width: 512px
+    <img src="https://kyu9341.github.io/assets/lena876.png" style="width: 512px
     ; height: 512px;">
 </div>
+8, 7, 6bit 합성 영상
 
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/lena8765.png" style="width: 512px
+    ; height: 512px;">
+</div>
+8, 7, 6, 5bit 합성 영상
 
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/lena12345.png" style="width: 512px
+    ; height: 512px;">
+</div>
+1, 2, 3, 4, 5bit 합성 영상
 
-
-
+상위 비트부터 많은 비트를 합성할수록 원 영상과 비슷한 결과를 보여주는 것을 알 수 있다. 또한 하위 비트부터 더하면 높은 값을 가지는 bit가 빠져있으므로 전체적으로 어두운 영상을 보여주게 된다.
 
 
 
