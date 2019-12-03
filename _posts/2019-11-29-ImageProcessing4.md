@@ -44,7 +44,7 @@ void BitSlicing(uchar** img, uchar** Result, int Row, int Col, int position)
 
 위의 이미지는 Bit Plane 8장에 대한 영상결과를 보여준다. 각각의 비트가 1인 경우 255로 표현하여 이진화된 영상을 보여준다.
 
-##ImageCombine
+## ImageCombine
 
 이진화된 비트 영상은 비트의 정보만으로 영상이 얼마나 많은 정보를 가지고 있는지를 알 수 있다. 이러한 비트 정보를 몇 개를 모아야 사람이 보기에 지장이 없는지 확인해보자.
 
