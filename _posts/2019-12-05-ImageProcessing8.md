@@ -116,6 +116,10 @@ void contrastStreching(uchar** img, uchar** outimg, int X_Size, int Y_Size)
 
 
 
+
+
+
+
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
     ; height: 512px;">
