@@ -43,3 +43,34 @@ categories: 영상처리
     <img src="https://kyu9341.github.io/assets/livingroomGA.png" style="width: 800px
     ; height: 400px;">
 </div>
+
+
+
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/splena.png" style="width: 512px
+    ; height: 512px;">
+</div>
+
+
+
+
+
+
+<div style="width: 800px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/3355lena.png" style="width: 800px
+    ; height: 400px;">
+</div>
+
+
+
+
+
+
+
+
+
+<div style="width: 512px; height: 512px;">
+    <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
+    ; height: 512px;">
+</div>
