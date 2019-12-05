@@ -54,11 +54,15 @@ categories: 영상처리
 
 
 
+<div style="width: 800px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/3355lena.png" style="width: 800px
+    ; height: 400px;">
+</div>
 
 
 
 <div style="width: 800px; height: 400px;">
-    <img src="https://kyu9341.github.io/assets/3355lena.png" style="width: 800px
+    <img src="https://kyu9341.github.io/assets/splenamaxmin.png" style="width: 800px
     ; height: 400px;">
 </div>
 
