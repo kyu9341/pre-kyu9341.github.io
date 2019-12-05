@@ -36,3 +36,10 @@ categories: 영상처리
     <img src="https://kyu9341.github.io/assets/jetga.png" style="width: 800px
     ; height: 400px;">
 </div>
+
+
+
+<div style="width: 800px; height: 400px;">
+    <img src="https://kyu9341.github.io/assets/livingroomGA.png" style="width: 800px
+    ; height: 400px;">
+</div>
