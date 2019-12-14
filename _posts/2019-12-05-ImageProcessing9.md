@@ -73,7 +73,6 @@ categories: 영상처리
 
 
 
-
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
     ; height: 512px;">
