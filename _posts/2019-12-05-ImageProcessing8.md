@@ -27,32 +27,27 @@ categories: 영상처리
     <img src="https://kyu9341.github.io/assets/lightcontrast.png" style="width: 512px
     ; height: 512px;">
 </div>
+위의 영상은 밝은 레나 영상에 콘트라스트 스트레칭을 적용한 결과이다. 밝은 레나 영상의 최솟값은 115, 최댓값은 248이다. 최솟값이 큰 값을 가지고 있어 히스토그램이 밝은 영역으로 치우친 영상의 모양으로 콘트라스트 스트레칭 결과 영상이 보기에도 선명하고 좋은 결과를 보여주는 것을 알 수 있다.
 
 <div style="width: 512px; height: 512px;">
     <img src="https://kyu9341.github.io/assets/lightcontrasthisto.png" style="width: 512px
     ; height: 512px;">
 </div>
 
-<div style="width: 512px; height: 512px;">
+위의 히스토그램을 보면 알 수 있듯이 최솟값과 최댓값이 스트레칭되어 각각 0과 255를 가지도록 변화한 것을 볼 수 있다.
+
+<div style="width: 512px; height: 256px;">
     <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
-    ; height: 512px;">
+    ; height: 256px;">
 </div>
 
 
 
-<div style="width: 512px; height: 512px;">
+<div style="width: 512px; height: 256px;">
     <img src="https://kyu9341.github.io/assets/jetcontrast.png" style="width: 512px
-    ; height: 512px;">
+    ; height: 256px;">
 </div>
-
-
-
-
-
-<div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
-    ; height: 512px;">
-</div>
+위의 영상들은 각각 카메라맨과 제트기 영상에 대하여 콘트라스트 스트레칭을 수행한 결과이다. 카메라맨 영상은 0부터 255까지의 값을 모두 가지고 있어 그 결과가 거의 변한 것이 없으나 제트기 영상은 15부터 231의 값을 가지므로 원 영상보다 선명한 결과를 보여준다. 콘트라스트 스트레칭은 영상이 가지는 그레이 레벨의 값이 0부터 255로 변화되며 영상이 가지는 그레이 레벨 값을 모두 펼쳐주는 역할을 한다.
 
 
 ```c
@@ -108,6 +103,7 @@ void contrastStreching(uchar** img, uchar** outimg, int X_Size, int Y_Size)
 }
 ```
 
+위의 코드는 콘트라스트 스트레칭을 수행하는 함수이며 영상내의 히스토그램을 구해 최솟값과 최댓값을 각각 구해 위의 수식을 적용시키는 구조로 작성되었다.
 
 
 
