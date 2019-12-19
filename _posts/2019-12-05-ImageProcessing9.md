@@ -170,7 +170,63 @@ Convolution은 합성곱이라는 뜻이다. 특정한 크기의 필터를 사�
     ; height: 400px;">
 </div>
 
+미디언 필터링은 salt-and-pepper 잡음에 강한 특성을 가지고 있어서 영상 내 잡음 성분이 salt-and-pepper 잡음 성분인 경우 다른 어떤 필터링 결과보다 우수한 결과를 보여준다.
 
+위의 영상을 보면 salt-and-pepper 잡음이 있는 lena영상에 대해 미디언 필터링을 수행한 결과 존재하던 잡음이 거의 사라진 것을 볼 수 있으며 5x5의 커널로 미디언 필터링을 수행한 결과를 보면 하얀 점이나 검은 점은 보이지 않으나 영상에 전체적으로 더 많은 스무딩 현상이 발생한 것을 확인할 수 있다.
+```c
+void Bubble_sort(uchar* Sort, uchar* median_value, int Mode, int filterSize)
+{
+	int i, x;
+	uchar temp, swap;
+	for (x = 0; x < filterSize * filterSize; x++)
+	{
+		temp = Sort[x];
+		for (i = x; i < filterSize * filterSize - 1; i++)
+		{
+			if (temp >= Sort[i + 1])
+			{
+				swap = temp;
+				temp = Sort[i + 1];
+				Sort[i + 1] = swap;
+			}
+		}
+		Sort[x] = temp;
+	}
+	if (Mode == -1)
+		* median_value = (uchar)Sort[0]; // median filter의 중앙값을 필터내의 최솟값으로 설정
+	else if (Mode == 0)
+		* median_value = (uchar)Sort[filterSize * filterSize / 2]; // median filter의 중앙값을 필터내의 중간값으로 설정
+	else if (Mode == 1)
+		* median_value = (uchar)Sort[filterSize * filterSize - 1]; // median filter의 중앙값을 필터내의 최대값으로 설정
+}
+
+void median(uchar** inImg, uchar** outImg, int ROW, int COL, int Mode, int filterSize) // Median Filtering
+{
+	int i, j, x, y, z, count = 0;
+	uchar median_value; // 필터의 중앙값
+	uchar* Sort;
+	Sort = (uchar*)malloc(filterSize * filterSize * sizeof(uchar)); // 필터의 마스크값을 정렬해 저장할 포인터 배열 동적할당
+
+
+	for (i = 0; i < ROW; i++)
+		for (j = 0; j < COL; j++)
+			outImg[i][j] = inImg[i][j];
+
+	for (i = 0; i < ROW - filterSize; i++)
+		for (j = 0; j < COL - filterSize; j++)
+		{
+			for (x = 0; x < filterSize; x++)
+				for (y = 0; y < filterSize; y++)
+					Sort[filterSize * x + y] = inImg[i + x][j + y];
+			Bubble_sort(Sort, &median_value, Mode, filterSize);
+			outImg[i + 1][j + 1] = median_value;
+		}
+	free(Sort);
+}
+
+```
+
+위의 코드는 미디언 필터링을 수행하는 함수이다. 입력받은 필터사이즈에 따라 메모리를 할당하여 필터를 생성하고 버블 정렬 알고리즘을 통해 정렬을 수행하여 중간 값을 찾아낸다. 또한 Max필터와 Min필터도 구현이 되어있는데 Max, Min 필터는 미디언 필터와 같이 순서에 기반한 필터로 필터 내의 최댓값, 최솟값을 결과로 취하는 필터이다. salt-and-pepper잡음을 가지는 lena영상에 Max, Min 필터를 적용한 결과는 아래와 같다.
 
 <div style="width: 800px; height: 400px;">
     <img src="https://kyu9341.github.io/assets/splenamaxmin.png" style="width: 800px
@@ -178,13 +234,4 @@ Convolution은 합성곱이라는 뜻이다. 특정한 크기의 필터를 사�
 </div>
 
 
-
-
-
-
-
-
-<div style="width: 512px; height: 512px;">
-    <img src="https://kyu9341.github.io/assets/cmancontrast.png" style="width: 512px
-    ; height: 512px;">
-</div>
+위의 필터링 결과를 보면 알 수 있듯이 잘못 사용한 필터는 수용하기 힘든 결과를 나타내기도 한다. Max Min 필터가 성능이 나쁜 것이 아니라 현재 잡음 상태에 적절하지 않은 것이다. 모든 필터링은 그 특성에 맞는 작업을 수행하기에 가장 적합한 필터를 찾는 것이 중요하다.
