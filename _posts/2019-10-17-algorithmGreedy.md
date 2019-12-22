@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "그리디(Greedy) 알고리즘"
-subtitle: "Baekjoon algorithm"
+subtitle: "Algorithm"
 date: 2019-10-17 16:22:05
 author: kwon
 categories: algorithm
