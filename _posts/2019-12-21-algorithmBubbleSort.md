@@ -15,8 +15,43 @@ categories: algorithm
 
 버블 정렬 또한 선택 정렬과 같이 아주 직관적인 해결방법인데 바로 가까이에 있는 두 숫자끼리 비교를 하여 더 작은 숫자를 앞으로 보내주는 것을 반복하는 것이다.
 
-```c
+```C++
+#include<iostream>
 
+using namespace std;
+
+int main()
+{
+	int i, j, temp;
+	int array[10] = { 1, 10, 5, 8, 7, 6, 4, 3, 2, 9 };
+	//int array[10] = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+
+	for (i = 0; i < 10; i++)
+	{
+		for (j = 0; j < 9 - i; j++) // 버블정렬은 뒤쪽부터 정렬이 되므로 9-i만큼만 반복하면 된다.
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+		for (j = 0; j < 10; j++)
+		{
+			cout << array[j] << " ";
+		}
+		cout << "\n";
+	}
+
+	cout << "결과 :";
+	for (i = 0; i < 10; i++)
+	{
+		cout << array[i] << " ";
+	}
+
+	return 0;
+}
 ```
 
 
