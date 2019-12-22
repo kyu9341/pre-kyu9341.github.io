@@ -25,8 +25,7 @@ categories: algorithm
 
 예를 들어, 2^10 이 약 1,000 이고 2^20이 약 1,000,000 이므로 N이 1,000,000이라 하더라도
 <div style="width: 100px; height: 20px;">
-    <img src="http://chart.apis.google.com/chart?cht=tx&chl=log_2N = 20"style="width: 100px
-    ; height: 20px;" />
+    <img src="http://chart.apis.google.com/chart?cht=tx&chl=log_2N = 20"style="width: 100px; height: 20px;" />
 </div>
 
 밖에 되지 않는다. 즉, 굉장히 빠르다는 것을 알 수 있다.
