@@ -26,14 +26,14 @@ using namespace std;
 int main()
 {
 	int i, j, min, index, temp; // min : 최솟값, index : 최솟값의 인덱스
-	int array[10] = {1, 10, 5, 8, 7, 6, 4, 3, 2, 9};
+	int array[10] = { 1, 10, 5, 8, 7, 6, 4, 3, 2, 9 };
 
-	for(i = 0; i < 10; i++)
+	for (i = 0; i < 10; i++)
 	{
 		min = 9999;
-		for(j = i; j < 10; j++)
+		for (j = i; j < 10; j++)
 		{
-			if(array[j] < min) // 최솟값을 구함
+			if (array[j] < min) // 최솟값을 구함
 			{
 				min = array[j];
 				index = j;
@@ -43,9 +43,17 @@ int main()
 		array[i] = min;
 		array[index] = temp;
 
+
+		for (j = 0; j < 10; j++)
+		{
+			cout << array[j] << " ";
+		}
+		cout << "\n";
 	}
 
-	for(i = 0; i < 10; i++)
+
+	cout << "결과 :";
+	for (i = 0; i < 10; i++)
 	{
 		cout << array[i] << " ";
 	}
@@ -55,7 +63,13 @@ int main()
 }
 ```
 
-위와 같이 선택정렬을 작성할 수 있다.
+위와 같이 선택정렬을 작성할 수 있다. 또한 아래와 같이 정렬이 진행되는 과정을 확인할 수 있다. 선택 정렬은 앞쪽부터 정렬이 수행되는 것을 확인할 수 있다.
+
+<div style="width: 250px; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/selectionsort.png" style="width: 250px
+    ; height: 200px;">
+</div>
+
 
 이제 선택 정렬을 수행하는데에 얼마만큼의 시간이 걸리는지를 시간복잡도로 표현할 수 있는데 계산 방법은 다음과 같다.
 

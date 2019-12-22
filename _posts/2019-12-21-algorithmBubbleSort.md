@@ -53,6 +53,11 @@ int main()
 	return 0;
 }
 ```
+위와 같이 코드로 표현할 수 있다.
 
+<div style="width: 200px; height: 200px;">
+    <img src="https://kyu9341.github.io/assets/bubblesort.png" style="width: 200px
+    ; height: 200px;">
+</div>
 
 참조 : <https://blog.naver.com/ndb796/221226803544>
