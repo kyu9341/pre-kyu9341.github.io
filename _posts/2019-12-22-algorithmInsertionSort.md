@@ -53,15 +53,14 @@ int main()
 }
 
 ```
-
-
+삽입 정렬은 위와 같이 구현할 수 있으며 진행 과정은 아래와 같다.
 
 <div style="width: 250px; height: 200px;">
     <img src="https://kyu9341.github.io/assets/insertsort.png" style="width: 250px
     ; height: 200px;">
 </div>
 
-
+중간 과정에도 앞부분은 계속해서 정렬이 되어있는 것을 확인할 수 있다. 삽입 정렬은 앞서 말했듯이 선택 정렬과 버블 정렬보다는 뛰어나지만 최악의 경우는 앞의 정렬 방식과 같은 수만큼 연산이 일어난다. (O(N^2)) 하지만 2 3 4 5 6 7 8 9 10 1 과 같이 거의 정렬이 된 상태의 경우에는 아주 빠른 속도로 정렬이 가능하다. 
 
 참조 : <https://blog.naver.com/ndb796/221226806398>
 
