@@ -90,15 +90,72 @@ N^2 = 10 * 10 = 100 인 반면
 즉, 데이터의 개수가 N이고 반씩 쪼개 들어가기 때문에 O(N*log_2 N)이라고 할 수 있다.
 
 ```C++
+#include<iostream>
 
+using namespace std;
+
+int const number = 10;
+
+void quickSort(int* data, int start, int end) // start, end -> 부분집합의 시작과 끝 인덱스
+{
+	if (start >= end) return; // 원소가 1개인 경우
+
+	int key = start; // 피벗 값 첫번째 원소의 인덱스
+	int i = start + 1;
+	int j = end;
+	int temp;
+
+	while (i <= j) // 엇갈릴 때까지 반복
+	{
+		while (data[i] <= data[key]) // 키 값보다 큰 값을 만날 때까지 이동
+		{
+			i++;
+		}
+		while (data[j] >= data[key] && j > start) // 키 값보다 작은 값을 만날 때까지 이동
+		{ // 범위를 넘어가지 않도록 j > start를 걸어줌
+			j--;
+		}
+		if (i > j) // 현재 엇갈린 상태면 작은 값(j)을 키 값과 교체
+		{
+			temp = data[j];
+			data[j] = data[key];
+			data[key] = temp;
+		}
+		else // 엇갈리지 않은 상태라면 i와 j를 교체
+		{
+			temp = data[j];
+			data[j] = data[i];
+			data[i] = temp;
+		}
+	}
+
+	for (int i = 0; i < number; i++)
+		cout << data[i] << " ";
+	cout << endl;
+
+	quickSort(data, start, j - 1);
+	quickSort(data, j + 1, end);
+}
+
+int main()
+{
+	int data[number] = { 1, 10, 5, 8, 7, 6, 4, 3, 2, 9 };
+
+	quickSort(data, 0, number - 1);
+	cout << "결과 : ";
+	for (int i = 0; i < number; i++)
+		cout << data[i] << " ";
+}
 
 ```
+위와 같이 재귀함수를 이용하여 작성할 수 있고 아래와 같이 정렬이 진행된다.
 
 <div style="width: 250px; height: 200px;">
     <img src="https://kyu9341.github.io/assets/quicksort.png" style="width: 250px
     ; height: 200px;">
 </div>
 
+퀵 정렬은 평균 시간 복잡도는 O(N*logN)이지만 최악의 경우 시간 복잡도는 O(N^2)이 되기도 한다. 이미 정렬이 되어있는 경우나 거의 정렬이 되어있는 경우에는 퀵 정렬의 효율이 매우 떨어진다. 반면 삽입 정렬은 이런 경우를 빠르게 해결할 수 있다. 즉, 정렬할 데이터의 특성에 따라 적절한 정렬 알고리즘을 사용하는 것이 중요하다.
 
 
 참조 : <https://blog.naver.com/ndb796/221226813382>
