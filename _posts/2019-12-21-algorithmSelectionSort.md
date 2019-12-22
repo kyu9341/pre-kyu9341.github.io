@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "선택정렬(Selection Sort) 알고리즘"
-subtitle: "Baekjoon algorithm"
+subtitle: "Algorithm"
 date: 2019-12-21 14:12:42
 author: kwon
 categories: algorithm
